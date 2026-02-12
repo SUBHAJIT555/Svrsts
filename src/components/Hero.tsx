@@ -109,7 +109,7 @@ const Hero = () => {
           >
             <div className="size-3 rounded bg-green-400 animate-pulse border border-neutral-300" />
             <span className="text-sm md:text-base font-generalsans font-medium text-neutral-700">
-              Your Trusted Technical Services Provider in Dubai, UAE
+              Your Complete Exhibition & Interior Solutions Partner in Dubai
             </span>
           </motion.div>
 
@@ -120,10 +120,10 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6"
           >
-            Crafting Excellence in Every Detail
+            SVRS Technical Services
             <br />
             <span className="font-normal text-neutral-800 ">
-              Carpentry • Exhibition Stands • Woodwork • Painting & More
+              Crafting Spaces • Building Stands • Transforming Interiors
             </span>
           </motion.h1>
 
@@ -132,11 +132,9 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg sm:text-xl md:text-2xl text-neutral-600 font-generalsans font-normal mb-12 mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-neutral-700 font-generalsans font-normal mb-12 mx-auto leading-tight"
           >
-            Delivering excellence through certified technicians and proven
-            expertise. Your trusted partner for maintenance and renovation
-            solutions.
+            SVRS Technical Services specializes in exhibition stand building, event décor, office interiors, custom furniture, woodwork, painting, and complete interior solutions across Dubai, UAE. We combine precision craftsmanship with creative design to deliver high-quality results for exhibitions, corporate spaces, and commercial environments.
           </motion.p>
 
           {/* Newsletter Section with Parallax */}

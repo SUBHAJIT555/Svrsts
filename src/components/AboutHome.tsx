@@ -1,67 +1,25 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import CTAButton from "./ui/CTAButton";
 
 const AboutHome = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const containerInView = useInView(containerRef, { once: false, amount: 0.1 });
   const headingInView = useInView(headingRef, { once: false, amount: 0.1 });
   const contentInView = useInView(contentRef, { once: false, amount: 0.1 });
 
-  return (
-    <section className="min-h-screen w-full relative bg-white">
-      {/* Dashed Center Fade Grid Background */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-            linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
-          `,
-          backgroundSize: "20px 20px",
-          backgroundPosition: "0 0, 0 0",
-          maskImage: `
-            repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
-          `,
-          WebkitMaskImage: `
-            repeating-linear-gradient(
-              to right,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            repeating-linear-gradient(
-              to bottom,
-              black 0px,
-              black 3px,
-              transparent 3px,
-              transparent 8px
-            ),
-            radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 70%)
-          `,
-          maskComposite: "intersect",
-          WebkitMaskComposite: "source-in",
-        }}
-      />
+  const handleLearnMore = () => {
+    navigate("/about");
+  };
 
-      {/* Content */}
+  return (
+    <section className="min-h-screen w-full relative bg-transparent">
+      {/* Content - background from Home.tsx wrapper */}
       <div ref={containerRef} className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-16 sm:py-20 md:py-24 lg:py-32">
         <div className="w-full">
           {/* Badge */}
@@ -73,7 +31,7 @@ const AboutHome = () => {
           >
             <div className="size-3 rounded bg-yellow-400" />
             <span className="text-xs sm:text-sm font-generalsans font-medium text-neutral-700">
-              About Our Company
+              About SVRS Technical Services
             </span>
           </motion.div>
 
@@ -85,10 +43,10 @@ const AboutHome = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6 sm:mb-8 md:mb-10"
           >
-            Building Excellence,
+            Crafting Spaces That Inspire
             <br />
             <span className="font-normal text-neutral-800">
-              One Project at a Time
+              Exhibition Stands • Interiors • Furniture
             </span>
           </motion.h2>
 
@@ -105,10 +63,10 @@ const AboutHome = () => {
                 Our Mission
               </h3>
               <p className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans leading-relaxed">
-                We are dedicated to delivering exceptional technical solutions that exceed expectations. Our commitment to quality, innovation, and customer satisfaction drives everything we do.
+                SVRS Technical Services is dedicated to delivering exceptional exhibition stand building, event decoration, office interior design, furniture solutions, woodwork, and comprehensive interior services. Our commitment to quality craftsmanship and innovative design drives everything we do.
               </p>
               <p className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans leading-relaxed">
-                With a team of experienced professionals and cutting-edge technology, we provide comprehensive services tailored to meet the unique needs of each client, ensuring lasting results and trusted partnerships.
+                With a team of skilled professionals and years of experience, we transform spaces into inspiring environments. From custom exhibition stands to complete office interiors, we provide end-to-end solutions tailored to your unique vision and requirements.
               </p>
             </motion.div>
 
@@ -120,31 +78,31 @@ const AboutHome = () => {
               className="space-y-6 sm:space-y-8"
             >
               <h3 className="text-2xl sm:text-3xl md:text-4xl font-clashdisplay font-medium text-neutral-900">
-                Our Values
+                What We Do
               </h3>
               <div className="space-y-4 sm:space-y-6">
                 <div>
                   <h4 className="text-lg sm:text-xl md:text-2xl font-clashdisplay font-medium text-neutral-900 mb-2">
-                    Excellence
+                    Exhibition Stand Building
                   </h4>
                   <p className="text-base sm:text-lg text-neutral-600 font-generalsans leading-relaxed">
-                    We strive for perfection in every project, maintaining the highest standards of quality and craftsmanship.
+                    Custom-designed exhibition stands that showcase your brand and captivate your audience at trade shows and events.
                   </p>
                 </div>
                 <div>
                   <h4 className="text-lg sm:text-xl md:text-2xl font-clashdisplay font-medium text-neutral-900 mb-2">
-                    Innovation
+                    Event Decoration & Lighting
                   </h4>
                   <p className="text-base sm:text-lg text-neutral-600 font-generalsans leading-relaxed">
-                    Embracing new technologies and methodologies to provide forward-thinking solutions that stand the test of time.
+                    Professional event decoration and stand lighting services that create memorable experiences and enhance your brand presence.
                   </p>
                 </div>
                 <div>
                   <h4 className="text-lg sm:text-xl md:text-2xl font-clashdisplay font-medium text-neutral-900 mb-2">
-                    Integrity
+                    Office Interiors & Furniture
                   </h4>
                   <p className="text-base sm:text-lg text-neutral-600 font-generalsans leading-relaxed">
-                    Building trust through transparent communication, ethical practices, and reliable service delivery.
+                    Complete office interior solutions including custom furniture, woodwork, and all interior design services to transform your workspace.
                   </p>
                 </div>
               </div>
@@ -156,11 +114,14 @@ const AboutHome = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.7 }}
-            className="mt-12 sm:mt-16 md:mt-20 flex justify-start"
+            className="mt-8 md:mt-0 flex justify-start"
           >
-            <button className="bg-neutral-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-neutral-800 transition-all duration-300 font-generalsans font-medium text-base sm:text-lg shadow-lg">
-              Learn More About Us
-            </button>
+            <CTAButton
+              label="Learn More About Us"
+              onClick={handleLearnMore}
+              variant="light"
+              className="font-generalsans ring ring-neutral-300 ring-offset-2 md:ring-offset-4 bg-linear-to-r from-neutral-200 to-white cursor-pointer"
+            />
           </motion.div>
         </div>
       </div>

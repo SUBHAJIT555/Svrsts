@@ -272,8 +272,8 @@ export default function LeadCaptureModal({
               className="absolute inset-0 z-0"
               style={{
                 backgroundImage: `
-                  linear-gradient(to right, #e7e5e4 1px, transparent 1px),
-                  linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+                  linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+                  linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)
                 `,
                 backgroundSize: "1px 1px",
                 backgroundPosition: "0 0, 0 0",

@@ -4,6 +4,8 @@ import { useForm, type FieldValues } from "react-hook-form";
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import CTAButton from "./ui/CTAButton";
+import { cn } from "@/lib/utils";
 
 // import footerlogo from "../assets/img/logo/Cyberlabs-logo-03.svg";
 
@@ -70,27 +72,24 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="w-full relative overflow-hidden"
-        style={{
-          background:
-            "repeating-linear-gradient(135deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
-        }}>
+      <footer className="w-full relative overflow-hidden bg-white"
+        >
         {/* Two Dashed Border Lines */}
-        <div className="w-full border-t border-neutral-300 border-dashed"></div>
-        <div className="w-full border-t border-neutral-300 border-dashed mt-2"></div>
+        <div className="w-full border-t border-neutral-200 "></div>
+        <div className="w-full border-t border-neutral-200  mt-2"></div>
 
         <div className="w-full mx-auto px-5 py-2 lg:py-5 sm:px-6 lg:px-8 xl:px-12 relative z-10">
           <div className="relative">
             {/* Vertical Dividers - Desktop Only - Extend from top to bottom border only */}
-            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+2px)] bottom-0 left-[25%] border-l border-neutral-300 border-dashed"></div>
-            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+2px)] bottom-0 left-[41.666%] border-l border-neutral-300 border-dashed"></div>
-            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+2px)] bottom-0 left-[58.333%] border-l border-neutral-300 border-dashed"></div>
-            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+2px)] bottom-0 left-[75%] border-l border-neutral-300 border-dashed"></div>
+            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+4px)] bottom-0 left-[25%] border-l border-neutral-200"></div>
+            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+4px)] bottom-0 left-[41.666%] border-l border-neutral-200"></div>
+            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+4px)] bottom-0 left-[58.333%] border-l border-neutral-200"></div>
+            <div className="hidden lg:block absolute -top-[calc(1.25rem+0.5rem+4px)] bottom-0 left-[75%] border-l border-neutral-200"></div>
 
             <div className="grid grid-cols-2 lg:grid-cols-12 lg:gap-y-8 relative">
 
               {/* About / Logo */}
-              <div className="col-span-2 lg:col-span-3 border-b lg:border-b-0 border-neutral-300 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8">
+              <div className="col-span-2 lg:col-span-3 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8">
                 <div className="text-text-primary md:text-4xl text-2xl font-clashdisplay flex items-center gap-2 tracking-tighter">
                   <Link to="/">
                     {/* <img
@@ -102,12 +101,8 @@ const Footer = () => {
                 </div>
 
                 <a target="_blank" href="/">
-                  <h3 className="text-text-primary text-xs md:text-base font-medium font-clashdisplay mt-2 px-2 py-1 rounded-md w-fit border border-neutral-300 border-dashed"
-                    style={{
-                      background:
-                        "repeating-linear-gradient(135deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
-                    }}>
-                    Everlasting Technical Services LLC
+                  <h3 className="text-text-primary text-xs md:text-base font-medium font-clashdisplay mt-2 px-2 py-1 rounded-xl w-fit border border-neutral-200 ring ring-neutral-300 ring-offset-2 md:ring-offset-4">
+                    SVRS Technical Services
 
                   </h3>
                 </a>
@@ -122,8 +117,8 @@ const Footer = () => {
 
               {/* Services */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-300 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 ">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
+                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Services
                 </h3>
                 <ul className="text-text-primary text-xs md:text-lg font-generalsans mt-2">
@@ -132,10 +127,10 @@ const Footer = () => {
                       to="/services#hv-ac-and-electrical"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         HV A.C., Electrical
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -143,10 +138,10 @@ const Footer = () => {
                       to="/services#carpentry"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Carpentry
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -154,10 +149,10 @@ const Footer = () => {
                       to="/services#data-cctv"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Data & CCTV
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -165,10 +160,10 @@ const Footer = () => {
                       to="/services#plumbing"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Plumbing
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -176,10 +171,10 @@ const Footer = () => {
                       to="/services#sanitary-paint"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Sanitary, Paint
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -187,10 +182,10 @@ const Footer = () => {
                       to="/services#kitchen-equipment"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Kitchen equipment
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -198,10 +193,10 @@ const Footer = () => {
                       to="/services#villa-renovation"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Villa Renovation
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -209,10 +204,10 @@ const Footer = () => {
                       to="/services#annual-maintanance"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Annual Maintanance
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                 </ul>
@@ -220,8 +215,8 @@ const Footer = () => {
 
               {/* Useful Links */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-300 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 ">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
+                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Useful Links
                 </h3>
 
@@ -231,10 +226,10 @@ const Footer = () => {
                       to="/"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Home
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -244,10 +239,10 @@ const Footer = () => {
                       to="/about"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         About
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -257,10 +252,10 @@ const Footer = () => {
                       to="/programs"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Services
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -270,10 +265,10 @@ const Footer = () => {
                       to="/simulator"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Contact
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -283,10 +278,10 @@ const Footer = () => {
                       href="mailto:support@example.com"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Support
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </a>
                   </li>
                 </ul>
@@ -294,8 +289,8 @@ const Footer = () => {
 
               {/* Legals */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-300 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 ">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
+                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Legals
                 </h3>
 
@@ -305,10 +300,10 @@ const Footer = () => {
                       to="/terms-and-conditions"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Terms & Condition
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -318,10 +313,10 @@ const Footer = () => {
                       to="/privacy-policy"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Privacy Policy
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -331,10 +326,10 @@ const Footer = () => {
                       to="/cookie-policy"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Cookie Policy
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -345,10 +340,10 @@ const Footer = () => {
                       target="_blank"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
-                      <span className="relative z-10 transition-colors duration-500 ease-out  flex items-center">
+                      <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Support
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-neutral-300 border border-neutral-400 border-dashed scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </a>
                   </li>
@@ -360,8 +355,8 @@ const Footer = () => {
 
               {/* Newsletter */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-3 border-b lg:border-b-0 border-neutral-300 border-dashed pb-8 lg:pb-1 pl-2 lg:pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 ">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-3 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-1 pl-2 lg:pl-2">
+                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Newsletter
                 </h3>
 
@@ -370,7 +365,7 @@ const Footer = () => {
                   exclusive offers.
                 </p>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} id="newsletter-form">
                   <input type="hidden" name="formType" value="newsletter" />
 
                   <label
@@ -390,102 +385,22 @@ const Footer = () => {
                   />
 
                   <div className="flex justify-end mt-5">
-                    <motion.button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="relative h-[40px] w-fit px-8 bg-white border border-neutral-300 border-dashed text-text-primary text-xs md:text-base font-clashdisplay font-medium cursor-pointer tracking-wide rounded transition-colors duration-200 disabled:opacity-70 overflow-hidden"
-                      initial="initial"
-                      whileHover="hover"
-                      style={{
-                        background:
-                          "repeating-linear-gradient(135deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
+                    <CTAButton
+                      label={isSubmitting ? "Submitting..." : "Subscribe Us"}
+                      onClick={() => {
+                        const form = document.getElementById('newsletter-form') as HTMLFormElement;
+                        if (form) {
+                          form.requestSubmit();
+                        } else {
+                          handleSubmit(onSubmit)();
+                        }
                       }}
-                    >
-                      <div className="relative flex items-center justify-center h-full w-full">
-                        {/* Hidden text to maintain button width */}
-                        <span className="invisible whitespace-nowrap">
-                          {isSubmitting ? "Submitting..." : "Subscribe Us"}
-                        </span>
-
-                        {/* Text - moves up on hover */}
-                        <motion.span
-                          variants={{
-                            initial: { y: 0, opacity: 1 },
-                            hover: { y: -35, opacity: 0 },
-                          }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                          className="absolute whitespace-nowrap"
-                        >
-                          {isSubmitting ? "Submitting..." : "Subscribe Us"}
-                        </motion.span>
-
-                        {/* Mail Share Icon - slides up from bottom on hover */}
-                        <motion.div
-                          className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center"
-                          variants={{
-                            initial: { y: 35, opacity: 0 },
-                            hover: { y: 0, opacity: 1 },
-                          }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="icon icon-tabler icons-tabler-outline icon-tabler-mail-share"
-                          >
-                            <motion.path
-                              stroke="none"
-                              d="M0 0h24v24H0z"
-                              fill="none"
-                              variants={{
-                                initial: { pathLength: 0 },
-                                hover: { pathLength: 1 },
-                              }}
-                              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.2 }}
-                            />
-                            <motion.path
-                              d="M13 19h-8a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v6"
-                              variants={{
-                                initial: { pathLength: 0 },
-                                hover: { pathLength: 1 },
-                              }}
-                              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
-                            />
-                            <motion.path
-                              d="M3 7l9 6l9 -6"
-                              variants={{
-                                initial: { pathLength: 0 },
-                                hover: { pathLength: 1 },
-                              }}
-                              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.4 }}
-                            />
-                            <motion.path
-                              d="M16 22l5 -5"
-                              variants={{
-                                initial: { pathLength: 0 },
-                                hover: { pathLength: 1 },
-                              }}
-                              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.5 }}
-                            />
-                            <motion.path
-                              d="M21 21.5v-4.5h-4.5"
-                              variants={{
-                                initial: { pathLength: 0 },
-                                hover: { pathLength: 1 },
-                              }}
-                              transition={{ duration: 0.5, ease: "easeInOut", delay: 0.6 }}
-                            />
-                          </svg>
-                        </motion.div>
-                      </div>
-                    </motion.button>
+                      variant="light"
+                      className={cn(
+                        "font-generalsans",
+                        isSubmitting && "opacity-70 cursor-not-allowed pointer-events-none"
+                      )}
+                    />
                   </div>
                 </form>
 
@@ -502,7 +417,7 @@ const Footer = () => {
             </div>
 
             {/* Bottom Border */}
-            <div className="w-full border-t border-neutral-300 border-dashed"></div>
+            <div className="w-full border-t border-neutral-200"></div>
           </div>
 
           {/* Bottom Bar */}
@@ -519,7 +434,7 @@ const Footer = () => {
                   to="/"
                   className="text-text-secondary text-xs md:text-base relative inline-block"
                 >
-                  Everlasting Technical Services LLC
+                  SVRS Technical Services
                   <motion.span
                     className="absolute bottom-0 left-0 h-px bg-primary"
                     variants={{

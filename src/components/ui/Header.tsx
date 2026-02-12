@@ -55,7 +55,7 @@ const Header: React.FC = () => {
   return (
     <>
       <motion.header
-        className="fixed top-0 left-0 right-0 transition-all duration-300 z-1000 border-b border-neutral-200"
+        className="fixed top-0 left-0 right-0 transition-all duration-300 z-1000  bg-white/10 backdrop-blur-md"
         initial={{ y: 0 }}
         animate={{
           y: 0,
@@ -64,8 +64,7 @@ const Header: React.FC = () => {
         style={{
           // Ensure header doesn't interfere with content on smaller screens
           minHeight: windowWidth < 768 ? "50px" : "80px",
-          background:
-                  "repeating-linear-gradient(90deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
+          
         }}
       >
         <div className="flex justify-center">
