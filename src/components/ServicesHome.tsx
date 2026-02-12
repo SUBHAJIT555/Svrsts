@@ -204,9 +204,9 @@ const ServicesHome = () => {
           >
             Exhibition Stands • Interiors
             <br />
-            <span className="font-normal text-neutral-800">
+            
               Furniture • Woodwork • Event Decor
-            </span>
+            
           </motion.h2>
 
           {/* Description */}

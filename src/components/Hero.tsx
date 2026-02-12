@@ -107,24 +107,30 @@ const Hero = () => {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-8 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
           >
             <div className="size-3 rounded bg-green-400 animate-pulse border border-neutral-300" />
-            <span className="text-sm md:text-base font-generalsans font-medium text-neutral-700">
-              Your Complete Exhibition & Interior Solutions Partner in Dubai
+            <span className="text-xs md:text-base font-generalsans font-medium text-neutral-700">
+              Exhibition & Interior Solutions in Dubai
             </span>
           </motion.div>
 
           {/* Main Heading */}
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6"
+            className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6"
           >
             SVRS Technical Services
-            <br />
-            <span className="font-normal text-neutral-800 ">
+            
+          </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-clashdisplay font-normal leading-[1.1] text-neutral-900 mb-6"
+          >
               Crafting Spaces • Building Stands • Transforming Interiors
-            </span>
-          </motion.h1>
+            
+          </motion.h2>
 
           {/* Subheading */}
           <motion.p

@@ -152,11 +152,11 @@ const WhyChooseUs = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6 sm:mb-8 md:mb-10"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-clashdisplay  leading-[1.1] font-normal text-neutral-800 mb-6 sm:mb-8 md:mb-10"
           >
             Why Choose SVRS
             <br />
-            <span className="font-normal text-neutral-800">
+            <span className="font-light text-neutral-700">
               Exhibition Stands • Interiors • Furniture
             </span>
           </motion.h2>
