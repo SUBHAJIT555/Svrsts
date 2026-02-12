@@ -12,11 +12,11 @@ export default function AboutHero() {
             title="Who We Are & What We Stand For"
             subtitle="SVRS Technical Services delivers excellence in exhibition stand building, event decoration, office interiors, custom furniture, woodwork, and comprehensive interior solutions across Dubai & UAE. Your trusted partner for transforming spaces with expert craftsmanship and innovative design."
             primaryAction={{
-                label: "Contact Us",
+                label: "Get Free Consultation",
                 onClick: () => navigate("/contact-us"),
             }}
             secondaryAction={{
-                label: "Our Services",
+                label: "Explore Our Services",
                 onClick: () => navigate("/services"),
             }}
             disclaimer="* Expert craftsmanship with professional service across Dubai & UAE."

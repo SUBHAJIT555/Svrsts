@@ -1,57 +1,100 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { GridPattern } from "@/components/ui/grid-pattern";
-import { ArrowRight } from "lucide-react";
+import CTAButton from "./ui/CTAButton";
+import { useNavigate } from "react-router-dom";
 
 const ServiceHero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const bannerRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
 
-
-  const bannerInView = useInView(bannerRef, { once: false, amount: 0.1 });
   const headingInView = useInView(headingRef, { once: false, amount: 0.1 });
   const descriptionInView = useInView(descriptionRef, { once: false, amount: 0.1 });
   const buttonsInView = useInView(buttonsRef, { once: false, amount: 0.1 });
 
+  // Highlighted words for animation
+  const highlightedWords = [
+    "exhibition stand building",
+    "event decoration",
+    "office interiors",
+    "custom furniture",
+    "woodwork"
+  ];
+
   return (
-    <section className="w-full relative mt-10 min-h-[80vh] flex items-center justify-center"
-      style={{
-        background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #475569 100%)",
-      }}>
-      
+    <section className="w-full relative mt-10 min-h-[80vh] bg-white flex items-center justify-center"
+      >
+
 
       {/* Grid Pattern Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <GridPattern
-          width={20}
-          height={20}
-          x={0}
-          y={0}
-          strokeDasharray="1"
-          className="stroke-neutral-300/20 fill-none absolute inset-0 h-full w-full"
-        />
-      </div>
+      {/* Dashed Top Fade Grid Background - matching CallToAction */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+            linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+          `,
+          backgroundSize: "1px 1px",
+          backgroundPosition: "0 0, 0 0",
+          maskImage: `
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 80%)
+          `,
+          WebkitMaskImage: `
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 80%)
+          `,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      />
+   
 
       <div
-        ref={containerRef}
         className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 py-12 sm:py-16 md:py-20 lg:py-24 flex flex-col items-center justify-center text-center"
       >
         {/* Update Banner */}
-        <motion.div
-          ref={bannerRef}
-          className="mb-6 sm:mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          animate={bannerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-          transition={{ duration: 0.6 }}
-        >
-          <button className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-md border border-neutral-200 shadow-sm bg-white  text-neutral-700 text-sm sm:text-base font-medium font-generalsans hover:from-neutral-800 hover:to-neutral-700 transition-all duration-300 flex items-center gap-2">
-            <span>New ✨ 24/7 Emergency Support Available</span>
-            <ArrowRight className="w-4 h-4" />
-          </button>
-        </motion.div>
+        
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-8 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
+          >
+            <div className="size-3 rounded bg-green-400 animate-pulse border border-neutral-300" />
+            <span className="text-sm md:text-base font-generalsans font-medium text-neutral-700">
+              Your Trusted Partner for Exhibition, Interior, & Technical Services in Dubai
+            </span>
+          </motion.div>
+        
 
         {/* Main Heading */}
         <motion.h1
@@ -61,34 +104,48 @@ const ServiceHero = () => {
           animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <span className="block">Don't Just Fix Problems,</span>
+          <span className="block">Transform Your Vision</span>
           <span className="block">
-            Build{" "}
+            Into{" "}
             <span
-              className="inline-block bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent"
+              className="inline-block bg-linear-to-r from-orange-600 via-red-600 to-yellow-500 bg-clip-text text-transparent"
               style={{
                 backgroundSize: "200% auto",
                 animation: "gradient 3s ease infinite",
               }}
             >
-              Lasting
+              Exceptional
             </span>{" "}
-            Solutions.
+            Spaces.
           </span>
         </motion.h1>
 
-        {/* Description */}
+        {/* Description with Animated Highlights */}
         <motion.p
           ref={descriptionRef}
-          className="text-base sm:text-lg md:text-xl lg:text-2xl text-neutral-600 font-generalsans mb-8 sm:mb-10 md:mb-12 max-w-4xl leading-relaxed"
+          className="text-lg sm:text-xl md:text-2xl  text-neutral-600 font-generalsans mb-10 sm:mb-12 md:mb-16 max-w-5xl leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={descriptionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.7, delay: 0.4 }}
         >
-          Comprehensive <strong className="font-semibold text-neutral-800">MEP Solutions</strong> powered by{" "}
-          <strong className="font-semibold text-neutral-800">Certified Technicians</strong>,{" "}
-          <strong className="font-semibold text-neutral-800">Premium Materials</strong>, and{" "}
-          <strong className="font-semibold text-neutral-800">24/7 Support</strong>. Save time ⏳, ensure quality installations, and transform your spaces with trusted technical excellence across Dubai & UAE.
+          SVRS Technical Services delivers comprehensive solutions for{" "}
+          {highlightedWords.map((word, index) => (
+            <motion.strong
+              key={index}
+              className="font-bold text-neutral-900 inline-block"
+              initial={{ opacity: 0, y: 20 }}
+              animate={descriptionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.5 + index * 0.1,
+                ease: "easeOut"
+              }}
+            >
+              {word}
+              {index < highlightedWords.length - 1 && ", "}
+            </motion.strong>
+          ))}
+          , and all interior services. Expert craftsmanship, premium materials, and professional service across Dubai & UAE.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -100,22 +157,21 @@ const ServiceHero = () => {
           transition={{ duration: 0.7, delay: 0.6 }}
         >
           {/* Primary Button */}
-          <motion.button
-            className="px-6 sm:px-8 py-3 sm:py-3.5 bg-neutral-700 text-white rounded-lg font-medium text-sm sm:text-base font-generalsans hover:bg-neutral-800 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
-            whileTap={{ scale: 0.95 }}
-          >
-            Get a Free Quote
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+         <CTAButton
+            label="Get Free Consultation"
+            onClick={() => navigate("/contact-us")}
+            variant="dark"
+            className="font-generalsans bg-linear-to-l from-neutral-500 to-neutral-800 cursor-pointer"
+          />
 
           {/* Secondary Button */}
-          <motion.button
-            className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-neutral-300 text-neutral-800 rounded-lg font-medium text-sm sm:text-base font-generalsans hover:bg-neutral-50 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
-            whileTap={{ scale: 0.95 }}
-          >
-            View Our Services
-            <span className="group-hover:translate-x-1 transition-transform">»</span>
-          </motion.button>
+          <CTAButton
+            label="Explore Our Services"
+            onClick={() => navigate("/services")}
+            variant="light"
+            className="font-generalsans bg-linear-to-r from-neutral-100 to-neutral-300 cursor-pointer"
+          />
+          
         </motion.div>
       </div>
 
