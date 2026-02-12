@@ -30,7 +30,7 @@ const FloatingActions = () => {
       <button
         aria-label="Scroll to top"
         onClick={scrollToTop}
-        className="group bg-text-primary hover:bg-text-primary/90 text-text-secondary p-1 md:p-2 shadow-lg border border-neutral-300 border-dashed rounded backdrop-blur-sm transition-colors"
+        className="group bg-text-primary hover:bg-text-primary/90 text-text-secondary p-1 md:p-2 shadow-lg border border-neutral-200 rounded-lg ring ring-neutral-300 ring-offset-1 md:ring-offset-2 backdrop-blur-sm transition-colors"
         style={{
           minHeight: '1px',
           minWidth: '1px',
@@ -103,7 +103,7 @@ const FloatingActions = () => {
       >
         {/* Chat Bubble */}
         <div
-          className={`absolute bottom-full right-0 mb-2 px-4 py-3 bg-white text-text-primary text-xs sm:text-sm font-generalsans rounded-lg shadow-lg border border-neutral-300 border-dashed whitespace-nowrap transition-all duration-300 ${isWhatsAppHovered
+          className={`absolute bottom-full right-0 mb-2 px-4 py-3 bg-white text-text-primary text-xs sm:text-sm font-generalsans rounded-lg shadow-lg border border-neutral-200 ring ring-neutral-300 ring-offset-1 md:ring-offset-2 whitespace-nowrap transition-all duration-300 ${isWhatsAppHovered
               ? "opacity-100 translate-y-0 pointer-events-auto"
               : "opacity-0 translate-y-2 pointer-events-none"
             }`}
@@ -118,7 +118,7 @@ const FloatingActions = () => {
           href="https://wa.me/971554684988?text=Hello%2C%20I%27m%20interested%20in%20your%20exhibition%20stand%20services"
           target="_blank"
           rel="noopener noreferrer"
-          className="group bg-green-500 hover:bg-green-600 border border-green-500 shadow-sm border-dashed rounded text-white p-1 md:p-2 transition-colors block"
+          className="group bg-green-500 hover:bg-green-600 border border-green-500 shadow-sm border-dashed rounded-lg ring ring-green-500 ring-offset-1 md:ring-offset-2 text-white p-1 md:p-2 transition-colors block"
         >
           <style>{`
             @keyframes drawWhatsAppPath {

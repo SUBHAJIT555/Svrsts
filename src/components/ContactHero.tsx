@@ -1,37 +1,74 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { GridPattern } from "@/components/ui/grid-pattern";
-import { ArrowRight, Mail, Phone } from "lucide-react";
+
+import CTAButton from "./ui/CTAButton";
+import { useNavigate } from "react-router-dom";
 
 const ContactHero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const bannerRef = useRef<HTMLDivElement>(null);
     const headingRef = useRef<HTMLHeadingElement>(null);
     const descriptionRef = useRef<HTMLParagraphElement>(null);
     const buttonsRef = useRef<HTMLDivElement>(null);
 
-    const bannerInView = useInView(bannerRef, { once: false, amount: 0.1 });
     const headingInView = useInView(headingRef, { once: false, amount: 0.1 });
     const descriptionInView = useInView(descriptionRef, { once: false, amount: 0.1 });
     const buttonsInView = useInView(buttonsRef, { once: false, amount: 0.1 });
 
+    const navigate = useNavigate();
+
     return (
-        <section className="w-full relative mt-10 min-h-[80vh] flex items-center justify-center"
-        style={{
-            background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #475569 100%)",
-        }}>
+        <section className="w-full relative mt-10 min-h-[80vh] flex items-center justify-center bg-white"
+            >
             {/* Grid Pattern Background */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <GridPattern
-                    width={20}
-                    height={20}
-                    x={0}
-                    y={0}
-                    strokeDasharray="1"
-                    className="stroke-neutral-300/20 fill-none absolute inset-0 h-full w-full"
-                />
-            </div>
+           <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+            linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+          `,
+          backgroundSize: "1px 1px",
+          backgroundPosition: "0 0, 0 0",
+          maskImage: `
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 80%)
+          `,
+          WebkitMaskImage: `
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 80%)
+          `,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      />
+           
 
             <div
                 ref={containerRef}
@@ -39,16 +76,15 @@ const ContactHero = () => {
             >
                 {/* Update Banner */}
                 <motion.div
-                    ref={bannerRef}
-                    className="mb-6 sm:mb-8"
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={bannerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-                    transition={{ duration: 0.6 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-8 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
                 >
-                    <button className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-md border border-neutral-200 shadow-sm bg-white text-neutral-700 text-sm sm:text-base font-medium font-generalsans hover:from-neutral-800 hover:to-neutral-700 transition-all duration-300 flex items-center gap-2">
-                        <span>Available 24/7 ✨ Get Instant Response</span>
-                        <ArrowRight className="w-4 h-4" />
-                    </button>
+                    <div className="size-3 rounded bg-green-400 animate-pulse border border-neutral-300" />
+                    <span className="text-sm md:text-base font-generalsans font-medium text-neutral-700">
+                        Help you with your exhibition, interior, and technical services needs in Dubai.
+                    </span>
                 </motion.div>
 
                 {/* Main Heading */}
@@ -62,7 +98,7 @@ const ContactHero = () => {
                     <span className="block">Let's Start a</span>
                     <span className="block">
                         <span
-                            className="inline-block bg-linear-to-r from-blue-600 via-purple-600 to-blue-600 bg-clip-text text-transparent"
+                            className="inline-block bg-linear-to-r from-orange-600 via-red-600 to-yellow-500 bg-clip-text text-transparent"
                             style={{
                                 backgroundSize: "200% auto",
                                 animation: "gradient 3s ease infinite",
@@ -98,24 +134,20 @@ const ContactHero = () => {
                     transition={{ duration: 0.7, delay: 0.6 }}
                 >
                     {/* Primary Button */}
-                    <motion.button
-                        className="px-6 sm:px-8 py-3 sm:py-3.5 bg-neutral-700 text-white rounded-lg font-medium text-sm sm:text-base font-generalsans hover:bg-neutral-800 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <Phone className="w-4 h-4" />
-                        Call Us Now
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </motion.button>
+                    <CTAButton
+                        label="Get Free Consultation"
+                        onClick={() => navigate("/contact-us")}
+                        variant="dark"
+                        className="font-generalsans bg-linear-to-l from-neutral-500 to-neutral-800 cursor-pointer"
+                    />
 
                     {/* Secondary Button */}
-                    <motion.button
-                        className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-neutral-300 text-neutral-800 rounded-lg font-medium text-sm sm:text-base font-generalsans hover:bg-neutral-50 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
-                        whileTap={{ scale: 0.95 }}
-                    >
-                        <Mail className="w-4 h-4" />
-                        Send Email
-                        <span className="group-hover:translate-x-1 transition-transform">»</span>
-                    </motion.button>
+                    <CTAButton
+                        label="Explore Our Services"
+                        onClick={() => navigate("/services")}
+                        variant="light"
+                        className="font-generalsans bg-linear-to-r from-neutral-100 to-neutral-300 cursor-pointer"
+                    />
                 </motion.div>
             </div>
 

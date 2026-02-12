@@ -124,88 +124,88 @@ const Footer = () => {
                 <ul className="text-text-primary text-xs md:text-lg font-generalsans mt-2">
                   <li>
                     <Link
-                      to="/services#hv-ac-and-electrical"
+                      to="/services#exhibition-stand-building"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        HV A.C., Electrical
+                        Exhibition Stand Building
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#carpentry"
+                      to="/services#wood-work"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Carpentry
+                        Wood Work
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#data-cctv"
+                      to="/services#event-decoration"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Data & CCTV
+                        Event Decoration
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#plumbing"
+                      to="/services#office-interior"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Plumbing
+                        Office Interior
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#sanitary-paint"
+                      to="/services#furniture"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Sanitary, Paint
+                        Furniture
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#kitchen-equipment"
+                      to="/services#interior-design"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Kitchen equipment
+                        Interior Design
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#villa-renovation"
+                      to="/services#painting-services"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Villa Renovation
+                        Painting Services
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
                     <Link
-                      to="/services#annual-maintanance"
+                      to="/services#complete-interior-solutions"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Annual Maintanance
+                        Complete Interior 
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
