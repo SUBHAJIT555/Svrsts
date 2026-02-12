@@ -12,6 +12,7 @@ const services = [
     description: "Custom-designed exhibition stands that showcase your brand and captivate your audience at trade shows and events. From concept to completion, we build stands that make an impact.",
     shortDescription: "Custom exhibition stands for trade shows and events.",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
+    
   },
   {
     id: "wood-work",
@@ -84,13 +85,20 @@ const ServiceCard = ({
   const cardInView = useInView(cardRef, { once: true, amount: 0.3 });
 
   const handleKnowMore = () => {
-    navigate(`/services#${id}`);
-    setTimeout(() => {
-      const element = document.getElementById(id);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }, 100);
+    // Map service IDs to their route paths
+    const routeMap: Record<string, string> = {
+      "exhibition-stand-building": "/services/exhibition-stand-building",
+      "wood-work": "/services/wood-work",
+      "event-decoration": "/services/event-decoration",
+      "office-interior": "/services/office-interior",
+      "furniture": "/services/furniture",
+      "interior-design": "/services/interior-design",
+      "painting": "/services/painting-services",
+      "complete-interior-solutions": "/services/complete-interior-solutions",
+    };
+    
+    const route = routeMap[id] || `/services#${id}`;
+    navigate(route);
   };
 
   return (
@@ -104,6 +112,7 @@ const ServiceCard = ({
         ease: [0.25, 0.1, 0.25, 1],
       }}
       className="group relative h-[400px] sm:h-[450px] md:h-[500px] rounded-lg overflow-hidden cursor-pointer ring ring-neutral-300 ring-offset-4 md:ring-offset-8"
+      onClick={handleKnowMore}
     >
       {/* Background Image */}
       <div
@@ -143,7 +152,10 @@ const ServiceCard = ({
               <p className="text-sm sm:text-base text-white/90 font-generalsans mb-4 text-left leading-tight">
                 {description}
               </p>
-              <div className="flex justify-start">
+              <div 
+                className="flex justify-start"
+                onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+              >
                 <CTAButton
                   label="Know More"
                   onClick={handleKnowMore}

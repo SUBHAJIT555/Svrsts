@@ -163,7 +163,7 @@ const CallToAction = () => {
           {/* Content */}
           <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
             <motion.h2
-              className="text-center font-clashdisplay font-semibold text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-800 leading-tight sm:leading-snug md:leading-normal"
+              className="text-center font-clashdisplay font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-800 leading-tight sm:leading-snug md:leading-normal"
               initial={{ opacity: 0, y: 20 }}
               animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -176,7 +176,7 @@ const CallToAction = () => {
               animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              Get expert MEP solutions, professional installations, and reliable maintenance services across Dubai & UAE. Our certified technicians are ready to bring your vision to life.
+              Get expert interior solutions, professional installations, and reliable maintenance services across Dubai & UAE. Our certified technicians are ready to bring your vision to life.
             </motion.p>
           </div>
 

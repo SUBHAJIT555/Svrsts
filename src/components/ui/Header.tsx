@@ -1,28 +1,42 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./index";
 import { useMobileMenuStore } from "../store/mobileMenuStore";
 import { useCallbackModalStore } from "../store/callbackModalStore";
 import { IoMenu } from "react-icons/io5";
+import { IoChevronDown } from "react-icons/io5";
 
 type MenuItem = {
   key: number;
   name: string;
   href: string;
+  hasDropdown?: boolean;
 };
 
 const MENU_ITEMS: MenuItem[] = [
   { key: 1, name: "Home", href: "/" },
   { key: 2, name: "About", href: "/about" },
-  { key: 3, name: "Services", href: "/services" },
+  { key: 3, name: "Services", href: "/services", hasDropdown: true },
   { key: 4, name: "Contact", href: "/contact-us" },
+];
+
+const SERVICES_LIST = [
+  { name: "Exhibition Stand Building", href: "/services/exhibition-stand-building" },
+  { name: "Wood Work", href: "/services/wood-work" },
+  { name: "Event Decoration", href: "/services/event-decoration" },
+  { name: "Office Interior", href: "/services/office-interior" },
+  { name: "Furniture", href: "/services/furniture" },
+  { name: "Interior Design", href: "/services/interior-design" },
+  { name: "Painting Services", href: "/services/painting-services" },
+  { name: "Complete Interior Solutions", href: "/services/complete-interior-solutions" },
 ];
 
 const Header: React.FC = () => {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1024
   );
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const { toggleMenu } = useMobileMenuStore();
   const openCallbackModal = useCallbackModalStore((state) => state.openModal);
   const location = useLocation();
@@ -93,11 +107,13 @@ const Header: React.FC = () => {
                           : "font-medium hover:text-text-secondary hover:font-semibold"
                       }`}
                       whileHover={{ color: "text-text-secondary " }}
+                      onMouseEnter={() => item.hasDropdown && setServicesDropdownOpen(true)}
+                      onMouseLeave={() => item.hasDropdown && setServicesDropdownOpen(false)}
                     >
                       <div className="flex items-center gap-1">
                         <Link
                           to={item.href}
-                          className="relative overflow-hidden uppercase"
+                          className="relative overflow-hidden uppercase flex items-center gap-1"
                         >
                             <motion.div
                               className="relative"
@@ -132,8 +148,45 @@ const Header: React.FC = () => {
                                 {item.name}
                               </motion.span>
                             </motion.div>
+                            {item.hasDropdown && (
+                              <motion.div
+                                animate={{ rotate: servicesDropdownOpen ? 180 : 0 }}
+                                transition={{ duration: 0.3 }}
+                              >
+                                <IoChevronDown className="w-4 h-4" />
+                              </motion.div>
+                            )}
                           </Link>
                       </div>
+                      
+                      {/* Services Dropdown */}
+                      {item.hasDropdown && (
+                        <AnimatePresence>
+                          {servicesDropdownOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                              className="absolute top-full left-0 mt-2 w-64 bg-white border border-neutral-200 rounded-xl shadow-2xl shadow-neutral-100 ring ring-neutral-300 ring-offset-2 md:ring-offset-4 overflow-hidden z-50"
+                              onMouseEnter={() => setServicesDropdownOpen(true)}
+                              onMouseLeave={() => setServicesDropdownOpen(false)}
+                            >
+                              <div className="py-2">
+                                {SERVICES_LIST.map((service, serviceIndex) => (
+                                  <Link
+                                    key={serviceIndex}
+                                    to={service.href}
+                                    className="block px-4 py-3 text-sm text-neutral-700 font-generalsans hover:bg-neutral-50 hover:text-neutral-900 transition-colors"
+                                  >
+                                    {service.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      )}
                     </motion.li>
                   ))}
                 </ul>

@@ -4,6 +4,7 @@ import FloatingActions from "@/components/ui/FloatingActions";
 import LeadCaptureModalManager from "@/components/LeadCaptureModalManager";
 import LeadCaptureModalProvider from "@/providers/LeadCaptureModalProvider";
 import CallbackModal from "@/components/ui/CallbackModal";
+import BookingModal from "@/components/ui/BookingModal";
 import DotSpinner from "@/components/ui/DotSpinner";
 import { Suspense } from "react";
 import Footer from "@/components/Footer";
@@ -34,6 +35,8 @@ const MainLayout = () => {
         <LeadCaptureModalManager />
         {/* Callback Modal - Globally Available */}
         <CallbackModal />
+        {/* Booking Modal - Globally Available */}
+        <BookingModal />
         {/* Footer Section - At the end of page content */}
         {/* <CrowdCanvas src={PeepsImage} /> */}
         <Footer />

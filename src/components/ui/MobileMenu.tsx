@@ -1,27 +1,42 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useMobileMenuStore } from "../store/mobileMenuStore";
 import { useCallbackModalStore } from "../store/callbackModalStore";
 import { IoClose } from "react-icons/io5";
+import { IoChevronDown } from "react-icons/io5";
 import { Logo } from "./index";
+
 type MenuItem = {
   key: number;
   name: string;
   href: string;
+  hasDropdown?: boolean;
 };
 
 const MENU_ITEMS: MenuItem[] = [
   { key: 1, name: "Home", href: "/" },
   { key: 2, name: "About", href: "/about" },
-  { key: 3, name: "Services", href: "/services" },
+  { key: 3, name: "Services", href: "/services", hasDropdown: true },
   { key: 4, name: "Contact", href: "/contact-us" },
+];
+
+const SERVICES_LIST = [
+  { name: "Exhibition Stand Building", href: "/services/exhibition-stand-building" },
+  { name: "Wood Work", href: "/services/wood-work" },
+  { name: "Event Decoration", href: "/services/event-decoration" },
+  { name: "Office Interior", href: "/services/office-interior" },
+  { name: "Furniture", href: "/services/furniture" },
+  { name: "Interior Design", href: "/services/interior-design" },
+  { name: "Painting Services", href: "/services/painting-services" },
+  { name: "Complete Interior Solutions", href: "/services/complete-interior-solutions" },
 ];
 
 const MobileMenu: React.FC = () => {
   const { isOpen, closeMenu } = useMobileMenuStore();
   const openCallbackModal = useCallbackModalStore((state) => state.openModal);
   const location = useLocation();
+  const [servicesExpanded, setServicesExpanded] = useState(false);
 
   // Close mobile menu when clicking outside or on a link
   useEffect(() => {
@@ -32,6 +47,7 @@ const MobileMenu: React.FC = () => {
         !target.closest(".mobile-menu-button")
       ) {
         closeMenu();
+        setServicesExpanded(false);
       }
     };
 
@@ -40,6 +56,7 @@ const MobileMenu: React.FC = () => {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
+      setServicesExpanded(false);
     }
 
     return () => {
@@ -120,19 +137,71 @@ const MobileMenu: React.FC = () => {
                         ease: "easeOut",
                       }}
                     >
-                      <Link
-                        to={item.href}
-                        onClick={() => {
-                          closeMenu();
-                        }}
-                        className={`block py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${
-                          isActive(item.href)
-                            ? "font-bold"
-                            : "font-medium hover:text-text-secondary hover:font-semibold"
-                        }`}
-                      >
-                        {item.name}
-                      </Link>
+                      {item.hasDropdown ? (
+                        <div>
+                          <button
+                            onClick={() => setServicesExpanded(!servicesExpanded)}
+                            className={`w-full flex items-center justify-between py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${
+                              isActive(item.href)
+                                ? "font-bold"
+                                : "font-medium hover:text-text-secondary hover:font-semibold"
+                            }`}
+                          >
+                            <span>{item.name}</span>
+                            <motion.div
+                              animate={{ rotate: servicesExpanded ? 180 : 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <IoChevronDown className="w-5 h-5" />
+                            </motion.div>
+                          </button>
+                          <AnimatePresence>
+                            {servicesExpanded && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="overflow-hidden"
+                              >
+                                <div className="pl-4 py-2 space-y-1 border-l-2 border-neutral-200 ml-2">
+                                  {SERVICES_LIST.map((service, serviceIndex) => (
+                                    <Link
+                                      key={serviceIndex}
+                                      to={service.href}
+                                      onClick={() => {
+                                        closeMenu();
+                                        setServicesExpanded(false);
+                                      }}
+                                      className={`block py-2 px-2 text-sm text-text-primary font-generalsans transition-all duration-300 ${
+                                        isActive(service.href)
+                                          ? "font-semibold text-neutral-900"
+                                          : "font-medium text-neutral-600 hover:text-neutral-900"
+                                      }`}
+                                    >
+                                      {service.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          onClick={() => {
+                            closeMenu();
+                          }}
+                          className={`block py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${
+                            isActive(item.href)
+                              ? "font-bold"
+                              : "font-medium hover:text-text-secondary hover:font-semibold"
+                          }`}
+                        >
+                          {item.name}
+                        </Link>
+                      )}
                     </motion.div>
                   ))}
                 </nav>
