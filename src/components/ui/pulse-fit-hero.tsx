@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { GridPattern } from "./grid-pattern";
+import CTAButton from "./CTAButton";
 
 export interface NavigationItem {
   label: string;
@@ -60,27 +59,60 @@ export function PulseFitHero({
   return (
     <section
       className={cn(
-        "relative w-full min-h-screen flex flex-col overflow-hidden pt-20 md:pt-30 lg:pt-36",
+        "relative w-full min-h-screen flex flex-col overflow-hidden pt-20 md:pt-30 lg:pt-36 bg-white",
         className
       )}
       role="banner"
       aria-label="Hero section"
-      style={{
-        background: "radial-gradient(125% 125% at 50% 90%, #fff 40%, #475569 100%)",
-      }}
-
     >
-      {/* Grid Pattern Background */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <GridPattern
-          width={20}
-          height={20}
-          x={0}
-          y={0}
-          strokeDasharray="1"
-          className="stroke-neutral-300/40 fill-none absolute inset-0 h-full w-full"
-        />
-      </div>
+      {/* Dashed Top Fade Grid Background - matching CallToAction */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+            linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+          `,
+          backgroundSize: "1px 1px",
+          backgroundPosition: "0 0, 0 0",
+          maskImage: `
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 80%)
+          `,
+          WebkitMaskImage: `
+            repeating-linear-gradient(
+              to right,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            repeating-linear-gradient(
+              to bottom,
+              black 0px,
+              black 3px,
+              transparent 3px,
+              transparent 8px
+            ),
+            radial-gradient(ellipse 70% 60% at 50% 0%, #000 40%, transparent 80%)
+          `,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
+        }}
+      />
 
 
       {/* Main Content */}
@@ -100,7 +132,7 @@ export function PulseFitHero({
               {title}
             </h1>
 
-            <p className="font-generalsans font-normal text-[clamp(1rem,2vw,1.25rem)] leading-relaxed text-neutral-600 max-w-[600px]">
+            <p className="font-generalsans font-normal text-[clamp(1rem,2vw,1.25rem)] leading-relaxed text-neutral-600 max-w-3xl">
               {subtitle}
             </p>
 
@@ -112,50 +144,21 @@ export function PulseFitHero({
                 className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
               >
                 {primaryAction && (
-                  <motion.button
-                    type="button"
+                  <CTAButton
+                    label={primaryAction.label}
                     onClick={primaryAction.onClick}
-                    whileTap={{ scale: 0.95 }}
-                    className="relative px-8 py-3 bg-neutral-700 text-white font-generalsans font-medium text-base rounded-md overflow-hidden transition-all duration-300 hover:bg-neutral-800 shadow-lg flex items-center gap-2 group cursor-pointer"
-                  >
-                    <span className="relative z-10 font-clashdisplay font-normal text-base tracking-wide">
-                      {primaryAction.label}
-                    </span>
-                    <ArrowRight
-                      className="relative z-10 w-5 h-5 -rotate-45 group-hover:rotate-0 transition-transform duration-300"
-                      aria-hidden
-                    />
-                    <motion.div
-                      className="absolute inset-0 bg-[linear-gradient(to_right,rgb(38_38_38),rgb(23_23_23))]"
-                      initial={{ opacity: 0 }}
-                      whileHover={{ opacity: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </motion.button>
+                    variant="dark"
+                    className="font-generalsans bg-linear-to-l from-neutral-500 to-neutral-800 cursor-pointer"
+                  />
                 )}
 
                 {secondaryAction && (
-                  <motion.button
-                    type="button"
+                  <CTAButton
+                    label={secondaryAction.label}
                     onClick={secondaryAction.onClick}
-                    whileTap={{ scale: 0.95 }}
-                    className="relative px-8 py-3 bg-white/5 backdrop-blur-sm border border-neutral-300 border-dashed text-neutral-900 font-generalsans font-medium text-base rounded-md overflow-hidden transition-all duration-300 shadow-md flex items-center gap-2 group cursor-pointer"
-                  >
-                    <span className="relative z-10 text-neutral-900 font-clashdisplay font-medium text-base tracking-wide  transition-colors duration-300">
-                      {secondaryAction.label}
-                    </span>
-                    <ArrowUpRight
-                      className="relative z-10 w-5 h-5 group-hover:rotate-45 transition-transform duration-300"
-                      aria-hidden
-                    />
-                    <motion.div
-                      className="absolute inset-0 bg-neutral-700 z-0"
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                      style={{ originX: 0 }}
-                    />
-                  </motion.button>
+                    variant="light"
+                    className="font-generalsans bg-linear-to-r from-neutral-100 to-neutral-300 cursor-pointer"
+                  />
                 )}
               </motion.div>
             )}
@@ -233,12 +236,12 @@ export function PulseFitHero({
                 key={index}
                 transition={{ duration: 0.3 }}
                 onClick={program.onClick}
-                className="shrink-0 cursor-pointer relative overflow-hidden  p-2 w-[356px] h-[480px]  shadow-xl"
+                className="shrink-0 cursor-pointer relative overflow-hidden rounded-xl  p-2 w-[356px] h-[480px]  shadow-xl"
               >
                 <img
                   src={program.image}
                   alt=""
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-md"
                 />
                 {/* Dither / stipple overlay for vintage print effect */}
                 <div

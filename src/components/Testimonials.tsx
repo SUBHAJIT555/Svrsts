@@ -1,6 +1,5 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { GridPattern } from "@/components/ui/grid-pattern";
 
 type Testimonial = {
     name: string;
@@ -96,111 +95,111 @@ const StarRating = ({ rating = 5 }: { rating?: number }) => {
 const testimonials: Testimonial[] = [
     {
         quote:
-            "Everlasting Technical Services transformed the way we manage our operations. Their MEP solutions are reliable, scalable, and truly easy to use.",
-        name: "Ali Khan",
-        role: "HR Manager",
-        company: "Pak Mission Society",
+            "SVRS Technical Services transformed our exhibition stand into a stunning showcase. Their attention to detail and craftsmanship exceeded our expectations. The stand was the highlight of the trade show.",
+        name: "Ahmed Al-Mansoori",
+        role: "Marketing Director",
+        company: "Dubai Trade Solutions",
         image: "https://randomuser.me/api/portraits/men/21.jpg",
         rating: 5,
     },
     {
         quote:
-            "Their technical services streamlined our business processes. What impressed me most is their dedication to client success and support.",
-        name: "Sara Ahmed",
+            "Outstanding work on our office interior renovation. SVRS delivered a beautiful, functional space that perfectly reflects our brand. The team was professional, timely, and incredibly skilled.",
+        name: "Fatima Hassan",
         role: "CEO",
-        company: "Galaxy Five Home",
+        company: "Innovate Dubai",
         image: "https://randomuser.me/api/portraits/women/22.jpg",
-        rating: 4.5,
+        rating: 5,
     },
     {
         quote:
-            "They took time to understand our unique requirements and delivered solutions that fit seamlessly into daily operations.",
-        name: "Imran Hussain",
-        role: "Manager",
-        company: "Al-Tayyab Foods",
+            "The custom furniture pieces SVRS created for our showroom are exceptional. Quality craftsmanship and innovative design that perfectly matched our vision. Highly recommended!",
+        name: "Mohammed Ali",
+        role: "Showroom Manager",
+        company: "Luxury Interiors UAE",
         image: "https://randomuser.me/api/portraits/men/23.jpg",
-        rating: 4,
+        rating: 5,
     },
     {
         quote:
-            "From onboarding to ongoing support, the Everlasting team has been responsive, professional, and incredibly easy to work with.",
-        name: "Fatima Noor",
-        role: "Director",
-        company: "Shafiqe Foods",
+            "SVRS handled our entire event decoration beautifully. From concept to execution, they delivered a memorable experience. Their event lighting and decor services are top-notch.",
+        name: "Sarah Al-Zahra",
+        role: "Event Coordinator",
+        company: "Premier Events Dubai",
         image: "https://randomuser.me/api/portraits/women/24.jpg",
         rating: 5,
     },
     {
         quote:
-            "Their collaborative approach makes us feel like partners, not just clients. Every project brings new value to our business.",
-        name: "Usman Raza",
-        role: "CTO",
-        company: "NextGen Solutions",
+            "Excellent woodwork and carpentry services. SVRS built custom cabinets and furniture that transformed our office space. Professional service from start to finish.",
+        name: "Omar Farooq",
+        role: "Operations Manager",
+        company: "Tech Hub Dubai",
         image: "https://randomuser.me/api/portraits/men/25.jpg",
         rating: 4.5,
     },
     {
         quote:
-            "We rely on their services to manage critical operations. The team is intuitive, and the support is always proactive.",
+            "SVRS Technical Services delivered a complete interior solution for our new office. From design to installation, everything was handled professionally. The result is outstanding.",
         name: "Ayesha Siddiqui",
-        role: "Product Lead",
-        company: "Bright Future Tech",
+        role: "Facilities Director",
+        company: "Global Solutions UAE",
         image: "https://randomuser.me/api/portraits/women/26.jpg",
         rating: 5,
     },
     {
         quote:
-            "Everlasting gave us better visibility across departments. The insights and efficiency gains have been game-changing for our company.",
+            "The exhibition stand SVRS built for us was impressive and attracted many visitors. Their expertise in stand building and design is evident in every detail.",
         name: "Bilal Sheikh",
-        role: "Operations Head",
-        company: "Metro Logistics",
+        role: "Sales Director",
+        company: "Dubai Exports",
         image: "https://randomuser.me/api/portraits/men/27.jpg",
-        rating: 4,
+        rating: 5,
     },
     {
         quote:
-            "The technical services brought structure to our operations. It's user-friendly and perfectly tailored to our organizational needs.",
+            "SVRS transformed our workspace with their interior design expertise. The combination of furniture, woodwork, and overall design created a perfect working environment.",
         name: "Nadia Karim",
-        role: "Finance Manager",
-        company: "Alpha Traders",
+        role: "HR Manager",
+        company: "Future Workspaces",
         image: "https://randomuser.me/api/portraits/women/28.jpg",
         rating: 4.5,
     },
     {
         quote:
-            "Dependable, efficient, and forward-thinking. Everlasting has become a trusted partner in helping us scale confidently.",
-        name: "Omar Farooq",
-        role: "Managing Director",
-        company: "VisionX Global",
+            "Professional service and exceptional quality. SVRS handled our event decoration with creativity and precision. The lighting and decor created the perfect atmosphere.",
+        name: "Usman Raza",
+        role: "Event Manager",
+        company: "Elite Events UAE",
         image: "https://randomuser.me/api/portraits/men/29.jpg",
         rating: 5,
     },
     {
         quote:
-            "Their attention to detail and continuous improvements keep us ahead of the curve. Working with them feels effortless every time.",
+            "SVRS Technical Services delivered beautiful custom furniture for our office. The craftsmanship and attention to detail are remarkable. Our team loves the new workspace.",
         name: "Sana Iqbal",
-        role: "Head of Strategy",
-        company: "BlueWave Consulting",
+        role: "Design Director",
+        company: "Creative Spaces Dubai",
         image: "https://randomuser.me/api/portraits/women/30.jpg",
-        rating: 4,
+        rating: 5,
     },
     {
         quote:
-            "We've tested other service providers, but nothing matched their level of customization and hands-on support. Highly recommend their services.",
+            "Outstanding exhibition stand building services. SVRS created a stand that perfectly represented our brand and attracted significant attention at the trade show.",
         name: "Hamza Tariq",
-        role: "Operations Manager",
-        company: "Green Valley Farms",
+        role: "Brand Manager",
+        company: "Dubai Brands",
         image: "https://randomuser.me/api/portraits/men/31.jpg",
         rating: 5,
     },
     {
         quote:
-            "Everlasting's services made our business smarter, not harder. The partnership has been valuable for both efficiency and growth.",
+            "SVRS provided comprehensive interior solutions for our new office. From furniture to woodwork to painting, everything was handled professionally. Highly satisfied with the results.",
         name: "Mehwish Zafar",
-        role: "COO",
-        company: "Skyline Apparel",
+        role: "Office Manager",
+        company: "Business Solutions UAE",
         image: "https://randomuser.me/api/portraits/women/32.jpg",
-        rating: 4.5,
+        rating: 5,
     },
 ];
 
@@ -213,168 +212,153 @@ const Testimonials = () => {
     const containerInView = useInView(containerRef, { once: false, amount: 0.1 });
     const headingInView = useInView(headingRef, { once: false, amount: 0.1 });
     const descriptionInView = useInView(descriptionRef, { once: false, amount: 0.1 });
+    const testimonialsInView = useInView(testimonialsRef, { once: false, amount: 0.1 });
 
     return (
-        <section className="w-full relative mt-10">
-            {/* Double line border - Top */}
-            <div
-                className="absolute left-0 right-0 top-0"
-                style={{
-                    height: "8px",
-                    borderTop: "1px solid #E5E5E5",
-                    borderBottom: "1px solid #E5E5E5",
-                    background:
-                        "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-                }}
-            />
+        <section className="min-h-screen w-full relative bg-transparent">
+            {/* Content - background from About.tsx wrapper */}
+            <div ref={containerRef} className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-16 sm:py-20 md:py-24 lg:py-32">
+                <div className="w-full">
+                    {/* Badge */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                        transition={{ duration: 0.6 }}
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-8 sm:mb-12 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
+                    >
+                        <div className="size-3 rounded bg-yellow-400" />
+                        <span className="text-xs sm:text-sm font-generalsans font-medium text-neutral-700">
+                            Testimonials
+                        </span>
+                    </motion.div>
 
-            {/* Double line borders - Left */}
-            <div
-                className="absolute md:left-8 left-0 top-0 bottom-0"
-                style={{
-                    width: "8px",
-                    borderLeft: "1px solid #E5E5E5",
-                    borderRight: "1px solid #E5E5E5",
-                    background:
-                        "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-                }}
-            />
+                    {/* Main Heading */}
+                    <motion.h2
+                        ref={headingRef}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6 sm:mb-8 md:mb-10"
+                    >
+                        Real Results, Real Voices
+                        <br />
+                        <span className="font-normal text-neutral-800">
+                            From Our Clients
+                        </span>
+                    </motion.h2>
 
-            {/* Double line borders - Right */}
-            <div
-                className="absolute md:right-8 right-0 top-0 bottom-0"
-                style={{
-                    width: "8px",
-                    borderLeft: "1px solid #E5E5E5",
-                    borderRight: "1px solid #E5E5E5",
-                    background:
-                        "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-                }}
-            />
+                    {/* Description */}
+                    <motion.p
+                        ref={descriptionRef}
+                        className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans leading-relaxed max-w-3xl mb-12 sm:mb-16"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={descriptionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                    >
+                        See how businesses across Dubai & UAE are thriving with SVRS Technical Services — real stories of exceptional exhibition stands, beautiful interiors, custom furniture, and comprehensive interior solutions.
+                    </motion.p>
 
-            {/* Double line border - Bottom */}
-            <div
-                className="absolute left-0 right-0 bottom-0"
-                style={{
-                    height: "8px",
-                    borderTop: "1px solid #E5E5E5",
-                    borderBottom: "1px solid #E5E5E5",
-                    background:
-                        "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-                }}
-            />
-
-            <div
-                ref={containerRef}
-                className="relative p-4 sm:p-6 md:p-8 lg:p-12 pl-4 sm:pl-6 md:pl-12 lg:pl-20 pr-4 sm:pr-6 md:pr-12 lg:pr-20 pb-8 sm:pb-12 md:pb-16 lg:pb-20"
-            >
-
-
-                {/* Badge */}
-                <motion.div
-                    className="px-4 sm:px-6 py-2 border border-neutral-300 border-dashed w-fit mb-3 md:mb-6 lg:mb-12 relative z-10"
-                    style={{
-                        background:
-                            "repeating-linear-gradient(135deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
-                    }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <h2 className="text-lg sm:text-xl md:text-2xl font-light text-text-primary font-clashdisplay">
-                        Testimonials
-                    </h2>
-                </motion.div>
-
-                {/* Heading */}
-                <motion.h3
-                    ref={headingRef}
-                    className="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-semibold text-neutral-800 font-generalsans mb-3 md:mb-4 lg:mb-6 leading-tight relative z-10"
-                    initial={{ opacity: 0, y: 60 }}
-                    animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-                    transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-                >
-                    Real Results, Real Voices
-                </motion.h3>
-
-                {/* Description */}
-                <motion.p
-                    ref={descriptionRef}
-                    className="text-sm sm:text-base md:text-base lg:text-lg font-normal text-neutral-600 font-generalsans mb-8 md:mb-10 lg:mb-12 text-left md:text-justify leading-relaxed relative z-10"
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={descriptionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                    transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                >
-                    See how businesses are thriving with our services — real stories, real impact, real growth.
-                </motion.p>
-
-                {/* Testimonials Grid */}
-                <div
-                    ref={testimonialsRef}
-                    className="relative grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4 z-10"
-                >
-                    {testimonials.map(({ name, role, company, quote, image, rating }, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ filter: "blur(4px)", translateY: -8, opacity: 0 }}
-                            whileInView={{
-                                filter: "blur(0px)",
-                                translateY: 0,
-                                opacity: 1,
-                            }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1 * index + 0.1, duration: 0.8 }}
-                            className="relative grid grid-cols-[auto_1fr] gap-x-3 sm:gap-x-4 overflow-hidden border border-neutral-200 border-dashed shadow-md shadow-neutral-100 p-4 sm:p-5 bg-white hover:shadow-md transition-all duration-300"
-                        >
-                            {/* Grid Pattern Background on Card */}
-                            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                                <GridPattern
-                                    width={20}
-                                    height={20}
-                                    x={0}
-                                    y={0}
-                                    strokeDasharray="2"
-                                    className="stroke-neutral-300/30 fill-none absolute inset-0 h-full w-full"
-                                />
-                                {/* Radial Gradient Shading Overlay */}
+                    {/* Testimonials Grid */}
+                    <div
+                        ref={testimonialsRef}
+                        className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-6 sm:gap-8 md:gap-10"
+                    >
+                        {testimonials.map(({ name, role, company, quote, image, rating }, index) => (
+                            <motion.div
+                                key={index}
+                                className="relative min-h-[280px] bg-white border border-neutral-200 rounded-xl ring ring-neutral-300 ring-offset-2 md:ring-offset-4 transition-all duration-300 hover:shadow-lg overflow-hidden"
+                                style={{ backgroundColor: 'white' }}
+                                initial={{ opacity: 0, y: 40 }}
+                                animate={testimonialsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+                                transition={{ duration: 0.6, delay: 0.1 * index, ease: "easeOut" }}
+                            >
+                                {/* Dashed Top Fade Grid Background */}
                                 <div
-                                    className="absolute inset-0 h-full w-full"
+                                    className="absolute inset-0 z-0"
                                     style={{
-                                        background: "radial-gradient(ellipse 150% 120% at bottom left, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.25) 25%, rgba(255, 255, 255, 0.1) 50%, transparent 75%)",
+                                        backgroundImage: `
+                                            linear-gradient(to right, #e7e5e4 1px, transparent 1px),
+                                            linear-gradient(to bottom, #e7e5e4 1px, transparent 1px)
+                                        `,
+                                        backgroundSize: "10px 10px",
+                                        backgroundPosition: "0 0, 0 0",
+                                        maskImage: `
+                                            repeating-linear-gradient(
+                                                to right,
+                                                black 0px,
+                                                black 3px,
+                                                transparent 3px,
+                                                transparent 8px
+                                            ),
+                                            repeating-linear-gradient(
+                                                to bottom,
+                                                black 0px,
+                                                black 3px,
+                                                transparent 3px,
+                                                transparent 8px
+                                            ),
+                                            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
+                                        `,
+                                        WebkitMaskImage: `
+                                            repeating-linear-gradient(
+                                                to right,
+                                                black 0px,
+                                                black 3px,
+                                                transparent 3px,
+                                                transparent 8px
+                                            ),
+                                            repeating-linear-gradient(
+                                                to bottom,
+                                                black 0px,
+                                                black 3px,
+                                                transparent 3px,
+                                                transparent 8px
+                                            ),
+                                            radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
+                                        `,
+                                        maskComposite: "intersect",
+                                        WebkitMaskComposite: "source-in",
                                     }}
                                 />
-                            </div>
 
-                            {/* Profile Image */}
-                            <img
-                                alt={name}
-                                src={image}
-                                loading="lazy"
-                                className="size-9 sm:size-10 md:size-11 rounded-full object-cover relative z-10 border border-neutral-200 ring-1 ring-neutral-100 ring-offset-2 ring-offset-zinc-300"
-                            />
+                                {/* Content wrapper - ensures text is visible */}
+                                <div className="relative z-10 p-6 sm:p-8">
+                                    {/* Profile Image and Info */}
+                                    <div className="flex items-center gap-4 mb-4">
+                                        <img
+                                            alt={name}
+                                            src={image}
+                                            loading="lazy"
+                                            className="size-12 sm:size-14 rounded-2xl object-cover border border-neutral-200 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
+                                        />
+                                        <div>
+                                            <p className="text-base sm:text-lg font-semibold text-neutral-900 font-generalsans">
+                                                {name}
+                                            </p>
+                                            <span className="text-sm text-neutral-600 font-generalsans">
+                                                {role}
+                                            </span>
+                                            <p className="text-xs text-neutral-500 font-generalsans">
+                                                {company}
+                                            </p>
+                                        </div>
+                                    </div>
 
-                            {/* Content */}
-                            <div className="relative z-10">
-                                <div className="-mt-0.5 -space-y-0.5">
-                                    <p className="text-sm sm:text-base font-semibold text-neutral-800 font-generalsans">
-                                        {name}
-                                    </p>
-                                    <span className="text-neutral-700 block text-[11px] sm:text-xs font-light tracking-tight font-generalsans text-shadow-lg text-shadow-white">
-                                        {role} at {company}
-                                    </span>
+                                    {/* Star Rating */}
+                                    <div className="mb-4">
+                                        <StarRating rating={rating} />
+                                    </div>
+
+                                    {/* Quote */}
+                                    <blockquote>
+                                        <p className="text-sm sm:text-base text-neutral-700 font-generalsans leading-relaxed italic">
+                                            "{quote}"
+                                        </p>
+                                    </blockquote>
                                 </div>
-                                {/* Star Rating */}
-                                <div className="mt-2 mb-2">
-                                    <StarRating rating={rating} />
-                                </div>
-                                <blockquote className="mt-3">
-                                    <p className="text-neutral-700 text-sm sm:text-base font-light tracking-wide font-generalsans leading-relaxed">
-                                        {quote}
-                                    </p>
-                                </blockquote>
-                            </div>
-                        </motion.div>
-                    ))}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

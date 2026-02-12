@@ -10,16 +10,16 @@ export default function AboutHero() {
         <PulseFitHero
             
             title="Who We Are & What We Stand For"
-            subtitle="Your trusted partner for MEP solutions, maintenance, and renovation across Dubai & UAE. We deliver excellence through certified technicians and a commitment to quality."
+            subtitle="SVRS Technical Services delivers excellence in exhibition stand building, event decoration, office interiors, custom furniture, woodwork, and comprehensive interior solutions across Dubai & UAE. Your trusted partner for transforming spaces with expert craftsmanship and innovative design."
             primaryAction={{
-                label: "Connect with us",
+                label: "Contact Us",
                 onClick: () => navigate("/contact-us"),
             }}
             secondaryAction={{
                 label: "Our Services",
                 onClick: () => navigate("/services"),
             }}
-            disclaimer="* Certified & trusted technicians with 24/7 support."
+            disclaimer="* Expert craftsmanship with professional service across Dubai & UAE."
             socialProof={{
                 avatars: [
                     "https://i.pravatar.cc/150?img=1",
@@ -31,51 +31,52 @@ export default function AboutHero() {
             }}
             programs={[
                 {
-                    image: "https://images.pexels.com/photos/21812143/pexels-photo-21812143.jpeg",
-                    category: "HV A.C., Electrical",
-                    title: "Professional A.C. & Electrical Services",
-                    onClick: () => console.log("HV A.C., Electrical"),
+                    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
+                    category: "Exhibition Stand Building",
+                    title: "Custom Exhibition Stands for Trade Shows",
+                    onClick: () => navigate("/services#exhibition-stand-building"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/8817851/pexels-photo-8817851.jpeg",
-                    category: "Carpentry",
-                    title: "Bespoke Carpentry Solutions",
-                    onClick: () => console.log("Carpentry"),
+                    image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&h=600&fit=crop",
+                    category: "Wood Work",
+                    title: "Expert Woodwork & Carpentry Solutions",
+                    onClick: () => navigate("/services#wood-work"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/13168513/pexels-photo-13168513.jpeg",
-                    category: "Data & CCTV",
-                    title: "Structured Cabling & CCTV Solutions",
-                    onClick: () => console.log("Data & CCTV"),
+                    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop",
+                    category: "Event Decoration",
+                    title: "Professional Event Decoration & Lighting",
+                    onClick: () => navigate("/services#event-decoration"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/12527113/pexels-photo-12527113.jpeg",
-                    category: "Plumbing",
-                    title: "Professional Plumbing Solutions",
-                    onClick: () => console.log("Plumbing"),
+                    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+                    category: "Office Interior",
+                    title: "Complete Office Interior Design & Fit-out",
+                    onClick: () => navigate("/services#office-interior"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/7217924/pexels-photo-7217924.jpeg",
-                    category: "Sanitary, Paint",
-                    title: "Professional Sanitary & Paint Solutions",
-                    onClick: () => console.log("Sanitary, Paint"),
+                    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop",
+                    category: "Furniture",
+                    title: "Custom Furniture Design & Fabrication",
+                    onClick: () => navigate("/services#furniture"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/18177444/pexels-photo-18177444.jpeg",
-                    category: "Kitchen Equipment",
-                    title: "Professional Kitchen Equipment Solutions",
+                    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+                    category: "Interior Design",
+                    title: "Complete Interior Design Solutions",
+                    onClick: () => navigate("/services#interior-design"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/6474295/pexels-photo-6474295.jpeg",
-                    category: "Villa Renovation",
-                    title: "Villa Renovation Solutions",
-                    onClick: () => console.log("Villa Renovation"),
+                    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&h=600&fit=crop",
+                    category: "Painting Services",
+                    title: "Professional Painting for All Surfaces",
+                    onClick: () => navigate("/services#painting"),
                 },
                 {
-                    image: "https://images.pexels.com/photos/18177444/pexels-photo-18177444.jpeg",
-                    category: "Annual Maintenance",
-                    title: "Annual Maintenance Solutions",
-                    onClick: () => console.log("Annual Maintenance"),
+                    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+                    category: "Complete Interior Solutions",
+                    title: "End-to-End Interior Solutions",
+                    onClick: () => navigate("/services#complete-interior-solutions"),
                 }
             ]}
         />

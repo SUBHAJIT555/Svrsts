@@ -2,166 +2,102 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import AboutCompanyImg from "@/assets/images/AboutPage/new-image/AbouttheCompany.webp";
 import { useCallbackModalStore } from "./store/callbackModalStore";
+import CTAButton from "./ui/CTAButton";
 
 const AboutCompany = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const introRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
-  const paragraphsRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const containerInView = useInView(containerRef, { once: false, amount: 0.1 });
   const headingInView = useInView(headingRef, { once: false, amount: 0.1 });
-  const paragraphsInView = useInView(paragraphsRef, { once: false, amount: 0.1 });
-  const imageInView = useInView(imageRef, { once: false, amount: 0.1 });
-
+  const contentInView = useInView(contentRef, { once: false, amount: 0.1 });
 
   const openCallbackModal = useCallbackModalStore((state) => state.openModal);
 
   return (
-    <section className="w-full relative mt-10">
-      {/* Double line border - Top */}
-      <div
-        className="absolute left-0 right-0 top-0"
-        style={{
-          height: '8px',
-          borderTop: '1px solid #E5E5E5',
-          borderBottom: '1px solid #E5E5E5',
-          background:
-            "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-        }}
-      />
+    <section className="min-h-screen w-full relative bg-transparent">
+      {/* Content - background from About.tsx wrapper */}
+      <div ref={containerRef} className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="w-full">
+          {/* Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-8 sm:mb-12 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
+          >
+            <div className="size-3 rounded bg-yellow-400" />
+            <span className="text-xs sm:text-sm font-generalsans font-medium text-neutral-700">
+              About SVRS Technical Services
+            </span>
+          </motion.div>
 
-      {/* Double line borders - Left */}
-      <div
-        className="absolute md:left-8 left-0 top-0 bottom-0"
-        style={{
-          width: '8px',
-          borderLeft: '1px solid #E5E5E5',
-          borderRight: '1px solid #E5E5E5',
-          background:
-            "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-        }}
-      />
+          {/* Main Heading */}
+          <motion.h2
+            ref={headingRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-clashdisplay font-light leading-[1.1] text-neutral-900 mb-6 sm:mb-8 md:mb-10"
+          >
+            Your Trusted Partner for
+            <br />
+            <span className="font-normal text-neutral-800">
+              Exhibition Stands • Interiors • Furniture
+            </span>
+          </motion.h2>
 
-      {/* Double line borders - Right */}
-      <div
-        className="absolute md:right-8 right-0 top-0 bottom-0"
-        style={{
-          width: '8px',
-          borderLeft: '1px solid #E5E5E5',
-          borderRight: '1px solid #E5E5E5',
-          background:
-            "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-        }}
-      />
-
-      {/* Double line border - Bottom */}
-      <div
-        className="absolute left-0 right-0 bottom-0"
-        style={{
-          height: '8px',
-          borderTop: '1px solid #E5E5E5',
-          borderBottom: '1px solid #E5E5E5',
-          background:
-            "repeating-linear-gradient(135deg, #E5E5E5 0px, #E5E5E5 1px, transparent 1px, transparent 4px), white",
-        }}
-      />
-
-      <div ref={containerRef} className="p-4 sm:p-6 md:p-8 lg:p-12 pl-4 sm:pl-6 md:pl-12 lg:pl-20 pr-4 sm:pr-6 md:pr-12 lg:pr-20 pb-8 sm:pb-12 md:pb-16 lg:pb-20">
-        {/* Badge */}
-        <motion.div
-          className="px-4 sm:px-6 py-2 border border-neutral-300 border-dashed w-fit mb-3 md:mb-6 lg:mb-12"
-          style={{
-            background:
-              "repeating-linear-gradient(135deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
-          }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-lg sm:text-xl md:text-2xl font-light text-text-primary font-clashdisplay">About The Company</h2>
-        </motion.div>
-
-        {/* Introduction Section */}
-        <div ref={introRef} className="flex flex-col md:flex-row gap-6 sm:gap-8 md:gap-12 lg:gap-16 mb-20">
-          {/* Text Content */}
-          <div className="w-full md:w-2/3">
-            <motion.h3
-              ref={headingRef}
-              className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-semibold text-neutral-800 font-generalsans mb-3 md:mb-4 lg:mb-6 leading-tight"
-              initial={{ opacity: 0, y: 60 }}
-              animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
-              transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
-            >
-              Your Trusted Partner for Technical Excellence in Dubai & UAE
-            </motion.h3>
-
-            <div ref={paragraphsRef}>
-              <motion.p
-                className="text-sm sm:text-base md:text-base lg:text-lg font-normal text-neutral-600 font-generalsans text-left md:text-justify leading-relaxed"
-                initial={{ opacity: 0, y: 40 }}
-                animate={paragraphsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-              >
-                Everlasting Technical Services is a leading provider of comprehensive
-                MEP (Mechanical, Electrical, and Plumbing) solutions across Dubai and
-                the UAE. With years of expertise and a commitment to excellence, we
-                deliver world-class technical services for residential, commercial,
-                and industrial projects.
-              </motion.p>
-
-              <motion.p
-                className="text-sm sm:text-base md:text-base lg:text-lg font-normal text-neutral-600 font-generalsans text-left md:text-justify mt-4 leading-relaxed"
-                initial={{ opacity: 0, y: 40 }}
-                animate={paragraphsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
-              >
-                Our team of certified technicians and skilled professionals ensures
-                that every project meets the highest standards of quality, safety, and
-                efficiency. From HVAC installations to villa renovations, we provide
-                end-to-end solutions tailored to your specific needs.
-              </motion.p>
-            </div>
-
+          {/* Content Grid */}
+          <div ref={contentRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16 lg:gap-20 mt-12 sm:mt-16">
+            {/* Left Column - Main Content */}
             <motion.div
-              className="flex justify-start mt-4 md:mt-6 lg:mt-8"
-              initial={{ opacity: 0, y: 30 }}
-              animate={paragraphsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={contentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="space-y-6 sm:space-y-8"
             >
-              <button
-                onClick={openCallbackModal}
-                className="bg-neutral-700 text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-md hover:bg-neutral-800 transition-all duration-300 font-generalsans font-medium text-sm sm:text-base tracking-wide cursor-pointer w-full sm:w-auto"
-              >
-                Get Free Consultation
-              </button>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-clashdisplay font-medium text-neutral-900">
+                About SVRS Technical Services
+              </h3>
+              <p className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans leading-relaxed">
+                SVRS Technical Services is a leading provider of comprehensive interior and exhibition solutions across Dubai and the UAE. With years of expertise and a commitment to excellence, we deliver world-class services for woodwork, exhibition stand building, event decoration, office interiors, furniture, and all kinds of interior solutions.
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans leading-relaxed">
+                Our team of skilled professionals and craftsmen ensures that every project meets the highest standards of quality, craftsmanship, and design. From custom exhibition stands to complete office interiors, we provide end-to-end solutions tailored to your specific needs and vision.
+              </p>
+            </motion.div>
+
+            {/* Right Column - Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={contentInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex items-center justify-center lg:justify-end"
+            >
+              <img
+                src={AboutCompanyImg}
+                alt="SVRS Technical Services Team"
+                className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl h-auto object-contain rounded-xl border border-neutral-200 ring ring-neutral-300 ring-offset-4 md:ring-offset-8"
+              />
             </motion.div>
           </div>
 
-          {/* Image */}
+          {/* CTA Section */}
           <motion.div
-            ref={imageRef}
-            className="w-full md:w-1/3 flex items-center justify-center md:justify-end"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={imageInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
-            transition={{
-              type: "spring",
-              stiffness: 200,
-              damping: 15,
-              delay: 0.4
-            }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="mt-12 sm:mt-16 flex justify-start"
           >
-            <img
-              src={AboutCompanyImg}
-              alt="Everlasting Technical Services Team"
-              className="w-full max-w-xs sm:max-w-sm md:max-w-none h-auto object-contain"
+            <CTAButton
+              label="Get Free Consultation"
+              onClick={openCallbackModal}
+              variant="light"
+              className="font-generalsans ring ring-neutral-300 ring-offset-2 md:ring-offset-4 bg-linear-to-r from-neutral-200 to-white cursor-pointer"
             />
           </motion.div>
         </div>
-
-
       </div>
     </section>
   );
