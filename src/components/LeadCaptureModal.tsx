@@ -392,8 +392,8 @@ export default function LeadCaptureModal({
                       {...register("name", { required: "Name is required" })}
                       placeholder="Your name"
                       className={cn(
-                        "w-full px-4 py-3 border-0 border-b  border-neutral-300  text-coffee-bean font-generalsans transition-colors focus:outline-none focus:border-b focus:border-b-neutral-500",
-                        errors.name && "border-b-red-500"
+                        "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300  text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
+                        errors.name && "border-red-500"
                       )}
                     />
                     {errors.name && (
@@ -423,8 +423,8 @@ export default function LeadCaptureModal({
                       })}
                       placeholder="Your email"
                       className={cn(
-                        "w-full px-4 py-3 border-0 border-b  border-neutral-300 text-coffee-bean font-generalsans transition-colors focus:outline-none focus:border-b focus:border-b-neutral-500",
-                        errors.email && "border-b-red-500"
+                        "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
+                        errors.email && "border-red-500"
                       )}
                     />
                     {errors.email && (
@@ -474,8 +474,8 @@ export default function LeadCaptureModal({
                             onBlur={field.onBlur}
                             placeholder="Your phone number"
                             className={cn(
-                              "w-full px-4 py-3 border-0 border-b  border-neutral-300 text-coffee-bean font-generalsans transition-colors focus:outline-none focus:border-b focus:border-b-neutral-500",
-                              errors.phone && "border-b-red-500"
+                              "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
+                              errors.phone && "border-red-500"
                             )}
                           />
                           {errors.phone && (

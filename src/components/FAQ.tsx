@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import FAQImg from "@/assets/images/Home/faq.svg";
 import CTAButton from "./ui/CTAButton";
 
 const faqItems = [
@@ -123,6 +124,7 @@ const FAQ = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const contentRef = useRef<HTMLParagraphElement>(null);
   const accordionRef = useRef<HTMLDivElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
 
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -131,6 +133,7 @@ const FAQ = () => {
   const headingInView = useInView(headingRef, { once: false, amount: 0.1 });
   const contentInView = useInView(contentRef, { once: false, amount: 0.1 });
   const accordionInView = useInView(accordionRef, { once: false, amount: 0.1 });
+  const imageInView = useInView(imageRef, { once: false, amount: 0.1 });
 
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -185,13 +188,25 @@ const FAQ = () => {
                 animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-               
-
                 <CTAButton
                   label="Any questions? Reach out"
                   onClick={() => navigate("/contact-us")}
                   variant="light"
-                  className="font-generalsans w-fit sm:w-auto bg-linear-to-r from-neutral-200 to-white cursor-pointer shadow-none ring ring-neutral-300 text-neutral-900  ring-offset-2 md:ring-offset-4 ml-2"
+                  className="font-generalsans w-fit sm:w-auto bg-linear-to-r from-neutral-200 to-white cursor-pointer shadow-none ring ring-neutral-300 text-neutral-900  ring-offset-2 md:ring-offset-4 ml-2 mb-6 sm:mb-8"
+                />
+              </motion.div>
+              {/* Image */}
+              <motion.div
+                ref={imageRef}
+                initial={{ opacity: 0, x: -30 }}
+                animate={imageInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+                className="w-full max-h-[250px] sm:max-h-[400px] md:max-h-[500px] overflow-hidden rounded-lg flex items-center justify-center shrink-0"
+              >
+                <img
+                  src={FAQImg}
+                  alt="FAQ"
+                  className="w-full h-auto max-h-[250px] sm:max-h-[400px] md:max-h-[500px] object-contain object-center"
                 />
               </motion.div>
             </div>

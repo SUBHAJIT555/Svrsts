@@ -57,7 +57,7 @@ const services = [
   },
   {
     id: "complete-interior-solutions",
-    name: "Complete Interior Solutions",
+    name: "Complete Interior",
     description: "End-to-end interior solutions covering all aspects from design to execution. We handle everything from concept development to final installation for seamless project delivery.",
     shortDescription: "End-to-end interior solutions from concept to completion.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",

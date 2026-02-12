@@ -200,7 +200,7 @@ const WhyChooseUs = () => {
                 <img
                   src={WhyChooseUsImg}
                   alt="Why Choose Us"
-                  className="w-full h-auto max-h-[200px] sm:max-h-[220px] md:max-h-[250px] object-contain object-center"
+                  className="w-full h-auto max-h-[200px] sm:max-h-[220px] md:max-h-[260px] object-contain object-center"
                 />
               </div>
               <div className="space-y-4 sm:space-y-5">

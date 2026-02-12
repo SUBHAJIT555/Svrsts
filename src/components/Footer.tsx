@@ -89,7 +89,7 @@ const Footer = () => {
             <div className="grid grid-cols-2 lg:grid-cols-12 lg:gap-y-8 relative">
 
               {/* About / Logo */}
-              <div className="col-span-2 lg:col-span-3 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8">
+              <div className="col-span-2 lg:col-span-3  pb-8 lg:pb-0 pr-5 lg:pr-8">
                 <div className="text-text-primary md:text-4xl text-2xl font-clashdisplay flex items-center gap-2 tracking-tighter">
                   <Link to="/">
                     {/* <img
@@ -108,8 +108,8 @@ const Footer = () => {
                 </a>
 
                 <p className="mt-4 text-text-primary text-xs md:text-base font-generalsans leading-tight max-w-sm">
-                  <span>Everlasting Technical Services LLC – Delivering Reliable Technical Solutions in Dubai and Across the UAE</span> <br />
-                  <span className="font-medium">Your trusted partner for all your technical service needs.</span>
+                  <span>SVRS Technical Services specializes in exhibition stand building, event decoration, office interiors, custom furniture, woodwork, painting services, and comprehensive interior solutions across Dubai & UAE.</span> <br />
+                  <span className="font-medium">Your trusted partner for transforming spaces with expert craftsmanship and innovative design.</span>
                 </p>
 
 
@@ -117,7 +117,7 @@ const Footer = () => {
 
               {/* Services */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2  pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
                 <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Services
                 </h3>
@@ -215,7 +215,7 @@ const Footer = () => {
 
               {/* Useful Links */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2  pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
                 <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Useful Links
                 </h3>
@@ -289,7 +289,7 @@ const Footer = () => {
 
               {/* Legals */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-2 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-2  pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
                 <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Legals
                 </h3>
@@ -355,7 +355,7 @@ const Footer = () => {
 
               {/* Newsletter */}
 
-              <div className="col-span-2 sm:col-span-1 lg:col-span-3 border-b lg:border-b-0 border-neutral-200 border-dashed pb-8 lg:pb-1 pl-2 lg:pl-2">
+              <div className="col-span-2 sm:col-span-1 lg:col-span-3  pb-8 lg:pb-1 pl-2 lg:pl-2">
                 <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                   Newsletter
                 </h3>
@@ -422,7 +422,7 @@ const Footer = () => {
 
           {/* Bottom Bar */}
 
-          <div className="w-full flex justify-center items-center py-5 px-10 font-generalsans tracking-tighter">
+          <div className="w-full flex justify-center items-center py-5 px-10 font-generalsans ">
             <p className="text-text-primary text-xs md:text-base leading-none text-center">
               &copy; {new Date().getFullYear()}{" "}
               <motion.div
