@@ -115,7 +115,7 @@ const FloatingActions = () => {
         </div>
         <a
           aria-label="Chat on WhatsApp"
-          href="https://wa.me/971554684988?text=Hello%2C%20I%27m%20interested%20in%20your%20exhibition%20stand%20services"
+          href="https://wa.me/971589717898?text=Hello%2C%20I%27m%20interested%20in%20your%20services"
           target="_blank"
           rel="noopener noreferrer"
           className="group bg-green-500 hover:bg-green-600 border border-green-500 shadow-sm border-dashed rounded-lg ring ring-green-500 ring-offset-1 md:ring-offset-2 text-white p-1 md:p-2 transition-colors block"

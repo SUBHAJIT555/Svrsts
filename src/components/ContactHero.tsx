@@ -83,7 +83,7 @@ const ContactHero = () => {
                 >
                     <div className="size-3 rounded bg-green-400 animate-pulse border border-neutral-300" />
                     <span className="text-sm md:text-base font-generalsans font-medium text-neutral-700">
-                        Help you with your exhibition, interior, and technical services needs in Dubai.
+                        Here to help in Dubai.
                     </span>
                 </motion.div>
 

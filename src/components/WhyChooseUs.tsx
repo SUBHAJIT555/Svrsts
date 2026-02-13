@@ -3,6 +3,7 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import WhyChooseUsImg from "@/assets/images/Home/whychooseus.svg";
 import CTAButton from "./ui/CTAButton";
+import { LetterSwapPingPong } from "./ui/LetterSwap";
 
 const accordionItems = [
   {
@@ -206,13 +207,16 @@ const WhyChooseUs = () => {
               <div className="space-y-4 sm:space-y-5">
                 <div className="border-b border-neutral-200 pb-4">
                   <p className="text-xs sm:text-sm font-generalsans text-neutral-600 mb-1">
-                    Say Hi @
+                    Email Us @
                   </p>
                   <a
-                    href="mailto:info@everlastingtechnicalservices.com"
-                    className="text-neutral-900 font-generalsans font-medium text-sm sm:text-base hover:text-neutral-600 transition-colors"
+                    href="mailto:info@svrsts.com"
+                    className="text-neutral-900 font-generalsans font-medium text-sm sm:text-base hover:text-neutral-600 transition-colors inline-block"
                   >
-                    everlastingtechnical@gmail.com
+                    <LetterSwapPingPong
+                      label="info@svrsts.com"
+                      className="text-neutral-900 font-generalsans font-medium text-sm sm:text-base hover:text-neutral-600 transition-colors"
+                    />
                   </a>
                 </div>
                 <div className="border-b border-neutral-200 pb-4">
@@ -220,10 +224,13 @@ const WhyChooseUs = () => {
                     Say Hello @
                   </p>
                   <a
-                    href="tel:+971561234567"
-                    className="text-neutral-900 font-generalsans font-medium text-sm sm:text-base hover:text-neutral-600 transition-colors"
+                    href="tel:+971589717898"
+                    className="text-neutral-900 font-generalsans font-medium text-sm sm:text-base hover:text-neutral-600 transition-colors inline-block"
                   >
-                    +971 56 123 4567
+                    <LetterSwapPingPong
+                      label="+971 58 971 7898"
+                      className="text-neutral-900 font-generalsans font-medium text-sm sm:text-base hover:text-neutral-600 transition-colors"
+                    />
                   </a>
                 </div>
                 <CTAButton

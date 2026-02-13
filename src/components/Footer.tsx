@@ -124,7 +124,7 @@ const Footer = () => {
                 <ul className="text-text-primary text-xs md:text-lg font-generalsans mt-2">
                   <li>
                     <Link
-                      to="/services#exhibition-stand-building"
+                      to="/services/exhibition-stand-building"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -135,7 +135,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#wood-work"
+                      to="/services/wood-work"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -146,7 +146,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#event-decoration"
+                      to="/services/event-decoration"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -157,7 +157,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#office-interior"
+                      to="/services/office-interior"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -168,7 +168,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#furniture"
+                      to="/services/furniture"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -179,7 +179,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#interior-design"
+                      to="/services/interior-design"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -190,7 +190,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#painting-services"
+                      to="/services/painting-services"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -201,7 +201,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      to="/services#complete-interior-solutions"
+                      to="/services/complete-interior-solutions"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -249,7 +249,7 @@ const Footer = () => {
 
                   <li>
                     <Link
-                      to="/programs"
+                      to="/services"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -262,7 +262,7 @@ const Footer = () => {
 
                   <li>
                     <Link
-                      to="/simulator"
+                      to="/contact-us"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -336,7 +336,7 @@ const Footer = () => {
 
                   <li>
                     <a
-                      href="mailto:support@example.com"
+                      href="mailto:info@svrsts.com"
                       target="_blank"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >

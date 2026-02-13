@@ -78,7 +78,7 @@ const Header: React.FC = () => {
         style={{
           // Ensure header doesn't interfere with content on smaller screens
           minHeight: windowWidth < 768 ? "50px" : "80px",
-          
+
         }}
       >
         <div className="flex justify-center">
@@ -101,11 +101,10 @@ const Header: React.FC = () => {
                   {getVisibleNavigationItems().map((item, index) => (
                     <motion.li
                       key={item.key}
-                      className={`relative text-xs md:text-sm lg:text-base xl:text-lg text-text-primary font-generalsans transition-colors group uppercase ${
-                        isActive(item.href)
-                          ? "font-bold"
-                          : "font-medium hover:text-text-secondary hover:font-semibold"
-                      }`}
+                      className={`relative text-xs md:text-sm lg:text-base xl:text-lg text-text-primary font-generalsans transition-colors group uppercase ${isActive(item.href)
+                        ? "font-bold"
+                        : "font-medium hover:text-text-secondary hover:font-semibold"
+                        }`}
                       whileHover={{ color: "text-text-secondary " }}
                       onMouseEnter={() => item.hasDropdown && setServicesDropdownOpen(true)}
                       onMouseLeave={() => item.hasDropdown && setServicesDropdownOpen(false)}
@@ -115,50 +114,50 @@ const Header: React.FC = () => {
                           to={item.href}
                           className="relative overflow-hidden uppercase flex items-center gap-1"
                         >
-                            <motion.div
-                              className="relative"
-                              whileHover="hover"
-                              initial="initial"
+                          <motion.div
+                            className="relative"
+                            whileHover="hover"
+                            initial="initial"
+                            variants={{
+                              initial: { y: 0 },
+                              hover: { y: -24 },
+                            }}
+                            transition={{
+                              duration: 0.3,
+                              ease: [0.25, 0.46, 0.45, 0.94],
+                            }}
+                            animate={{ opacity: 1, y: 0 }}
+                            style={{
+                              animationDelay: `${index * 0.1}s`,
+                            }}
+                          >
+                            <span
+                              className={`block ${isActive(item.href) ? "text-text-primary" : ""
+                                }`}
+                            >
+                              {item.name}
+                            </span>
+                            <motion.span
+                              className="block absolute top-6 text-text-primary font-generalsans"
                               variants={{
                                 initial: { y: 0 },
-                                hover: { y: -24 },
-                              }}
-                              transition={{
-                                duration: 0.3,
-                                ease: [0.25, 0.46, 0.45, 0.94],
-                              }}
-                              animate={{ opacity: 1, y: 0 }}
-                              style={{
-                                animationDelay: `${index * 0.1}s`,
+                                hover: { y: 0 },
                               }}
                             >
-                              <span
-                                className={`block ${isActive(item.href) ? "text-text-primary" : ""
-                                  }`}
-                              >
-                                {item.name}
-                              </span>
-                              <motion.span
-                                className="block absolute top-6 text-text-primary font-generalsans"
-                                variants={{
-                                  initial: { y: 0 },
-                                  hover: { y: 0 },
-                                }}
-                              >
-                                {item.name}
-                              </motion.span>
+                              {item.name}
+                            </motion.span>
+                          </motion.div>
+                          {item.hasDropdown && (
+                            <motion.div
+                              animate={{ rotate: servicesDropdownOpen ? 180 : 0 }}
+                              transition={{ duration: 0.3 }}
+                            >
+                              <IoChevronDown className="w-4 h-4" />
                             </motion.div>
-                            {item.hasDropdown && (
-                              <motion.div
-                                animate={{ rotate: servicesDropdownOpen ? 180 : 0 }}
-                                transition={{ duration: 0.3 }}
-                              >
-                                <IoChevronDown className="w-4 h-4" />
-                              </motion.div>
-                            )}
-                          </Link>
+                          )}
+                        </Link>
                       </div>
-                      
+
                       {/* Services Dropdown */}
                       {item.hasDropdown && (
                         <AnimatePresence>

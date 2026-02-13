@@ -57,12 +57,14 @@ const ExhibitionStandBuilding = () => {
         }}
       />
       <div className="relative z-10">
+        {/* hero section  */}
         <ServiceDetailHero
           badge="Exhibition Stand Building Services"
           selectedService="Exhibition Stand Building"
           heading="Custom Exhibition Stand That Make Your Brand Stand Out"
           description="Transform your trade show presence with our expert exhibition stand building services. We design and construct stunning custom stands that showcase your brand, captivate your audience, and drive meaningful engagement at trade shows and events across Dubai & UAE."
         />
+        {/* about service section  */}
         <AboutService
         badge="About Exhibition Stand Building"
           title="Exhibition Stand Building Services"
@@ -72,6 +74,7 @@ const ExhibitionStandBuilding = () => {
             "Whether you need a modular stand, a custom-built structure, or a complete exhibition solution, we work closely with you to understand your brand identity, target audience, and objectives to create stands that exceed expectations."
           ]}
         />
+        {/* why choose us section   */}
         <WhyWe
           title="Why Choose Our Exhibition Stand Building Services"
           subtitle="Expert craftsmanship, innovative design, and professional service for trade shows and events."
@@ -102,6 +105,7 @@ const ExhibitionStandBuilding = () => {
             }
           ]}
         />
+        {/* work flow section  */}
         <ServiceWorkflow
         badge="Our Systematic Workflow"
           title="Our Exhibition Stand Building Process"
@@ -129,6 +133,7 @@ const ExhibitionStandBuilding = () => {
             }
           ]}
         />
+        {/* faq section  */}
         <ServiceFAQ
           title="Exhibition Stand Building (FAQ's)"
           subtitle="Common questions about our exhibition stand building services."

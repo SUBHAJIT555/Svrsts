@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
 import { useMobileMenuStore } from "../store/mobileMenuStore";
 import { useCallbackModalStore } from "../store/callbackModalStore";
-import { IoClose } from "react-icons/io5";
+// import { IoClose } from "react-icons/io5";
 import { IoChevronDown } from "react-icons/io5";
-import { Logo } from "./index";
+// import { Logo } from "./index";
 
 type MenuItem = {
   key: number;
@@ -85,7 +85,7 @@ const MobileMenu: React.FC = () => {
           >
             {/* Backdrop */}
             <motion.div
-              className="absolute inset-0 bg-white backdrop-blur-md cursor-pointer"
+              className="absolute inset-0 bg-white/50 backdrop-blur-sm cursor-pointer"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -98,16 +98,60 @@ const MobileMenu: React.FC = () => {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              style={{
-                background:
-                  "repeating-linear-gradient(135deg, #f9fafb 0px, #f9fafb 1px, transparent 1px, transparent 4px), white",
-              }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex-1 flex flex-col min-h-0">
+              {/* Dashed Top Fade Grid */}
+              <div
+                className="absolute inset-0 z-0"
+                style={{
+                  backgroundImage: `
+                  linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+                  linear-gradient(to bottom, #e2e8f0 1px, transparent 1px)
+                `,
+                  backgroundSize: "1px 1px",
+                  backgroundPosition: "0 0, 0 0",
+                  maskImage: `
+                  repeating-linear-gradient(
+                    to right,
+                    black 0px,
+                    black 3px,
+                    transparent 3px,
+                    transparent 8px
+                  ),
+                  repeating-linear-gradient(
+                    to bottom,
+                    black 0px,
+                    black 3px,
+                    transparent 3px,
+                    transparent 8px
+                  ),
+                  radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
+                `,
+                  WebkitMaskImage: `
+                  repeating-linear-gradient(
+                    to right,
+                    black 0px,
+                    black 3px,
+                    transparent 3px,
+                    transparent 8px
+                  ),
+                  repeating-linear-gradient(
+                    to bottom,
+                    black 0px,
+                    black 3px,
+                    transparent 3px,
+                    transparent 8px
+                  ),
+                  radial-gradient(ellipse 70% 60% at 50% 0%, #000 60%, transparent 100%)
+                `,
+                  maskComposite: "intersect",
+                  WebkitMaskComposite: "source-in",
+                }}
+              />
+              <div className="flex-1 flex flex-col min-h-0 pt-10 sm:pt-10 relative z-10">
                 {/* Header with Logo and Close Button */}
-                <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-4 border-b border-neutral-300 border-dashed">
+                {/* <div className="flex items-center justify-between px-4 sm:px-6 pt-4 pb-4 border-b border-neutral-300 border-dashed">
                   <Link to="/" onClick={closeMenu} className="flex items-center">
                     <Logo className="w-32 md:w-40" />
                   </Link>
@@ -122,7 +166,7 @@ const MobileMenu: React.FC = () => {
                   >
                     <IoClose className="w-6 h-6" />
                   </motion.button>
-                </div>
+                </div> */}
 
                 {/* Mobile Navigation Links */}
                 <nav className="px-4 sm:px-6 py-6 space-y-1">
@@ -139,22 +183,38 @@ const MobileMenu: React.FC = () => {
                     >
                       {item.hasDropdown ? (
                         <div>
-                          <button
-                            onClick={() => setServicesExpanded(!servicesExpanded)}
-                            className={`w-full flex items-center justify-between py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${
-                              isActive(item.href)
+                          <div className="flex items-center justify-between">
+                            <Link
+                              to={item.href}
+                              onClick={() => {
+                                closeMenu();
+                              }}
+                              className={`flex-1 py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${isActive(item.href)
                                 ? "font-bold"
                                 : "font-medium hover:text-text-secondary hover:font-semibold"
-                            }`}
-                          >
-                            <span>{item.name}</span>
-                            <motion.div
-                              animate={{ rotate: servicesExpanded ? 180 : 0 }}
-                              transition={{ duration: 0.3 }}
+                                }`}
                             >
-                              <IoChevronDown className="w-5 h-5" />
-                            </motion.div>
-                          </button>
+                              {item.name}
+                            </Link>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setServicesExpanded(!servicesExpanded);
+                              }}
+                              className="p-2 text-text-primary hover:text-text-secondary transition-colors flex items-center justify-center shrink-0"
+                              aria-label="Toggle services menu"
+                              style={{ transform: 'none' }}
+                            >
+                              <motion.span
+                                animate={{ rotate: servicesExpanded ? 180 : 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="inline-block"
+                                style={{ transformOrigin: 'center' }}
+                              >
+                                <IoChevronDown className="w-5 h-5 border rounded-md border-neutral-200 bg-white ring ring-offset-3 ring-neutral-300" />
+                              </motion.span>
+                            </button>
+                          </div>
                           <AnimatePresence>
                             {servicesExpanded && (
                               <motion.div
@@ -173,11 +233,10 @@ const MobileMenu: React.FC = () => {
                                         closeMenu();
                                         setServicesExpanded(false);
                                       }}
-                                      className={`block py-2 px-2 text-sm text-text-primary font-generalsans transition-all duration-300 ${
-                                        isActive(service.href)
-                                          ? "font-semibold text-neutral-900"
-                                          : "font-medium text-neutral-600 hover:text-neutral-900"
-                                      }`}
+                                      className={`block py-2 px-2 text-sm text-text-primary font-generalsans transition-all duration-300 ${isActive(service.href)
+                                        ? "font-semibold text-neutral-900"
+                                        : "font-medium text-neutral-600 hover:text-neutral-900"
+                                        }`}
                                     >
                                       {service.name}
                                     </Link>
@@ -193,11 +252,10 @@ const MobileMenu: React.FC = () => {
                           onClick={() => {
                             closeMenu();
                           }}
-                          className={`block py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${
-                            isActive(item.href)
-                              ? "font-bold"
-                              : "font-medium hover:text-text-secondary hover:font-semibold"
-                          }`}
+                          className={`block py-3 px-2 text-sm md:text-base text-text-primary font-generalsans transition-all duration-300 uppercase tracking-wide ${isActive(item.href)
+                            ? "font-bold"
+                            : "font-medium hover:text-text-secondary hover:font-semibold"
+                            }`}
                         >
                           {item.name}
                         </Link>
@@ -206,7 +264,7 @@ const MobileMenu: React.FC = () => {
                   ))}
                 </nav>
 
-                
+
 
                 {/* Mobile Contact Button */}
                 <motion.div
@@ -216,7 +274,7 @@ const MobileMenu: React.FC = () => {
                   transition={{ duration: 0.4, delay: 0.6 }}
                 >
                   <motion.button
-                    className="w-full text-text-primary px-6 py-4 font-generalsans text-sm md:text-base font-semibold tracking-wider transition-all duration-300 hover:text-text-secondary hover:font-bold uppercase border border-neutral-300 border-dashed rounded bg-white hover:bg-neutral-50"
+                    className="w-full text-text-primary px-6 py-2 font-generalsans text-sm md:text-base font-semibold tracking-wider transition-all duration-300 hover:text-text-secondary hover:font-bold uppercase border-neutral-200 border rounded-xl bg-linear-to-r from-neutral-100 to-neutral-300 hover:bg-neutral-50 ring ring-offset-4 ring-neutral-300"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     animate={{
@@ -240,7 +298,46 @@ const MobileMenu: React.FC = () => {
                   </motion.button>
                 </motion.div>
 
-                
+                {/* Legal Links */}
+                <motion.div
+                  className="px-4 sm:px-6 py-4 border-t border-neutral-200"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.7 }}
+                >
+                  <div className="space-y-2">
+                    <Link
+                      to="/terms-and-conditions"
+                      onClick={closeMenu}
+                      className={`block py-2 px-2 text-xs sm:text-sm text-neutral-600 font-generalsans transition-all duration-300 ${isActive("/terms-and-conditions")
+                        ? "font-semibold text-neutral-900"
+                        : "font-medium hover:text-neutral-900"
+                        }`}
+                    >
+                      Terms & Conditions
+                    </Link>
+                    <Link
+                      to="/privacy-policy"
+                      onClick={closeMenu}
+                      className={`block py-2 px-2 text-xs sm:text-sm text-neutral-600 font-generalsans transition-all duration-300 ${isActive("/privacy-policy")
+                        ? "font-semibold text-neutral-900"
+                        : "font-medium hover:text-neutral-900"
+                        }`}
+                    >
+                      Privacy Policy
+                    </Link>
+                    <Link
+                      to="/cookie-policy"
+                      onClick={closeMenu}
+                      className={`block py-2 px-2 text-xs sm:text-sm text-neutral-600 font-generalsans transition-all duration-300 ${isActive("/cookie-policy")
+                        ? "font-semibold text-neutral-900"
+                        : "font-medium hover:text-neutral-900"
+                        }`}
+                    >
+                      Cookie Policy
+                    </Link>
+                  </div>
+                </motion.div>
 
                 {/* Footer - Now positioned at the bottom with proper spacing */}
                 <motion.div
@@ -249,9 +346,8 @@ const MobileMenu: React.FC = () => {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8 }}
                 >
-                  <div className="text-xs text-text-primary font-generalsans font-medium uppercase tracking-widest">
-                    © {new Date().getFullYear()} BAHARNANI ADVERTISING LLC. ALL
-                    RIGHTS RESERVED.
+                  <div className="text-xs text-text-primary font-generalsans font-medium  tracking-widest">
+                    © {new Date().getFullYear()} SVRSTS all right reserved. <br /> Develop By <a target="blank" href="https://codecobble.com">CodeCobble.</a>
                   </div>
                 </motion.div>
               </div>

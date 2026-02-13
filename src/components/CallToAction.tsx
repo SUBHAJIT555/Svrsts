@@ -194,7 +194,7 @@ const CallToAction = () => {
               className="font-generalsans w-fit sm:w-auto bg-linear-to-r from-neutral-200 to-white cursor-pointer shadow-none ring ring-neutral-300 text-neutral-900  ring-offset-2 md:ring-offset-4 ml-2"
             />
             <CTAButton
-              label="Contact Us"
+              label="Contact Us Now"
               onClick={() => navigate("/contact-us")}
               variant="dark"
               className="font-generalsans w-fit sm:w-auto bg-linear-to-l from-neutral-500 to-neutral-900 cursor-pointer shadow-none ring ring-neutral-300 text-white  ring-offset-2 md:ring-offset-4 ml-2"

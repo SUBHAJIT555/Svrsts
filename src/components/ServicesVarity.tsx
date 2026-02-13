@@ -100,6 +100,21 @@ const services = [
     },
 ];
 
+// Map service IDs to their detail page routes
+const getServiceDetailRoute = (id: string): string => {
+    const routeMap: Record<string, string> = {
+        "exhibition-stand-building": "/services/exhibition-stand-building",
+        "wood-work": "/services/wood-work",
+        "event-decoration": "/services/event-decoration",
+        "office-interior": "/services/office-interior",
+        "furniture": "/services/furniture",
+        "interior-design": "/services/interior-design",
+        "painting": "/services/painting-services",
+        "complete-interior-solutions": "/services/complete-interior-solutions",
+    };
+    return routeMap[id] ?? `/services/${id}`;
+};
+
 // Animated SVG Icon Component
 
 
@@ -243,8 +258,8 @@ const ParallaxServices = ({ services }: { services: ServiceType[] }) => {
                         {/* CTA Button - Mobile Only (after image) */}
                         <div className="md:hidden">
                             <CTAButton
-                                label="Contact Us Now"
-                                onClick={() => navigate("/contact-us")}
+                                label="Know More About This"
+                                onClick={() => navigate(getServiceDetailRoute(service.id))}
                                 variant="light"
                                 className="font-generalsans bg-linear-to-r from-neutral-100 to-neutral-300 cursor-pointer"
                             />
@@ -253,8 +268,8 @@ const ParallaxServices = ({ services }: { services: ServiceType[] }) => {
                         {/* CTA Button - Desktop Only */}
                         <div className="hidden md:block">
                             <CTAButton
-                                label="Contact Us Now"
-                                onClick={() => navigate("/contact-us")}
+                                label="Know More About This"
+                                onClick={() => navigate(getServiceDetailRoute(service.id))}
                                 variant="light"
                                 className="font-generalsans bg-linear-to-r from-neutral-100 to-neutral-300 cursor-pointer"
                             />

@@ -91,7 +91,7 @@ const ServiceHero = () => {
           >
             <div className="size-3 rounded bg-green-400 animate-pulse border border-neutral-300" />
             <span className="text-sm md:text-base font-generalsans font-medium text-neutral-700">
-              Your Trusted Partner for Exhibition, Interior, & Technical Services in Dubai
+              Dubai’s Trusted Exhibition & Interior Partner
             </span>
           </motion.div>
         
