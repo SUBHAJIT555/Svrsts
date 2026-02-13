@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import WhyChooseUsImg from "@/assets/images/Home/whychooseus.svg";
+import WhyChooseUsImg from "@/assets/images/whychooseus.svg";
 import CTAButton from "../ui/CTAButton";
 
 interface WhyWeItem {

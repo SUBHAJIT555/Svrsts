@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutEventDecoration from "@/assets/images/SeperateAboutPageImages/AboutEventDecoration.webp";
 
 const EventDecoration = () => {
   return (
@@ -64,6 +65,7 @@ const EventDecoration = () => {
           description="Transform your events into unforgettable experiences with our professional event decoration and strategic lighting design services. We create visually stunning environments that enhance your brand presence and captivate your audience."
         />
         <AboutService
+        image={AboutEventDecoration}
         badge="About Our Event Decoration Services"
           title="Event Decoration & Lighting Services"
           description={[

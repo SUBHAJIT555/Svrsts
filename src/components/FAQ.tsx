@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import FAQImg from "@/assets/images/Home/faq.svg";
+import FAQImg from "@/assets/images/faq.svg";
 import CTAButton from "./ui/CTAButton";
 
 const faqItems = [

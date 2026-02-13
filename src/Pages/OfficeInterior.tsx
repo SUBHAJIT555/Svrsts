@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutOfficeInterior from "@/assets/images/SeperateAboutPageImages/AboutOfficeInterior.webp";
 
 const OfficeInterior = () => {
   return (
@@ -64,6 +65,7 @@ const OfficeInterior = () => {
           description="Create inspiring office spaces that boost productivity and reflect your company culture. Our comprehensive office interior design and fit-out services combine functionality with modern aesthetics to create work environments that employees love."
         />
         <AboutService
+        image={AboutOfficeInterior}
         badge="About Our Office Interior Services"
           title="Office Interior Design & Fit-Out Services"
           description={[

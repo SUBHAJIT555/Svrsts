@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutExhibitionStandBuilding from "@/assets/images/SeperateAboutPageImages/AboutExhibitionStandBuilding.webp";
 
 const ExhibitionStandBuilding = () => {
   return (
@@ -66,6 +67,7 @@ const ExhibitionStandBuilding = () => {
         />
         {/* about service section  */}
         <AboutService
+        image={AboutExhibitionStandBuilding}
         badge="About Exhibition Stand Building"
           title="Exhibition Stand Building Services"
           description={[

@@ -1,5 +1,13 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import AhmedAlMansoori from "@/assets/images/TestimonialImages/AhmedAlMansoori.webp";
+import AnjaliMehta from "@/assets/images/TestimonialImages/AnjaliMehta.webp";
+import DeepakSingh from "@/assets/images/TestimonialImages/DeepakSingh.webp";
+import FatimaAlZahra from "@/assets/images/TestimonialImages/FatimaAlZahra.webp";
+import MohammedAlSuwaidi from "@/assets/images/TestimonialImages/MohammedAlSuwaidi.webp";
+import PriyaSharma from "@/assets/images/TestimonialImages/PriyaSharma.webp";
+import RajeshKumar from "@/assets/images/TestimonialImages/RajeshKumar.webp";
+import VikramPatel from "@/assets/images/TestimonialImages/VikramPatel.webp";
 
 type Testimonial = {
     name: string;
@@ -95,112 +103,78 @@ const StarRating = ({ rating = 5 }: { rating?: number }) => {
 const testimonials: Testimonial[] = [
     {
         quote:
-            "SVRS Technical Services transformed our exhibition stand into a stunning showcase. Their attention to detail and craftsmanship exceeded our expectations. The stand was the highlight of the trade show.",
+            "SVRS transformed our exhibition stand at GITEX Dubai into a stunning showcase. Their attention to detail and craftsmanship exceeded our expectations. The stand was the highlight of the trade show.",
         name: "Ahmed Al-Mansoori",
         role: "Marketing Director",
-        company: "Dubai Trade Solutions",
-        image: "https://randomuser.me/api/portraits/men/21.jpg",
+        company: "Dubai Tech Solutions LLC",
+        image: AhmedAlMansoori,
         rating: 5,
     },
     {
         quote:
-            "Outstanding work on our office interior renovation. SVRS delivered a beautiful, functional space that perfectly reflects our brand. The team was professional, timely, and incredibly skilled.",
-        name: "Fatima Hassan",
-        role: "CEO",
-        company: "Innovate Dubai",
-        image: "https://randomuser.me/api/portraits/women/22.jpg",
+            "Outstanding work on our office interior renovation in Business Bay. SVRS delivered a beautiful, functional space that perfectly reflects our brand. Professional team and exceptional craftsmanship.",
+        name: "Priya Sharma",
+        role: "Operations Director",
+        company: "Innovate Middle East FZE",
+        image: PriyaSharma,
         rating: 5,
     },
     {
         quote:
-            "The custom furniture pieces SVRS created for our showroom are exceptional. Quality craftsmanship and innovative design that perfectly matched our vision. Highly recommended!",
-        name: "Mohammed Ali",
+            "The custom furniture pieces SVRS created for our showroom in Jumeirah are exceptional. Quality craftsmanship and innovative design that perfectly matched our vision. Highly recommended!",
+        name: "Rajesh Kumar",
         role: "Showroom Manager",
-        company: "Luxury Interiors UAE",
-        image: "https://randomuser.me/api/portraits/men/23.jpg",
+        company: "Luxury Home Interiors Dubai",
+        image: RajeshKumar,
         rating: 5,
     },
     {
         quote:
-            "SVRS handled our entire event decoration beautifully. From concept to execution, they delivered a memorable experience. Their event lighting and decor services are top-notch.",
-        name: "Sarah Al-Zahra",
-        role: "Event Coordinator",
-        company: "Premier Events Dubai",
-        image: "https://randomuser.me/api/portraits/women/24.jpg",
-        rating: 5,
-    },
-    {
-        quote:
-            "Excellent woodwork and carpentry services. SVRS built custom cabinets and furniture that transformed our office space. Professional service from start to finish.",
-        name: "Omar Farooq",
-        role: "Operations Manager",
-        company: "Tech Hub Dubai",
-        image: "https://randomuser.me/api/portraits/men/25.jpg",
-        rating: 4.5,
-    },
-    {
-        quote:
-            "SVRS Technical Services delivered a complete interior solution for our new office. From design to installation, everything was handled professionally. The result is outstanding.",
-        name: "Ayesha Siddiqui",
-        role: "Facilities Director",
-        company: "Global Solutions UAE",
-        image: "https://randomuser.me/api/portraits/women/26.jpg",
-        rating: 5,
-    },
-    {
-        quote:
-            "The exhibition stand SVRS built for us was impressive and attracted many visitors. Their expertise in stand building and design is evident in every detail.",
-        name: "Bilal Sheikh",
-        role: "Sales Director",
-        company: "Dubai Exports",
-        image: "https://randomuser.me/api/portraits/men/27.jpg",
-        rating: 5,
-    },
-    {
-        quote:
-            "SVRS transformed our workspace with their interior design expertise. The combination of furniture, woodwork, and overall design created a perfect working environment.",
-        name: "Nadia Karim",
-        role: "HR Manager",
-        company: "Future Workspaces",
-        image: "https://randomuser.me/api/portraits/women/28.jpg",
-        rating: 4.5,
-    },
-    {
-        quote:
-            "Professional service and exceptional quality. SVRS handled our event decoration with creativity and precision. The lighting and decor created the perfect atmosphere.",
-        name: "Usman Raza",
+            "SVRS handled our event decoration for Dubai Shopping Festival beautifully. From concept to execution, they delivered a memorable experience. Their lighting and decor services are top-notch.",
+        name: "Fatima Al-Zahra",
         role: "Event Manager",
-        company: "Elite Events UAE",
-        image: "https://randomuser.me/api/portraits/men/29.jpg",
+        company: "Premier Events & Exhibitions",
+        image: FatimaAlZahra,
         rating: 5,
     },
     {
         quote:
-            "SVRS Technical Services delivered beautiful custom furniture for our office. The craftsmanship and attention to detail are remarkable. Our team loves the new workspace.",
-        name: "Sana Iqbal",
-        role: "Design Director",
-        company: "Creative Spaces Dubai",
-        image: "https://randomuser.me/api/portraits/women/30.jpg",
+            "Excellent woodwork services for our office in Dubai Marina. SVRS built custom cabinets and furniture that transformed our workspace. Professional service and outstanding quality.",
+        name: "Vikram Patel",
+        role: "Facilities Manager",
+        company: "Tech Hub Dubai LLC",
+        image: VikramPatel,
+        rating: 4.5,
+    },
+    {
+        quote:
+            "SVRS delivered a complete interior solution for our new office in DIFC. From design to installation, everything was handled professionally. Our employees love the new workspace.",
+        name: "Anjali Mehta",
+        role: "HR Director",
+        company: "Global Financial Services UAE",
+        image: AnjaliMehta,
         rating: 5,
     },
     {
         quote:
-            "Outstanding exhibition stand building services. SVRS created a stand that perfectly represented our brand and attracted significant attention at the trade show.",
-        name: "Hamza Tariq",
-        role: "Brand Manager",
-        company: "Dubai Brands",
-        image: "https://randomuser.me/api/portraits/men/31.jpg",
+            "The exhibition stand SVRS built for us at Arab Health was impressive and attracted many visitors. Their expertise in stand building is evident in every detail. Highly professional.",
+        name: "Mohammed Al-Suwaidi",
+        role: "Business Development Manager",
+        company: "Dubai Medical Equipment Trading",
+        image: MohammedAlSuwaidi,
         rating: 5,
     },
     {
         quote:
-            "SVRS provided comprehensive interior solutions for our new office. From furniture to woodwork to painting, everything was handled professionally. Highly satisfied with the results.",
-        name: "Mehwish Zafar",
-        role: "Office Manager",
-        company: "Business Solutions UAE",
-        image: "https://randomuser.me/api/portraits/women/32.jpg",
-        rating: 5,
+            "SVRS transformed our workspace in Al Barsha with their interior design expertise. The combination of furniture, woodwork, and design created a perfect working environment.",
+        name: "Deepak Singh",
+        role: "General Manager",
+        company: "Future Workspaces Dubai",
+        image: DeepakSingh,
+        rating: 4.5,
     },
+
+
 ];
 
 const Testimonials = () => {
@@ -266,7 +240,7 @@ const Testimonials = () => {
                         {testimonials.map(({ name, role, company, quote, image, rating }, index) => (
                             <motion.div
                                 key={index}
-                                className="relative min-h-[280px] bg-white border border-neutral-200 rounded-xl ring ring-neutral-300 ring-offset-2 md:ring-offset-4 transition-all duration-300 hover:shadow-lg overflow-hidden"
+                                className="relative min-h-[280px] bg-white border border-neutral-200 rounded-xl ring ring-neutral-300 ring-offset-3 md:ring-offset-6 transition-all duration-300 hover:shadow-lg overflow-hidden"
                                 style={{ backgroundColor: 'white' }}
                                 initial={{ opacity: 0, y: 40 }}
                                 animate={testimonialsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -329,7 +303,7 @@ const Testimonials = () => {
                                             alt={name}
                                             src={image}
                                             loading="lazy"
-                                            className="size-12 sm:size-14 rounded-2xl object-cover border border-neutral-200 ring ring-neutral-300 ring-offset-2 md:ring-offset-4"
+                                            className="size-12 sm:size-14 rounded-2xl object-cover border border-neutral-200 ring ring-neutral-300 ring-offset-2 md:ring-offset-3 shadow-xl"
                                         />
                                         <div>
                                             <p className="text-base sm:text-lg font-semibold text-neutral-900 font-generalsans">

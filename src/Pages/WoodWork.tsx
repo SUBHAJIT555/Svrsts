@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutWoodWork from "@/assets/images/SeperateAboutPageImages/AboutWoodWork.webp";
 
 const WoodWork = () => {
   return (
@@ -64,6 +65,7 @@ const WoodWork = () => {
           description="Master craftsmen creating custom furniture, cabinetry, and woodworking solutions with precision and premium materials. From custom furniture to built-in wardrobes and kitchen cabinets, we deliver quality craftsmanship for lasting beauty."
         />
         <AboutService
+        image={AboutWoodWork}
         badge="About Our Wood Work Services"
           title="Wood Work & Carpentry Services"
           description={[

@@ -6,8 +6,9 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import CTAButton from "./ui/CTAButton";
 import { cn } from "@/lib/utils";
+import { LetterSwapPingPong } from "./ui/LetterSwap";
 
-// import footerlogo from "../assets/img/logo/Cyberlabs-logo-03.svg";
+import footerlogo from "@/assets/images/logo.svg";
 
 
 
@@ -92,16 +93,16 @@ const Footer = () => {
               <div className="col-span-2 lg:col-span-3  pb-8 lg:pb-0 pr-5 lg:pr-8">
                 <div className="text-text-primary md:text-4xl text-2xl font-clashdisplay flex items-center gap-2 tracking-tighter">
                   <Link to="/">
-                    {/* <img
+                    <img
                     src={footerlogo}
                     alt="Cyberlabs India Logo"
                     className="w-50 h-25"
-                  /> */}
+                  />
                   </Link>
                 </div>
 
                 <a target="_blank" href="/">
-                  <h3 className="text-text-primary text-xs md:text-base font-medium font-clashdisplay mt-2 px-2 py-1 rounded-xl w-fit border border-neutral-200 ring ring-neutral-300 ring-offset-2 md:ring-offset-4">
+                  <h3 className=" text-xs md:text-base font-medium font-clashdisplay mt-2 px-2 py-1 rounded-xl w-fit border border-neutral-200 ring ring-neutral-300 ring-offset-2 md:ring-offset-4 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
                     SVRS Technical Services
 
                   </h3>
@@ -109,6 +110,7 @@ const Footer = () => {
 
                 <p className="mt-4 text-text-primary text-xs md:text-base font-generalsans leading-tight max-w-sm">
                   <span>SVRS Technical Services specializes in exhibition stand building, event decoration, office interiors, custom furniture, woodwork, painting services, and comprehensive interior solutions across Dubai & UAE.</span> <br />
+                  <div className="border-t border-neutral-200 my-2"></div>
                   <span className="font-medium">Your trusted partner for transforming spaces with expert craftsmanship and innovative design.</span>
                 </p>
 
@@ -118,7 +120,7 @@ const Footer = () => {
               {/* Services */}
 
               <div className="col-span-2 sm:col-span-1 lg:col-span-2  pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
+                <h3 className="text-neutral-800 text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white ">
                   Services
                 </h3>
                 <ul className="text-text-primary text-xs md:text-lg font-generalsans mt-2">
@@ -130,7 +132,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Exhibition Stand Building
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -141,7 +143,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Wood Work
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -152,7 +154,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Event Decoration
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -163,7 +165,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Office Interior
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -174,7 +176,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Furniture
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -185,7 +187,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Interior Design
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -196,7 +198,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Painting Services
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                   <li>
@@ -207,7 +209,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Complete Interior 
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
                   </li>
                 </ul>
@@ -216,7 +218,7 @@ const Footer = () => {
               {/* Useful Links */}
 
               <div className="col-span-2 sm:col-span-1 lg:col-span-2  pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
+                <h3 className="text-neutral-800 text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white ">
                   Useful Links
                 </h3>
 
@@ -229,7 +231,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Home
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -242,7 +244,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         About
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -255,7 +257,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Services
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -268,20 +270,20 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Contact
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
 
                   <li>
                     <a
-                      href="mailto:support@example.com"
+                      href="mailto:support@svrsts.com"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Support
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </a>
                   </li>
                 </ul>
@@ -290,7 +292,7 @@ const Footer = () => {
               {/* Legals */}
 
               <div className="col-span-2 sm:col-span-1 lg:col-span-2  pb-8 lg:pb-0 pr-5 lg:pr-8 pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
+                <h3 className="text-neutral-800 text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white ">
                   Legals
                 </h3>
 
@@ -303,7 +305,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Terms & Condition
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -316,7 +318,7 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Privacy Policy
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
@@ -329,21 +331,21 @@ const Footer = () => {
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Cookie Policy
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </Link>
                   </li>
 
                   <li>
                     <a
-                      href="mailto:info@svrsts.com"
+                      href="mailto:support@svrsts.com"
                       target="_blank"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
                         Support
                       </span>
-                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl border border-neutral-200 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
+                      <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"
                       ></span>
                     </a>
                   </li>
@@ -356,13 +358,12 @@ const Footer = () => {
               {/* Newsletter */}
 
               <div className="col-span-2 sm:col-span-1 lg:col-span-3  pb-8 lg:pb-1 pl-2 lg:pl-2">
-                <h3 className="text-primary text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white text-neutral-900">
+                <h3 className="text-neutral-800 text-lg md:text-xl font-generalsans tracking-tighter font-medium mb-5 border border-neutral-200  rounded-xl w-fit px-2 bg-linear-to-l from-neutral-100 to-white ">
                   Newsletter
                 </h3>
 
                 <p className="text-text-primary text-xs md:text-base font-generalsans">
-                  Stay updated with our latest news, industry insights, and
-                  exclusive offers.
+                  Stay updated with our latest news, insightful trends in the industry, tips, expert guidance, and exclusive special offers.
                 </p>
 
                 <form onSubmit={handleSubmit(onSubmit)} id="newsletter-form">
@@ -425,26 +426,21 @@ const Footer = () => {
           <div className="w-full flex justify-center items-center py-5 px-10 font-generalsans ">
             <p className="text-text-primary text-xs md:text-base leading-none text-center">
               &copy; {new Date().getFullYear()}{" "}
-              <motion.div
-                className="inline-block relative group"
-                whileHover="hover"
-                initial="initial"
+              <Link
+                to="/"
+                className="text-text-secondary text-xs md:text-base relative inline-block group"
               >
-                <Link
-                  to="/"
-                  className="text-text-secondary text-xs md:text-base relative inline-block"
-                >
-                  SVRS Technical Services
-                  <motion.span
-                    className="absolute bottom-0 left-0 h-px bg-primary"
-                    variants={{
-                      initial: { width: 0 },
-                      hover: { width: "100%" }
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  />
-                </Link>
-              </motion.div>{" "}
+                <LetterSwapPingPong
+                  label="SVRS Technical Services"
+                  className="text-text-secondary text-xs md:text-base group-hover:text-text-secondary"
+                />
+                <motion.span
+                  className="absolute bottom-0 left-0 h-px bg-primary"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
+              </Link>{" "}
               All rights reserved | Made with{" "}
               <span className="inline-flex items-baseline mx-1">
                 <style>{`
@@ -487,28 +483,23 @@ const Footer = () => {
                 </svg>
               </span>{" "}
               by:&nbsp;
-              <motion.div
-                className="inline-block relative group"
-                whileHover="hover"
-                initial="initial"
+              <a
+                href="https://codecobble.com/"
+                target="_blank"
+                className="text-text-secondary text-xs md:text-base relative inline-block group"
+                rel="noopener noreferrer"
               >
-                <a
-                  href="https://codecobble.com/"
-                  target="_blank"
-                  className="text-text-secondary text-xs md:text-base relative inline-block"
-                  rel="noopener noreferrer"
-                >
-                  CodeCobble
-                  <motion.span
-                    className="absolute bottom-0 left-0 h-px bg-primary"
-                    variants={{
-                      initial: { width: 0 },
-                      hover: { width: "100%" }
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                  />
-                </a>
-              </motion.div>
+                <LetterSwapPingPong
+                  label="CodeCobble"
+                  className="text-text-secondary text-xs md:text-base group-hover:text-text-secondary"
+                />
+                <motion.span
+                  className="absolute bottom-0 left-0 h-px bg-primary"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
+                />
+              </a>
             </p>
           </div>
         </div>

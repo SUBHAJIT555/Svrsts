@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import CTAButton from "../ui/CTAButton";
 import { useCallbackModalStore } from "@/components/store/callbackModalStore";
-import AboutCompanyImg from "@/assets/images/AboutPage/new-image/AbouttheCompany.webp";
+import AboutCompanyImg from "@/assets/images/SeperateAboutPageImages/AboutExhibitionStandBuilding.webp";
 
 interface AboutServiceProps {
   title: string;
@@ -19,7 +19,8 @@ const AboutService = ({
   imageAlt = "Service Image",
   badge = "About This Service",
 }: AboutServiceProps) => {
-  const defaultImage = image || AboutCompanyImg;
+  // Use provided image or fallback to default
+  const displayImage = image || AboutCompanyImg;
   const openCallbackModal = useCallbackModalStore((state) => state.openModal);
   const containerRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -87,7 +88,7 @@ const AboutService = ({
               className="flex items-center justify-center lg:justify-end"
             >
               <img
-                src={defaultImage}
+                src={displayImage}
                 alt={imageAlt}
                 className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl h-auto object-contain rounded-xl border border-neutral-200 ring ring-neutral-300 ring-offset-4 md:ring-offset-8"
               />

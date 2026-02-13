@@ -161,13 +161,11 @@ const ContactAddress = () => {
                                 </div>
                             </div>
 
-                            {/* Follow Us On Section */}
-                            <div>
+                            {/* <div>
                                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-clashdisplay font-medium text-neutral-900 mb-6 sm:mb-8">
                                     Follow Us On
                                 </h3>
                                 <div className="space-y-4 sm:space-y-6">
-                                    {/* LinkedIn */}
                                     <a
                                         href="https://linkedin.com/company/svrs-technical-services"
                                         target="_blank"
@@ -190,7 +188,6 @@ const ContactAddress = () => {
                                         />
                                     </a>
 
-                                    {/* Instagram */}
                                     <a
                                         href="https://instagram.com/svrs.technical"
                                         target="_blank"
@@ -211,7 +208,6 @@ const ContactAddress = () => {
                                         />
                                     </a>
 
-                                    {/* Facebook */}
                                     <a
                                         href="https://facebook.com/svrs.technical"
                                         target="_blank"
@@ -230,7 +226,7 @@ const ContactAddress = () => {
                                         />
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
                         </motion.div>
                     </div>
                 </div>

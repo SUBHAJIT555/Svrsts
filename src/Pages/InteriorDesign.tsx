@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutInteriorDesign from "@/assets/images/SeperateAboutPageImages/AboutInteriorDesign.webp";
 
 const InteriorDesign = () => {
   return (
@@ -64,6 +65,7 @@ const InteriorDesign = () => {
           description="Create beautiful, functional spaces that reflect your style and enhance your lifestyle. Our comprehensive interior design services combine creative vision with practical solutions to transform your home or office into spaces you'll love."
         />
         <AboutService
+        image={AboutInteriorDesign}
         badge="About Our Interior Design Services"
           title="Interior Design Services For Your Home & Office"
           description={[

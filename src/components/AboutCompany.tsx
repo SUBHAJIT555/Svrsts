@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import AboutCompanyImg from "@/assets/images/AboutPage/new-image/AbouttheCompany.webp";
+import AboutCompanyImg from "@/assets/images/AboutPageImages/AboutSVRS.webp";
 import { useCallbackModalStore } from "./store/callbackModalStore";
 import CTAButton from "./ui/CTAButton";
 
