@@ -12,7 +12,7 @@ const services = [
     description: "Custom-designed exhibition stands that showcase your brand and captivate your audience at trade shows and events. From concept to completion, we build stands that make an impact.",
     shortDescription: "Custom exhibition stands for trade shows and events.",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
-    
+
   },
   {
     id: "wood-work",
@@ -96,7 +96,7 @@ const ServiceCard = ({
       "painting": "/services/painting-services",
       "complete-interior-solutions": "/services/complete-interior-solutions",
     };
-    
+
     const route = routeMap[id] || `/services#${id}`;
     navigate(route);
   };
@@ -152,7 +152,7 @@ const ServiceCard = ({
               <p className="text-sm sm:text-base text-white/90 font-generalsans mb-4 text-left leading-tight">
                 {description}
               </p>
-              <div 
+              <div
                 className="flex justify-start"
                 onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
               >
@@ -183,7 +183,7 @@ const ServicesHome = () => {
   const contentInView = useInView(contentRef, { once: false, amount: 0.1 });
   const servicesInView = useInView(servicesRef, { once: false, amount: 0.1 });
 
- 
+
 
   return (
     <section className="min-h-screen w-full relative bg-transparent">
@@ -216,9 +216,9 @@ const ServicesHome = () => {
           >
             Exhibition Stands • Interiors
             <br />
-            
-              Furniture • Woodwork • Event Decor
-            
+
+            Furniture • Woodwork • Event Decor
+
           </motion.h2>
 
           {/* Description */}
@@ -250,8 +250,8 @@ const ServicesHome = () => {
             ))}
           </div>
 
-          
-          
+
+
         </div>
       </div>
     </section>
