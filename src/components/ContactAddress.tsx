@@ -148,11 +148,11 @@ const ContactAddress = () => {
                                                 Call Us
                                             </p>
                                             <a
-                                                href="tel:+971554684988"
+                                                href="tel:+971589717898"
                                                 className="text-base sm:text-lg md:text-xl text-neutral-900 font-generalsans hover:text-neutral-700 transition-colors inline-block"
                                             >
                                                 <LetterSwapPingPong
-                                                    label="+971 55 468 4988"
+                                                    label="+971 58 971 7898"
                                                     className="text-base sm:text-lg md:text-xl text-neutral-900 font-generalsans group-hover:text-neutral-700 transition-colors"
                                                 />
                                             </a>
