@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FiX } from "@react-icons/all-files/fi/FiX";
 import { FiCheckCircle } from "@react-icons/all-files/fi/FiCheckCircle";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useUTMTracking } from "@/hooks/useUTMTracking";
 const PHONE_PREFIX = "+971";
 const PHONE_DIGITS_LENGTH = 9;
@@ -81,7 +81,7 @@ export default function LeadCaptureModal({
     null
   );
   const [message, setMessage] = useState<string>("");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -223,7 +223,7 @@ export default function LeadCaptureModal({
       }, 1000);
       setTimeout(() => {
         setSubmitStatus(null);
-        navigate("/thank-you", { replace: true });
+        // navigate("/thank-you", { replace: true });
       }, 1500);
     } catch (error) {
       console.error(error);
@@ -315,7 +315,7 @@ export default function LeadCaptureModal({
                 WebkitMaskComposite: "source-in",
               }}
             />
-            
+
             {/* Content wrapper */}
             <div className="relative z-10 -m-6 sm:-m-8 p-6 sm:p-8 rounded-xl">
               {/* Close button */}
@@ -333,180 +333,180 @@ export default function LeadCaptureModal({
               </button>
 
               {submitStatus === "success" ? (
-              <div className="text-center py-8">
-                <FiCheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
-                <p className="text-xl text-white font-semibold font-clashdisplay">
-                  {message}
-                </p>
-              </div>
-            ) : submitStatus === "error" ? (
-              <div className="text-center py-8">
-                <div className="text-6xl mb-4">⚠️</div>
-                <p className="text-lg text-red-300 font-semibold mb-2 font-clashdisplay">
-                  Sorry, something went wrong.
-                </p>
-                <p className="text-sm text-white/70 font-generalsans">
-                  {message}
-                </p>
-              </div>
-            ) : (
-              <>
-                {/* Headline */}
-                <h2
-                  id="modal-headline"
-                  className="text-xl sm:text-2xl lg:text-3xl font-clashdisplay font-medium text-text-primary mb-3 pr-8 leading-tight"
-                >
-                  {config.headline}
-                </h2>
-
-                {/* Subtext */}
-                <p className="text-text-secondary font-medium mb-6 text-md sm:text-lg font-generalsans leading-relaxed">
-                  {config.subtext}
-                </p>
-
-                {/* Trust line */}
-                {config.trustLine && (
-                  <p className="text-sm sm:text-base text-text-secondary font-medium mb-6 italic font-generalsans">
-                    {config.trustLine}
+                <div className="text-center py-8">
+                  <FiCheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
+                  <p className="text-xl text-white font-semibold font-clashdisplay">
+                    {message}
                   </p>
-                )}
+                </div>
+              ) : submitStatus === "error" ? (
+                <div className="text-center py-8">
+                  <div className="text-6xl mb-4">⚠️</div>
+                  <p className="text-lg text-red-300 font-semibold mb-2 font-clashdisplay">
+                    Sorry, something went wrong.
+                  </p>
+                  <p className="text-sm text-white/70 font-generalsans">
+                    {message}
+                  </p>
+                </div>
+              ) : (
+                <>
+                  {/* Headline */}
+                  <h2
+                    id="modal-headline"
+                    className="text-xl sm:text-2xl lg:text-3xl font-clashdisplay font-medium text-text-primary mb-3 pr-8 leading-tight"
+                  >
+                    {config.headline}
+                  </h2>
 
-                {/* Form */}
-                <form
-                  onSubmit={handleSubmit(onSubmit)}
-                  noValidate
-                  className="space-y-4"
-                  id="lead-capture-form"
-                >
-                  {/* Name */}
-                  <div>
-                    <label
-                      htmlFor="modal-name"
-                      className="block text-text-secondary font-medium font-generalsans text-sm sm:text-base mb-2"
-                    >
-                      Enter Your Full Name * :
-                    </label>
-                    <input
-                      id="modal-name"
-                      type="text"
-                      {...register("name", { required: "Name is required" })}
-                      placeholder="Your name"
-                      className={cn(
-                        "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300  text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
-                        errors.name && "border-red-500"
+                  {/* Subtext */}
+                  <p className="text-text-secondary font-medium mb-6 text-md sm:text-lg font-generalsans leading-relaxed">
+                    {config.subtext}
+                  </p>
+
+                  {/* Trust line */}
+                  {config.trustLine && (
+                    <p className="text-sm sm:text-base text-text-secondary font-medium mb-6 italic font-generalsans">
+                      {config.trustLine}
+                    </p>
+                  )}
+
+                  {/* Form */}
+                  <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    noValidate
+                    className="space-y-4"
+                    id="lead-capture-form"
+                  >
+                    {/* Name */}
+                    <div>
+                      <label
+                        htmlFor="modal-name"
+                        className="block text-text-secondary font-medium font-generalsans text-sm sm:text-base mb-2"
+                      >
+                        Enter Your Full Name * :
+                      </label>
+                      <input
+                        id="modal-name"
+                        type="text"
+                        {...register("name", { required: "Name is required" })}
+                        placeholder="Your name"
+                        className={cn(
+                          "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300  text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
+                          errors.name && "border-red-500"
+                        )}
+                      />
+                      {errors.name && (
+                        <p className="mt-1 text-sm text-red-300 font-generalsans">
+                          {errors.name.message}
+                        </p>
                       )}
-                    />
-                    {errors.name && (
-                      <p className="mt-1 text-sm text-red-300 font-generalsans">
-                        {errors.name.message}
-                      </p>
-                    )}
-                  </div>
+                    </div>
 
-                  {/* Email */}
-                  <div>
-                    <label
-                      htmlFor="modal-email"
-                      className="block text-text-secondary font-medium font-generalsans text-sm sm:text-base mb-2"
-                    >
-                      Enter Your Email Address * :
-                    </label>
-                    <input
-                      id="modal-email"
-                      type="email"
-                      {...register("email", {
-                        required: "Email is required",
-                        pattern: {
-                          value: /^\S+@\S+$/i,
-                          message: "Invalid email address",
-                        },
-                      })}
-                      placeholder="Your email"
-                      className={cn(
-                        "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
-                        errors.email && "border-red-500"
+                    {/* Email */}
+                    <div>
+                      <label
+                        htmlFor="modal-email"
+                        className="block text-text-secondary font-medium font-generalsans text-sm sm:text-base mb-2"
+                      >
+                        Enter Your Email Address * :
+                      </label>
+                      <input
+                        id="modal-email"
+                        type="email"
+                        {...register("email", {
+                          required: "Email is required",
+                          pattern: {
+                            value: /^\S+@\S+$/i,
+                            message: "Invalid email address",
+                          },
+                        })}
+                        placeholder="Your email"
+                        className={cn(
+                          "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
+                          errors.email && "border-red-500"
+                        )}
+                      />
+                      {errors.email && (
+                        <p className="mt-1 text-sm text-red-300 font-generalsans">
+                          {errors.email.message}
+                        </p>
                       )}
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-sm text-red-300 font-generalsans">
-                        {errors.email.message}
-                      </p>
-                    )}
-                  </div>
+                    </div>
 
-                  {/* Phone */}
-                  <div>
-                    <label
-                      htmlFor="modal-phone"
-                      className="block text-text-secondary font-medium font-generalsans text-sm sm:text-base mb-2"
-                    >
-                      Enter Your Phone Number * :
-                    </label>
-                    <Controller
-                      name="phone"
-                      control={control}
-                      rules={{ validate: validateUAEPhone }}
-                      render={({ field }) => (
-                        <>
-                          <input
-                            id="modal-phone"
-                            type="tel"
-                            value={field.value}
-                            onChange={(e) =>
-                              field.onChange(formatPhoneNumber(e.target.value))
-                            }
-                            onKeyDown={(e) => {
-                              if (e.key === "Backspace" || e.key === "Delete") {
-                                const input = e.currentTarget;
-                                const cursorPos = input.selectionStart || 0;
-                                const selectionEnd = input.selectionEnd || 0;
-                                const hasSelection = cursorPos !== selectionEnd;
-
-                                if (
-                                  field.value.startsWith(PHONE_PREFIX) &&
-                                  cursorPos <= PHONE_PREFIX.length &&
-                                  !hasSelection
-                                ) {
-                                  e.preventDefault();
-                                }
+                    {/* Phone */}
+                    <div>
+                      <label
+                        htmlFor="modal-phone"
+                        className="block text-text-secondary font-medium font-generalsans text-sm sm:text-base mb-2"
+                      >
+                        Enter Your Phone Number * :
+                      </label>
+                      <Controller
+                        name="phone"
+                        control={control}
+                        rules={{ validate: validateUAEPhone }}
+                        render={({ field }) => (
+                          <>
+                            <input
+                              id="modal-phone"
+                              type="tel"
+                              value={field.value}
+                              onChange={(e) =>
+                                field.onChange(formatPhoneNumber(e.target.value))
                               }
-                            }}
-                            onBlur={field.onBlur}
-                            placeholder="Your phone number"
-                            className={cn(
-                              "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
-                              errors.phone && "border-red-500"
+                              onKeyDown={(e) => {
+                                if (e.key === "Backspace" || e.key === "Delete") {
+                                  const input = e.currentTarget;
+                                  const cursorPos = input.selectionStart || 0;
+                                  const selectionEnd = input.selectionEnd || 0;
+                                  const hasSelection = cursorPos !== selectionEnd;
+
+                                  if (
+                                    field.value.startsWith(PHONE_PREFIX) &&
+                                    cursorPos <= PHONE_PREFIX.length &&
+                                    !hasSelection
+                                  ) {
+                                    e.preventDefault();
+                                  }
+                                }
+                              }}
+                              onBlur={field.onBlur}
+                              placeholder="Your phone number"
+                              className={cn(
+                                "w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2",
+                                errors.phone && "border-red-500"
+                              )}
+                            />
+                            {errors.phone && (
+                              <p className="mt-1 text-sm text-red-300 font-generalsans">
+                                {errors.phone.message}
+                              </p>
                             )}
-                          />
-                          {errors.phone && (
-                            <p className="mt-1 text-sm text-red-300 font-generalsans">
-                              {errors.phone.message}
-                            </p>
-                          )}
-                        </>
-                      )}
-                    />
-                  </div>
+                          </>
+                        )}
+                      />
+                    </div>
 
-                  {/* Honeypot */}
-                  <div className="hidden">
-                    <input
-                      type="text"
-                      {...register("website")}
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
-                  </div>
+                    {/* Honeypot */}
+                    <div className="hidden">
+                      <input
+                        type="text"
+                        {...register("website")}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
 
-                  <input type="hidden" {...register("utm_source")} />
-                  <input type="hidden" {...register("utm_medium")} />
-                  <input type="hidden" {...register("utm_campaign")} />
-                  <input type="hidden" {...register("utm_term")} />
-                  <input type="hidden" {...register("utm_content")} />
+                    <input type="hidden" {...register("utm_source")} />
+                    <input type="hidden" {...register("utm_medium")} />
+                    <input type="hidden" {...register("utm_campaign")} />
+                    <input type="hidden" {...register("utm_term")} />
+                    <input type="hidden" {...register("utm_content")} />
 
-                  {/* Submit button */}
-                  <div className="w-full">
-                    <style>{`
+                    {/* Submit button */}
+                    <div className="w-full">
+                      <style>{`
                       @keyframes drawSendPath {
                         0% {
                           stroke-dasharray: 1000;
@@ -521,54 +521,54 @@ export default function LeadCaptureModal({
                         }
                       }
                     `}</style>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={cn(
-                        "font-generalsans font-normal text-xs sm:text-sm md:text-base py-2 w-full bg-white shadow-sm text-text-primary border border-neutral-200 rounded-lg ring ring-neutral-200 ring-offset-2 md:ring-offset-4 transition-colors hover:shadow-none cursor-pointer flex items-center justify-center gap-2 hover:bg-neutral-500 hover:text-white",
-                        {
-                          "opacity-50 cursor-not-allowed pointer-events-none": isSubmitting,
-                        }
-                      )}
-                    >
-                      <span>{isSubmitting ? "Sending..." : config.cta}</span>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="icon icon-tabler icons-tabler-outline icon-tabler-send"
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={cn(
+                          "font-generalsans font-normal text-xs sm:text-sm md:text-base py-2 w-full bg-white shadow-sm text-text-primary border border-neutral-200 rounded-lg ring ring-neutral-200 ring-offset-2 md:ring-offset-4 transition-colors hover:shadow-none cursor-pointer flex items-center justify-center gap-2 hover:bg-neutral-500 hover:text-white",
+                          {
+                            "opacity-50 cursor-not-allowed pointer-events-none": isSubmitting,
+                          }
+                        )}
                       >
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                          d="M10 14l11 -11"
-                          style={{
-                            strokeDasharray: 1000,
-                            strokeDashoffset: 1000,
-                            animation: "drawSendPath 4s ease-in-out infinite",
-                            animationDelay: "0.5s",
-                          }}
-                        />
-                        <path
-                          d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
-                          style={{
-                            strokeDasharray: 1000,
-                            strokeDashoffset: 1000,
-                            animation: "drawSendPath 4s ease-in-out infinite",
-                            animationDelay: "0.8s",
-                          }}
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </form>
-              </>
-            )}
+                        <span>{isSubmitting ? "Sending..." : config.cta}</span>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          className="icon icon-tabler icons-tabler-outline icon-tabler-send"
+                        >
+                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                          <path
+                            d="M10 14l11 -11"
+                            style={{
+                              strokeDasharray: 1000,
+                              strokeDashoffset: 1000,
+                              animation: "drawSendPath 4s ease-in-out infinite",
+                              animationDelay: "0.5s",
+                            }}
+                          />
+                          <path
+                            d="M21 3l-6.5 18a.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a.55 .55 0 0 1 0 -1l18 -6.5"
+                            style={{
+                              strokeDasharray: 1000,
+                              strokeDashoffset: 1000,
+                              animation: "drawSendPath 4s ease-in-out infinite",
+                              animationDelay: "0.8s",
+                            }}
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                  </form>
+                </>
+              )}
 
               <span className="sr-only" aria-live="polite">
                 {isOpen ? "Modal open" : "Modal closed"}

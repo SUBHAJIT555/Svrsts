@@ -38,23 +38,22 @@ const ContactForm = () => {
         setSubmitStatus({ type: null, message: '' })
 
         try {
+            const formData = new FormData()
+            formData.append('formType', 'contact')
+            formData.append('fullName', data.fullName)
+            formData.append('mobileNumber', data.mobileNumber)
+            formData.append('service', data.service)
+            formData.append('preferredDate', data.preferredDate)
+            formData.append('location', data.location)
+            formData.append('message', data.message || '')
+
             const response = await fetch('/mail.php', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams({
-                    formType: 'contact',
-                    fullName: data.fullName,
-                    mobileNumber: data.mobileNumber,
-                    service: data.service,
-                    preferredDate: data.preferredDate,
-                    location: data.location,
-                    message: data.message || '',
-                }),
+                body: formData,
             })
 
             const result = await response.json()
+            console.log(result)
 
             if (!response.ok || !result.success) {
                 throw new Error(result.error || 'Failed to submit form')

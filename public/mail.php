@@ -1,5 +1,8 @@
 <?php
 
+// Start output buffering to catch any unexpected output
+ob_start();
+
 // --- CORS ---
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 $allowed = [
@@ -16,6 +19,7 @@ header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization, X-Requested-With');
 header('Access-Control-Max-Age: 86400');
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    ob_end_clean();
     http_response_code(204);
     exit;
 }
@@ -26,7 +30,23 @@ mb_internal_encoding('UTF-8');
 header('Content-Type: application/json; charset=utf-8');
 
 // --- Autoload ---
-require __DIR__ . '/vendor/autoload.php';
+$autoloadPath = __DIR__ . '/vendor/autoload.php';
+if (!file_exists($autoloadPath)) {
+    ob_end_clean();
+    http_response_code(500);
+    echo json_encode(['error' => 'Autoload file not found. Please run composer install.']);
+    exit;
+}
+
+try {
+    require $autoloadPath;
+} catch (Throwable $e) {
+    ob_end_clean();
+    http_response_code(500);
+    echo json_encode(['error' => 'Failed to load dependencies: ' . $e->getMessage()]);
+    exit;
+}
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -50,13 +70,27 @@ function required(array $arr): ?string
 
 // --- Request validation ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    ob_end_clean();
     http_response_code(405);
     echo json_encode(['error' => 'Only POST allowed.']);
     exit;
 }
 
+// Parse input if Content-Type is application/x-www-form-urlencoded and POST is empty
+$contentType = $_SERVER['CONTENT_TYPE'] ?? '';
+if (strpos($contentType, 'application/x-www-form-urlencoded') !== false && empty($_POST)) {
+    parse_str(file_get_contents('php://input'), $_POST);
+}
+
+// Add this right after the FormData parsing section (around line 83)
+// Temporary debugging - remove after fixing
+error_log('POST data: ' . print_r($_POST, true));
+error_log('Content-Type: ' . ($_SERVER['CONTENT_TYPE'] ?? 'not set'));
+error_log('FormType: ' . v('formType'));
+
 $formType = v('formType');
 if (!in_array($formType, ['contact', 'newsletter', 'marketing-modal', 'exit-intent-modal', 'booking-modal'], true)) {
+    ob_end_clean();
     http_response_code(400);
     echo json_encode(['error' => 'Invalid formType.']);
     exit;
@@ -74,24 +108,28 @@ if ($formType === 'contact') {
             'location' => 'Location'
         ])
     ) {
+        ob_end_clean();
         http_response_code(422);
         echo json_encode(['error' => $msg]);
         exit;
     }
 } elseif ($formType === 'newsletter') {
     if ($msg = required(['email' => 'Email'])) {
+        ob_end_clean();
         http_response_code(422);
         echo json_encode(['error' => $msg]);
         exit;
     }
 } elseif ($formType === 'marketing-modal' || $formType === 'exit-intent-modal') {
     if ($msg = required(['name' => 'Name', 'email' => 'Email', 'phone' => 'Phone'])) {
+        ob_end_clean();
         http_response_code(422);
         echo json_encode(['error' => $msg]);
         exit;
     }
 } elseif ($formType === 'booking-modal') {
     if ($msg = required(['name' => 'Name', 'email' => 'Email', 'phone' => 'Phone', 'address' => 'Address', 'message' => 'Message'])) {
+        ob_end_clean();
         http_response_code(422);
         echo json_encode(['error' => $msg]);
         exit;
@@ -100,14 +138,16 @@ if ($formType === 'contact') {
 
 // --- Email validation ---
 $email = v('email');
-if ($formType !== 'newsletter' && !$email) {
-    // For newsletter, email validation happens in required check
-    // For other forms, email should be present
+// Email is required for newsletter, lead capture modals, and booking modal
+// Email is optional for contact form
+if (!in_array($formType, ['newsletter', 'contact'], true) && !$email) {
+    ob_end_clean();
     http_response_code(422);
     echo json_encode(['error' => 'Email is required.']);
     exit;
 }
 if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    ob_end_clean();
     http_response_code(422);
     echo json_encode(['error' => 'Invalid email.']);
     exit;
@@ -197,6 +237,12 @@ if ($formType === 'contact') {
 
     $contactDetails .= '<p><strong>Full Name:</strong> ' . clean($fullName) . '</p>';
     $contactDetails .= '<p><strong>Mobile Number:</strong> ' . clean($mobileNumber) . '</p>';
+    
+    // Email is optional for contact form
+    if ($email) {
+        $contactDetails .= '<p><strong>Email:</strong> ' . clean($email) . '</p>';
+    }
+    
     $contactDetails .= '<p><strong>Service:</strong> ' . clean($service) . '</p>';
     
     if ($preferredDate) {
@@ -405,6 +451,8 @@ $alt = strip_tags($subject) . "\n\n";
 if ($formType === 'contact') {
     $alt .= "Full Name: " . v('fullName') . "\n";
     $alt .= "Mobile Number: " . v('mobileNumber') . "\n";
+    if ($email)
+        $alt .= "Email: " . $email . "\n";
     $alt .= "Service: " . v('service') . "\n";
     if (v('preferredDate'))
         $alt .= "Preferred Date: " . v('preferredDate') . "\n";
@@ -452,15 +500,16 @@ try {
     foreach ($toAddresses as [$addr, $nm])
         $mail->addAddress($addr, $nm);
     
-    // Set reply-to based on form type
-    if ($formType === 'newsletter') {
-        $mail->addReplyTo($email, 'Newsletter Subscriber');
-    } else {
-        $replyName = v('name') ?: v('fullName') ?: 'Customer';
-        $mail->addReplyTo($email, $replyName);
+    // Set reply-to based on form type (only if email is provided)
+    if ($email) {
+        if ($formType === 'newsletter') {
+            $mail->addReplyTo($email, 'Newsletter Subscriber');
+        } else {
+            $replyName = v('name') ?: v('fullName') ?: 'Customer';
+            $mail->addReplyTo($email, $replyName);
+        }
     }
     
-    $mail->addCC('data@idigitalise.co.in', 'Idigitalise');
 
     $mail->isHTML(true);
     $mail->Subject = $subject;
@@ -478,48 +527,53 @@ try {
 
         $mail->setFrom('no-reply@baharnani.com', $fromName);
         
-        // Get customer name based on form type
-        $customerName = clean(v('name') ?: v('fullName') ?: 'Valued Customer');
-        $mail->addAddress($email, $customerName);
+        // Skip auto-reply for newsletter subscriptions or if no email is provided
+        if ($formType !== 'newsletter' && $email || $formType === 'contact') {
+            // Get customer name based on form type
+            $customerName = clean(v('name') ?: v('fullName') ?: 'Valued Customer');
+            $mail->addAddress($email, $customerName);
 
-        // Skip auto-reply for newsletter subscriptions
-        if ($formType === 'newsletter') {
-            return;
+            $mail->Subject = "Thanks for contacting $brandName";
+            $mail->isHTML(true);
+            $autoReplyHtml = "
+                <div style='font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
+                    <p style='font-size: 16px; color: #333; margin-bottom: 16px;'>Hi " . $customerName . ",</p>
+                    <p style='font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 16px;'>
+                        Thanks for reaching out to <strong>$brandName</strong>. Our team has received your details and will contact you shortly.
+                    </p>
+                    <p style='font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 16px;'>
+                        If it's urgent, feel free to reply to this email.
+                    </p>
+                    <br>
+                    <p style='font-size: 15px; color: #333; margin-top: 24px;'>
+                        Regards,<br>
+                        <strong>$brandName Team</strong>
+                    </p>
+                </div>
+            ";
+
+            $mail->Body = $autoReplyHtml;
+            $mail->AltBody = "Hi " . $customerName . ",\n\nThanks for reaching out to $brandName. Our team has received your details and will contact you shortly.\n\nIf it's urgent, feel free to reply to this email.\n\nRegards,\n$brandName Team";
+
+            $mail->send();
         }
-
-        $mail->Subject = "Thanks for contacting $brandName";
-        $mail->isHTML(true);
-        $autoReplyHtml = "
-            <div style='font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
-                <p style='font-size: 16px; color: #333; margin-bottom: 16px;'>Hi " . $customerName . ",</p>
-                <p style='font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 16px;'>
-                    Thanks for reaching out to <strong>$brandName</strong>. Our team has received your details and will contact you shortly.
-                </p>
-                <p style='font-size: 15px; color: #555; line-height: 1.6; margin-bottom: 16px;'>
-                    If it's urgent, feel free to reply to this email.
-                </p>
-                <br>
-                <p style='font-size: 15px; color: #333; margin-top: 24px;'>
-                    Regards,<br>
-                    <strong>$brandName Team</strong>
-                </p>
-            </div>
-        ";
-
-        $mail->Body = $autoReplyHtml;
-        $mail->AltBody = "Hi " . $customerName . ",\n\nThanks for reaching out to $brandName. Our team has received your details and will contact you shortly.\n\nIf it's urgent, feel free to reply to this email.\n\nRegards,\n$brandName Team";
-
-        $mail->send();
     } catch (Exception $e) {
         error_log('Auto-reply Error: ' . $mail->ErrorInfo);
         // Don't block the main form – auto-reply failure should not return error to user
     }
 
+    // Clear any unexpected output before sending JSON
+    ob_end_clean();
     echo json_encode(['success' => true, 'message' => 'Message sent successfully.']);
 } catch (Exception $e) {
+    ob_end_clean();
     error_log('Mailer Error: ' . $mail->ErrorInfo);
     http_response_code(500);
     echo json_encode(['error' => $mail->ErrorInfo]);
-    // echo json_encode(['error' => 'Failed to send email.']);
+} catch (Throwable $e) {
+    ob_end_clean();
+    error_log('PHP Error: ' . $e->getMessage());
+    http_response_code(500);
+    echo json_encode(['error' => 'An error occurred: ' . $e->getMessage()]);
 }
 
