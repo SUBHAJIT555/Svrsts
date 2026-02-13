@@ -178,7 +178,7 @@ const ContactForm = () => {
                                 type="text"
                                 id="fullName"
                                 {...register('fullName', { required: 'Full Name is required' })}
-                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:ring-2 focus:ring-neutral-500/30 focus:border-neutral-500outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.fullName ? 'border-red-300' : 'border-gray-300'
+                                className={`w-full px-4 py-3 border rounded-lg bg-white focus:ring focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-200  outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.fullName ? 'border-red-300' : 'border-gray-300'
                                     }`}
                                 placeholder="Enter your full name"
                             />
@@ -202,7 +202,7 @@ const ContactForm = () => {
                                         message: 'Please enter a valid mobile number',
                                     },
                                 })}
-                                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-neutral-500/30 focus:border-neutral-500 outline-none bg-white transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.mobileNumber ? 'border-red-300' : 'border-gray-300'
+                                className={`w-full px-4 py-3 border rounded-lg focus:ring focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-200  bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.mobileNumber ? 'border-red-300' : 'border-gray-300'
                                     }`}
                                 placeholder="Enter your mobile number"
                             />
@@ -219,10 +219,19 @@ const ContactForm = () => {
                             <select
                                 id="service"
                                 {...register('service', { required: 'Service is required' })}
-                                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-neutral-500/30 focus:border-neutral-500outline-none bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.service ? 'border-red-300' : 'border-gray-300'
+                                className={`w-full px-4 py-3 border rounded-lg focus:ring focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-200  bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.service ? 'border-red-300' : 'border-gray-300'
                                     }`}
                             >
                                 <option value="">Select a service</option>
+                                <option value="Exhibition Stand Building">Exhibition Stand Building</option>
+                                <option value="Wood Work">Wood Work</option>
+                                <option value="Event Decoration">Event Decoration</option>
+                                <option value="Office Interior">Office Interior</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Interior Design">Interior Design</option>
+                                <option value="Painting Services">Painting Services</option>
+                                <option value="Complete Interior Solutions">Complete Interior Solutions</option>
+                                <option value="Others">Others</option>
                             </select>
                             {errors.service && (
                                 <p className="mt-1 text-sm text-red-600 font-generalsans">{errors.service.message}</p>
@@ -250,7 +259,7 @@ const ContactForm = () => {
                                         }
                                     }}
                                     min={new Date().toISOString().split('T')[0]}
-                                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-neutral-500/30 focus:border-neutral-500outline-none bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg cursor-pointer ${errors.preferredDate ? 'border-red-300' : 'border-gray-300'
+                                    className={`w-full px-4 py-3 border rounded-lg focus:ring focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-200  bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg cursor-pointer ${errors.preferredDate ? 'border-red-300' : 'border-gray-300'
                                         }`}
                                     style={{ cursor: 'pointer' }}
                                 />
@@ -269,7 +278,7 @@ const ContactForm = () => {
                                 type="text"
                                 id="location"
                                 {...register('location', { required: 'Location is required' })}
-                                className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-neutral-500/30 focus:border-neutral-500outline-none bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.location ? 'border-red-300' : 'border-gray-300'
+                                className={`w-full px-4 py-3 border rounded-lg focus:ring focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-200  bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg ${errors.location ? 'border-red-300' : 'border-gray-300'
                                     }`}
                                 placeholder="Enter your location (e.g., Dubai, UAE)"
                             />
@@ -287,7 +296,7 @@ const ContactForm = () => {
                                 id="message"
                                 {...register('message')}
                                 rows={5}
-                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-neutral-500/30 focus:border-neutral-500outline-none bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg resize-none"
+                                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring focus:ring-neutral-300 focus:ring-offset-2 focus:border-neutral-200  bg-white outline-none transition-all font-generalsans text-gray-900 text-base sm:text-lg resize-none"
                                 placeholder="Any additional details or special requests..."
                             />
                         </div>
@@ -317,7 +326,7 @@ const ContactForm = () => {
                                 label="Submit Your Request"
                                 onClick={() => handleSubmit(onSubmit)}
                                 variant="dark"
-                                className="font-generalsans bg-linear-to-r from-neutral-500 to-neutral-800 cursor-pointer"
+                                className="font-generalsans bg-linear-to-r from-neutral-500 to-neutral-800 cursor-pointer ring ring-neutral-300 text-white ring-offset-2 md:ring-offset-4 ring-offset-neutral-100"
                             />
                         </div>
                     </form>

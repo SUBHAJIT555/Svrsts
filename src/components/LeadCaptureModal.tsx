@@ -354,7 +354,7 @@ export default function LeadCaptureModal({
                 {/* Headline */}
                 <h2
                   id="modal-headline"
-                  className="text-xl sm:text-2xl lg:text-3xl font-clashdisplay font-medium text-text-primary mb-3 pr-8 leading-tight uppercase"
+                  className="text-xl sm:text-2xl lg:text-3xl font-clashdisplay font-medium text-text-primary mb-3 pr-8 leading-tight"
                 >
                   {config.headline}
                 </h2>

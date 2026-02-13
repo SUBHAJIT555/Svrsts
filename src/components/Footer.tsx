@@ -381,7 +381,7 @@ const Footer = () => {
                     required
                     {...register("email")}
                     placeholder="username@example.com"
-                    className="w-full px-4 py-3 bg-transparent backdrop-blur-sm border-0 border-b border-b-dashed border-b-neutral-300 text-text-primary placeholder:text-text-primary/50 text-xs md:text-base focus:outline-none focus:border-b-neutral-400 hover:border-b-neutral-400 transition-all duration-300 ease-in-out font-generalsans!"
+                    className="w-full px-4 py-3 border rounded-lg bg-white border-neutral-300 text-neutral-700 font-generalsans transition-colors focus:outline-none focus:ring focus:ring-neutral-300 focus:ring-offset-2"
                   />
 
                   <div className="flex justify-end mt-5">

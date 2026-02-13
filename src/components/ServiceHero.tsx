@@ -2,9 +2,11 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import CTAButton from "./ui/CTAButton";
 import { useNavigate } from "react-router-dom";
+import { useCallbackModalStore } from "./store/callbackModalStore";
 
 const ServiceHero = () => {
   const navigate = useNavigate();
+  const openCallbackModal = useCallbackModalStore((state) => state.openModal);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descriptionRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
@@ -166,8 +168,8 @@ const ServiceHero = () => {
 
           {/* Secondary Button */}
           <CTAButton
-            label="Explore Our Services"
-            onClick={() => navigate("/services")}
+            label="Request a CallBack"
+            onClick={openCallbackModal}
             variant="light"
             className="font-generalsans bg-linear-to-r from-neutral-100 to-neutral-300 cursor-pointer"
           />

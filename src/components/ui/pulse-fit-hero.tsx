@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import CTAButton from "./CTAButton";
+import { DitherShader } from "./dither-shader";
 
 export interface NavigationItem {
   label: string;
@@ -238,20 +239,18 @@ export function PulseFitHero({
                 onClick={program.onClick}
                 className="shrink-0 cursor-pointer relative overflow-hidden rounded-xl  p-2 w-[356px] h-[480px]  shadow-xl"
               >
-                <img
-                  src={program.image}
-                  alt=""
-                  className="w-full h-full object-cover rounded-md"
-                />
-                {/* Dither / stipple overlay for vintage print effect */}
-                <div
-                  className="absolute inset-0 opacity-[0.14] mix-blend-multiply pointer-events-none"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%23000'/%3E%3Ccircle cx='7' cy='1' r='0.6' fill='%23000'/%3E%3Ccircle cx='1' cy='7' r='0.6' fill='%23000'/%3E%3Ccircle cx='7' cy='7' r='0.6' fill='%23000'/%3E%3Ccircle cx='4' cy='4' r='0.5' fill='%23000'/%3E%3C/svg%3E")`,
-                    backgroundSize: "2px 2px",
-                  }}
-                  aria-hidden
-                />
+                <div className="absolute inset-2 rounded-md overflow-hidden" style={{ width: 'calc(100% - 1rem)', height: 'calc(100% - 1rem)' }}>
+                  <DitherShader
+                    src={program.image}
+                    className="w-full h-full"
+                    objectFit="cover"
+                    gridSize={1}
+                    ditherMode="bayer"
+                    colorMode="original"
+                    threshold={0.2}
+                    objectPosition="top"
+                  />
+                </div>
                 <div
                   className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.7)_100%)]"
                   aria-hidden

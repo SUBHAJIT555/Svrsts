@@ -282,11 +282,18 @@ const PrivacyPolicy = () => {
                     <p className="text-sm sm:text-base md:text-lg text-neutral-700 font-generalsans mb-2">
                       <strong>SVRS Technical Services</strong>
                     </p>
-                    <p className="text-sm sm:text-base md:text-lg text-neutral-700 font-generalsans mb-2">
-                      Dubai, United Arab Emirates
-                    </p>
+                    <a
+                      href="https://www.google.com/maps/place/SVRS+TECHNICAL+SERVICES/@25.1387876,55.2405537,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f694290ecd519:0xe9f7398a1c26f38c!8m2!3d25.1387828!4d55.2431286!16s%2Fg%2F11vbdm9smw?entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm sm:text-base md:text-lg text-neutral-700 font-generalsans mb-2 hover:text-neutral-900 transition-colors block"
+                    >
+                      BB-6 - Warehouse No,<br />
+                      Al quoz Industrial Area 2,<br />
+                      Dubai, United Arab Emirates.
+                    </a>
                     <p className="text-sm sm:text-base md:text-lg text-neutral-700 font-generalsans">
-                      Email: info@svrs.ae
+                      Email: <a href="mailto:info@svrsts.com" className="hover:text-neutral-900 transition-colors">info@svrsts.com</a>
                     </p>
                   </div>
                 </div>

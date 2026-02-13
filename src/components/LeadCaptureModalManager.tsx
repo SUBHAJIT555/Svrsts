@@ -6,7 +6,7 @@ import useLeadCaptureModalContext from "@/hooks/useLeadCaptureModalContext";
 
 // Marketing modal config (scroll trigger)
 const marketingModalConfig: LeadCaptureModalConfig = {
-    headline: "Get Professional Technical Services for Your Property",
+    headline: "Get Professional Technical Services For Your Event & Office.",
     subtext: "Share your details for a free expert consultation on maintenance, renovation, or repairs.",
     cta: "Get Free Consultation",
     trustLine: "Experienced technical service providers in Dubai.",

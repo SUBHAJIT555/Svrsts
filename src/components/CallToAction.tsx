@@ -74,7 +74,7 @@ const CallToAction = () => {
           />
           
           {/* Content wrapper - ensures text is visible */}
-          <div className="relative z-10 flex flex-col justify-between gap-y-4 sm:gap-y-5 md:gap-y-6 px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12">
+          <div className="relative z-10 flex flex-col justify-between gap-y-3 max-[640px]:gap-y-2.5 sm:gap-y-5 md:gap-y-6 px-3 max-[640px]:px-3 sm:px-6 md:px-8 lg:px-10 py-4 max-[640px]:py-4 sm:py-8 md:py-10 lg:py-12">
           {/* Plus Icons at corners */}
           {/* <svg
             className="absolute top-[-10px] sm:top-[-12px] left-[-9px] sm:left-[-11px] z-10 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-neutral-400"
@@ -152,10 +152,10 @@ const CallToAction = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={containerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                       transition={{ duration: 0.6 }}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-8 sm:mb-12 ring ring-neutral-300 ring-offset-2 md:ring-offset-4 w-fit mx-auto"
+                      className="inline-flex items-center gap-1.5 max-[640px]:gap-1 sm:gap-2 px-3 max-[640px]:px-2.5 sm:px-4 py-1.5 max-[640px]:py-1 sm:py-2 rounded-xl border border-neutral-300 bg-white/80 backdrop-blur-sm mb-4 max-[640px]:mb-3 sm:mb-8 md:mb-12 ring ring-neutral-300 ring-offset-1 max-[640px]:ring-offset-1 sm:ring-offset-2 md:ring-offset-4 w-fit mx-auto"
                   >
-                      <div className="size-3 rounded bg-yellow-400" />
-                      <span className="text-xs sm:text-sm font-generalsans font-medium text-neutral-700">
+                      <div className="size-2 max-[640px]:size-1.5 sm:size-3 rounded bg-yellow-400" />
+                      <span className="text-[10px] max-[640px]:text-[10px] sm:text-xs md:text-sm font-generalsans font-medium text-neutral-700">
                           Get In Touch
                       </span>
                   </motion.div>
@@ -163,7 +163,7 @@ const CallToAction = () => {
           {/* Content */}
           <div className="space-y-2 sm:space-y-2.5 md:space-y-3">
             <motion.h2
-              className="text-center font-clashdisplay font-normal text-xl sm:text-2xl md:text-3xl lg:text-4xl text-neutral-800 leading-tight sm:leading-snug md:leading-normal"
+              className="text-center font-clashdisplay font-normal text-lg max-[640px]:text-base sm:text-2xl md:text-3xl lg:text-4xl text-neutral-800 leading-tight sm:leading-snug md:leading-normal px-1"
               initial={{ opacity: 0, y: 20 }}
               animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -171,7 +171,7 @@ const CallToAction = () => {
               Ready to Transform Your Space?
             </motion.h2>
             <motion.p
-              className="text-center text-neutral-600 font-generalsans text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed"
+              className="text-center text-neutral-600 font-generalsans text-xs max-[640px]:text-[11px] sm:text-base md:text-lg max-w-2xl mx-auto px-2 sm:px-0 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -180,9 +180,9 @@ const CallToAction = () => {
             </motion.p>
           </div>
 
-          {/* Buttons - smaller size */}
+          {/* Buttons - full width on small screens */}
           <motion.div
-            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-3 md:gap-4 w-full sm:w-auto"
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 max-[640px]:gap-2 sm:gap-3 md:gap-4 w-full max-[640px]:px-1 sm:w-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={contentInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -191,13 +191,13 @@ const CallToAction = () => {
               label="Request Call Back"
               onClick={() => openCallbackModal()}
               variant="light"
-              className="font-generalsans w-fit sm:w-auto bg-linear-to-r from-neutral-200 to-white cursor-pointer shadow-none ring ring-neutral-300 text-neutral-900  ring-offset-2 md:ring-offset-4 ml-2"
+              className="font-generalsans w-full max-[640px]:text-xs max-[640px]:py-2 max-[640px]:px-3 sm:w-auto sm:text-sm bg-linear-to-r from-neutral-200 to-white cursor-pointer shadow-none ring ring-neutral-300 text-neutral-900 ring-offset-2 md:ring-offset-4 max-[640px]:ml-0 sm:ml-2"
             />
             <CTAButton
               label="Contact Us Now"
               onClick={() => navigate("/contact-us")}
               variant="dark"
-              className="font-generalsans w-fit sm:w-auto bg-linear-to-l from-neutral-500 to-neutral-900 cursor-pointer shadow-none ring ring-neutral-300 text-white  ring-offset-2 md:ring-offset-4 ml-2"
+              className="font-generalsans w-full max-[640px]:text-xs max-[640px]:py-2 max-[640px]:px-3 sm:w-auto sm:text-sm bg-linear-to-l from-neutral-500 to-neutral-900 cursor-pointer shadow-none ring ring-neutral-300 text-white ring-offset-2 md:ring-offset-4 max-[640px]:ml-0 sm:ml-2"
             />
           </motion.div>
           </div>

@@ -18,7 +18,7 @@ const ContactAddress = () => {
         <section className="min-h-screen w-full relative bg-transparent">
             {/* Content - background from Contact.tsx wrapper */}
             <div ref={containerRef} className="relative z-10 w-full px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-16 sm:py-20 md:py-24 lg:py-32">
-                <div className="w-full max-w-6xl mx-auto">
+                <div className="w-full max-w-7xl mx-auto">
                     {/* Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -72,17 +72,25 @@ const ContactAddress = () => {
                                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-clashdisplay font-medium text-neutral-900 mb-4 sm:mb-6">
                                     Our Address
                                 </h3>
-                                <div className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans leading-relaxed space-y-2">
+                                <div className="text-base sm:text-lg md:text-xl text-neutral-600 font-generalsans">
                                     <p className="font-semibold text-neutral-900">SVRS Technical Services</p>
-                                    <p>Office No-111, Al Makteb building</p>
-                                    <p>Al quoz - 3, Dubai, UAE.</p>
+                                    <a
+                                        href="https://www.google.com/maps/place/SVRS+TECHNICAL+SERVICES/@25.1387876,55.2405537,17z/data=!3m1!4b1!4m6!3m5!1s0x3e5f694290ecd519:0xe9f7398a1c26f38c!8m2!3d25.1387828!4d55.2431286!16s%2Fg%2F11vbdm9smw?entry=ttu&g_ep=EgoyMDI2MDIxMC4wIKXMDSoASAFQAw%3D%3D"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="hover:text-neutral-900 transition-colors"
+                                    >
+                                        <p>BB-6 - Warehouse No,</p>
+                                        <p>Al quoz Industrial Area 2,</p>
+                                        <p>Dubai, United Arab Emirates.</p>
+                                    </a>
                                 </div>
                             </div>
 
                             {/* Embedded Google Map */}
                             <div className="w-full h-[300px] sm:h-[400px] md:h-[450px] overflow-hidden rounded-xl border border-neutral-200 shadow-lg">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.198509554!2d55.2408!3d25.2048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDEyJzE3LjMiTiA1NcKwMTQnMjYuOSJF!5e0!3m2!1sen!2sae!4v1234567890123!5m2!1sen!2sae"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.1234567890123!2d55.2431286!3d25.1387828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f694290ecd519%3A0xe9f7398a1c26f38c!2sSVRS%20TECHNICAL%20SERVICES!5e0!3m2!1sen!2sae!4v1736789012345!5m2!1sen!2sae"
                                     width="100%"
                                     height="100%"
                                     style={{ border: 0 }}
@@ -90,6 +98,7 @@ const ContactAddress = () => {
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
                                     className="w-full h-full"
+                                    title="SVRS Technical Services Location"
                                 />
                             </div>
                         </motion.div>
@@ -118,11 +127,11 @@ const ContactAddress = () => {
                                                 Email Us
                                             </p>
                                             <a
-                                                href="mailto:info@svrs.ae"
+                                                href="mailto:info@svrsts.com"
                                                 className="text-base sm:text-lg md:text-xl text-neutral-900 font-generalsans hover:text-neutral-700 transition-colors inline-block"
                                             >
                                                 <LetterSwapPingPong
-                                                    label="info@svrs.ae"
+                                                    label="info@svrsts.com"
                                                     className="text-base sm:text-lg md:text-xl text-neutral-900 font-generalsans group-hover:text-neutral-700 transition-colors"
                                                 />
                                             </a>
