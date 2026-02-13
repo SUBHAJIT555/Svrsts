@@ -277,7 +277,7 @@ const Footer = () => {
 
                   <li>
                     <a
-                      href="mailto:support@example.com"
+                      href="mailto:support@svrsts.com"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
@@ -338,7 +338,7 @@ const Footer = () => {
 
                   <li>
                     <a
-                      href="mailto:info@svrsts.com"
+                      href="mailto:support@svrsts.com"
                       target="_blank"
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
