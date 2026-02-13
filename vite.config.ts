@@ -46,12 +46,12 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  // server: {
-  //   proxy: {
-  //     "/mail.php": {
-  //       target: "http://localhost/exhibition",
-  //       changeOrigin: true,
-  //     },
-  //   },
-  // },
+  server: {
+    proxy: {
+      "/mail.php": {
+        target: "http://localhost/exhibition",
+        changeOrigin: true,
+      },
+    },
+  },
 });

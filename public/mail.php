@@ -4,8 +4,8 @@
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 $allowed = [
     'http://localhost:5173',
-    'https://exhibitionstandsuae.ae',
-    'https://exhibitionstandsuae.ae',
+    'https://svrsts.com',
+    'https://www.svrsts.com',
 ];
 if ($origin && in_array($origin, $allowed, true)) {
     header("Access-Control-Allow-Origin: $origin");
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $formType = v('formType');
-if (!in_array($formType, ['contact', 'cta', 'newsletter', 'marketing-modal', 'exit-intent-modal'], true)) {
+if (!in_array($formType, ['contact', 'newsletter', 'marketing-modal', 'exit-intent-modal', 'booking-modal'], true)) {
     http_response_code(400);
     echo json_encode(['error' => 'Invalid formType.']);
     exit;
@@ -64,28 +64,14 @@ if (!in_array($formType, ['contact', 'cta', 'newsletter', 'marketing-modal', 'ex
 
 // --- Field validation ---
 if ($formType === 'contact') {
-    // ContactForm - require name, email, phone
-    // interestedIn, startBy, additionalInfo are optional
+    // ContactForm - require fullName, mobileNumber, service, preferredDate, location
     if (
         $msg = required([
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone'
-        ])
-    ) {
-        http_response_code(422);
-        echo json_encode(['error' => $msg]);
-        exit;
-    }
-} elseif ($formType === 'cta') {
-    // CTA form - require name, email, phone, subject, message
-    if (
-        $msg = required([
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'subject' => 'Subject',
-            'message' => 'Message'
+            'fullName' => 'Full Name',
+            'mobileNumber' => 'Mobile Number',
+            'service' => 'Service',
+            'preferredDate' => 'Preferred Date',
+            'location' => 'Location'
         ])
     ) {
         http_response_code(422);
@@ -104,21 +90,34 @@ if ($formType === 'contact') {
         echo json_encode(['error' => $msg]);
         exit;
     }
+} elseif ($formType === 'booking-modal') {
+    if ($msg = required(['name' => 'Name', 'email' => 'Email', 'phone' => 'Phone', 'address' => 'Address', 'message' => 'Message'])) {
+        http_response_code(422);
+        echo json_encode(['error' => $msg]);
+        exit;
+    }
 }
 
 // --- Email validation ---
 $email = v('email');
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+if ($formType !== 'newsletter' && !$email) {
+    // For newsletter, email validation happens in required check
+    // For other forms, email should be present
+    http_response_code(422);
+    echo json_encode(['error' => 'Email is required.']);
+    exit;
+}
+if ($email && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(422);
     echo json_encode(['error' => 'Invalid email.']);
     exit;
 }
 
-// --- Capture values before Google Sheets ---
-$name = v('name');
-$phone = v('phone');
+// --- Capture values ---
+$name = v('name') ?: v('fullName'); // Support both field names
+$phone = v('phone') ?: v('mobileNumber'); // Support both field names
 $message = v('message');
-$service = v('interestedIn'); // OR v('service') depending on your form
+$service = v('service') ?: v('interestedIn'); // Support both field names
 $serverip = $_SERVER['HTTP_X_FORWARDED_FOR']
     ?? $_SERVER['HTTP_CLIENT_IP']
     ?? $_SERVER['REMOTE_ADDR']
@@ -130,66 +129,20 @@ $utm_campaign = v('utm_campaign');
 $utm_term = v('utm_term');
 $utm_content = v('utm_content');
 
-  // --- Google Sheet Integration (non-blocking) ---
-  try {
-    $client = new \Google_Client();
-    $client->setApplicationName('Google Sheets API');
-    $client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
-    $client->setAccessType('offline');
-    $client->setAuthConfig(__DIR__ . '/credentials.json');
-
-    $serviceSheets = new \Google_Service_Sheets($client);
-    // $spreadsheetId = '1H1sAcoiGjUfx8aFQQku2XS6Ifq3WEh_Zndcd8Ae1mNw';
-    $spreadsheetId = '1aoGrSEOVx4dfG7Z2Fsy9wkFUk2jMPyKxMedXF10yU1g';
-    $range = 'ExhibitionLeads';
-
-
-    $existingRows = $serviceSheets->spreadsheets_values->get($spreadsheetId, $range)->getValues();
-    $srno = is_array($existingRows) ? count($existingRows) : 0;
-
-    // Clean and keep phone as text in sheet
-    $phoneCell = "'" . preg_replace("/[^0-9+\-\s()]/", '', $phone) . "'";
-
-    $newRow = [
-      $srno + 1,
-      date('M d, Y h:i:s A'),
-      $name,
-      $email,
-      $phoneCell,
-      $message,
-      $formType,
-      $service,
-      $serverip,
-      $utm_source,
-      $utm_medium,
-      $utm_campaign,
-      $utm_term,
-      $utm_content
-    ];
-
-    $valueRange = new \Google_Service_Sheets_ValueRange(['values' => [$newRow]]);
-    $options = ['valueInputOption' => 'USER_ENTERED'];
-    $serviceSheets->spreadsheets_values->append($spreadsheetId, $range, $valueRange, $options);
-    $sheetSynced = true;
-  } catch (\Throwable $e) {
-    error_log('Google Sheets sync failed: ' . $e->getMessage());
-    $sheetSynced = false;
-  }
-
 // --- SMTP CONFIG ---
-$smtpHost = 'd2929.fra1.stableserver.net';
-$smtpUser = 'admin@baharnani.com';
-$smtpPass = '#S=7GOAC1SJ5';
+$smtpHost = 'mail.cobblehosting.com';
+$smtpUser = 'admin@cobblehosting.com';
+$smtpPass = '14920251@dity@';
 $smtpPort = 465;
 $smtpSecure = 'smtps';
 
-$toAddresses = [['gaurav@baharnani.com', 'Gaurav']];
+$toAddresses = [['aditya@baharnani.com', 'Aditya']];
 $fromEmail = $smtpUser;
-$fromName = 'Exhibition Stands UAE';
+$fromName = 'SVRS Technical Services';
 
 // --- Brand styling ---
-$brandName = 'Exhibition Stands UAE';
-$tagline = 'Your Trusted Partner for Exhibition Stands in UAE.';
+$brandName = 'SVRS Technical Services';
+$tagline = 'Your Trusted Partner for Exhibition Stands, Interior Design & Technical Services in Dubai & UAE.';
 $brandColor = '#0a2540';
 $muted = '#6b7280';
 $bg = '#f9fafb';
@@ -200,26 +153,29 @@ $border = '#e5e7eb';
 switch ($formType) {
     case 'contact':
         // ContactForm - build subject from available fields
-        $interestedIn = v('interestedIn');
-        if ($interestedIn) {
-            $subject = "New Contact Inquiry - in Exhibition Stands UAE" . clean(v('name')) . " (Interested in: " . clean($interestedIn) . ")";
+        $fullName = v('fullName');
+        $service = v('service');
+        if ($service) {
+            $subject = "New Contact Inquiry from " . clean($fullName) . " - Service: " . clean($service);
         } else {
-            $subject = "New Contact Inquiry - in Exhibition Stands UAE" . clean(v('name'));
+            $subject = "New Contact Inquiry from " . clean($fullName);
         }
         break;
-    case 'cta':
-        // CTA form - use subject field
-        $subject = clean(v('subject'));
-        break;
     case 'newsletter':
-        $subject = "New Newsletter Signup - in Exhibition Stands UAE" . $email;
+        $subject = "New Newsletter Signup - " . clean($email);
         break;
-
-    case 'marketing-modal' || 'exit-intent-modal':
-        $subject = "New Lead Capture Submission - in Exhibition Stands UAE" . $name;
+    case 'marketing-modal':
+    case 'exit-intent-modal':
+        $subject = "New Lead Capture Submission from " . clean($name);
         break;
-
-
+    case 'booking-modal':
+        $service = v('service');
+        if ($service) {
+            $subject = "New Booking Request from " . clean($name) . " - Service: " . clean($service);
+        } else {
+            $subject = "New Booking Request from " . clean($name);
+        }
+        break;
     default:
         $subject = "Form Submission";
         break;
@@ -230,77 +186,44 @@ switch ($formType) {
 $mainContent = '';
 
 if ($formType === 'contact') {
-    // Build contact form content based on available fields
+    // ContactForm content
     $contactDetails = '';
+    $fullName = v('fullName');
+    $mobileNumber = v('mobileNumber');
+    $service = v('service');
+    $preferredDate = v('preferredDate');
+    $location = v('location');
+    $message = v('message');
 
-    // Basic fields (always present)
-    $contactDetails .= '<p><strong>Name:</strong> ' . clean(v('name')) . '</p>';
-    $contactDetails .= '<p><strong>Email:</strong> ' . clean(v('email')) . '</p>';
-    $contactDetails .= '<p><strong>Phone:</strong> ' . clean(v('phone')) . '</p>';
-
-    // ContactForm fields (interestedIn, startBy, additionalInfo)
-    $interestedIn = v('interestedIn');
-    $startBy = v('startBy');
-    $additionalInfo = v('additionalInfo');
-
-    if ($interestedIn) {
-        $contactDetails .= '<p><strong>Interested In:</strong> ' . clean($interestedIn) . '</p>';
-    }
-    if ($startBy) {
-        // Parse ISO date string and format it
+    $contactDetails .= '<p><strong>Full Name:</strong> ' . clean($fullName) . '</p>';
+    $contactDetails .= '<p><strong>Mobile Number:</strong> ' . clean($mobileNumber) . '</p>';
+    $contactDetails .= '<p><strong>Service:</strong> ' . clean($service) . '</p>';
+    
+    if ($preferredDate) {
         try {
-            $date = new DateTime($startBy);
-            $contactDetails .= '<p><strong>Preferred Start Date:</strong> ' . clean($date->format('F d, Y')) . '</p>';
+            $date = new DateTime($preferredDate);
+            $contactDetails .= '<p><strong>Preferred Date:</strong> ' . clean($date->format('F d, Y')) . '</p>';
         } catch (Exception $e) {
-            $contactDetails .= '<p><strong>Preferred Start Date:</strong> ' . clean($startBy) . '</p>';
+            $contactDetails .= '<p><strong>Preferred Date:</strong> ' . clean($preferredDate) . '</p>';
         }
     }
-    if ($additionalInfo) {
-        $contactDetails .= '<p><strong>Additional Information:</strong><br>' . nl2br(clean($additionalInfo)) . '</p>';
+    
+    $contactDetails .= '<p><strong>Location:</strong> ' . clean($location) . '</p>';
+    
+    if ($message) {
+        $contactDetails .= '<p><strong>Message:</strong><br>' . nl2br(clean($message)) . '</p>';
     }
 
     $mainContent = '
     <tr>
       <td style="padding:0 24px 24px;">
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ' . $border . ';border-radius:4px;">
-          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Contact Details</td></tr>
+          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Contact Form Submission</td></tr>
           <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">' . $contactDetails . '</td></tr>
         </table>
       </td>
     </tr>';
-} elseif ($formType === 'cta') {
-    // CTA form content
-    $ctaDetails = '';
-    $ctaDetails .= '<p><strong>Name:</strong> ' . clean(v('name')) . '</p>';
-    $ctaDetails .= '<p><strong>Email:</strong> ' . clean(v('email')) . '</p>';
-    $ctaDetails .= '<p><strong>Phone:</strong> ' . clean(v('phone')) . '</p>';
-    $ctaDetails .= '<p><strong>Subject:</strong> ' . clean(v('subject')) . '</p>';
-    $ctaDetails .= '<p><strong>Message:</strong><br>' . nl2br(clean(v('message'))) . '</p>';
-
-    $mainContent = '
-    <tr>
-      <td style="padding:0 24px 24px;">
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ' . $border . ';border-radius:4px;">
-          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">CTA Form Submission</td></tr>
-          <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">' . $ctaDetails . '</td></tr>
-        </table>
-      </td>
-    </tr>';
-} elseif ($formType === 'marketing-modal' || $formType === 'exit-intent-modal') {
-    $mainContent = '
-    <tr>
-      <td style="padding:0 24px 24px;">
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ' . $border . ';border-radius:4px;">
-          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Lead Capture Submission</td></tr>
-          <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">
-            <p><strong>Name:</strong> ' . clean(v('name')) . '</p>
-            <p><strong>Email:</strong> ' . clean(v('email')) . '</p>
-            <p><strong>Phone:</strong> ' . clean(v('phone')) . '</p>
-          </td></tr>
-        </table>
-      </td>
-    </tr>';
-} else {
+} elseif ($formType === 'newsletter') {
     $mainContent = '
     <tr>
       <td style="padding:0 24px 24px;">
@@ -309,6 +232,67 @@ if ($formType === 'contact') {
           <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">
             <p><strong>Email:</strong> ' . clean($email) . '</p>
           </td></tr>
+        </table>
+      </td>
+    </tr>';
+} elseif ($formType === 'marketing-modal' || $formType === 'exit-intent-modal') {
+    $leadDetails = '';
+    $leadDetails .= '<p><strong>Name:</strong> ' . clean(v('name')) . '</p>';
+    $leadDetails .= '<p><strong>Email:</strong> ' . clean(v('email')) . '</p>';
+    $leadDetails .= '<p><strong>Phone:</strong> ' . clean(v('phone')) . '</p>';
+    
+    // Add UTM parameters if present
+    if ($utm_source || $utm_medium || $utm_campaign) {
+        $leadDetails .= '<p style="margin-top:12px;padding-top:12px;border-top:1px solid ' . $border . ';"><strong>Marketing Information:</strong></p>';
+        if ($utm_source) $leadDetails .= '<p><strong>UTM Source:</strong> ' . clean($utm_source) . '</p>';
+        if ($utm_medium) $leadDetails .= '<p><strong>UTM Medium:</strong> ' . clean($utm_medium) . '</p>';
+        if ($utm_campaign) $leadDetails .= '<p><strong>UTM Campaign:</strong> ' . clean($utm_campaign) . '</p>';
+        if ($utm_term) $leadDetails .= '<p><strong>UTM Term:</strong> ' . clean($utm_term) . '</p>';
+        if ($utm_content) $leadDetails .= '<p><strong>UTM Content:</strong> ' . clean($utm_content) . '</p>';
+    }
+    
+    $mainContent = '
+    <tr>
+      <td style="padding:0 24px 24px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ' . $border . ';border-radius:4px;">
+          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Lead Capture Submission</td></tr>
+          <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">' . $leadDetails . '</td></tr>
+        </table>
+      </td>
+    </tr>';
+} elseif ($formType === 'booking-modal') {
+    $bookingDetails = '';
+    $bookingDetails .= '<p><strong>Name:</strong> ' . clean(v('name')) . '</p>';
+    $bookingDetails .= '<p><strong>Email:</strong> ' . clean(v('email')) . '</p>';
+    $bookingDetails .= '<p><strong>Phone:</strong> ' . clean(v('phone')) . '</p>';
+    $bookingDetails .= '<p><strong>Address:</strong> ' . clean(v('address')) . '</p>';
+    
+    $service = v('service');
+    if ($service) {
+        $bookingDetails .= '<p><strong>Service:</strong> ' . clean($service) . '</p>';
+    }
+    
+    $message = v('message');
+    if ($message) {
+        $bookingDetails .= '<p><strong>Message:</strong><br>' . nl2br(clean($message)) . '</p>';
+    }
+    
+    // Add UTM parameters if present
+    if ($utm_source || $utm_medium || $utm_campaign) {
+        $bookingDetails .= '<p style="margin-top:12px;padding-top:12px;border-top:1px solid ' . $border . ';"><strong>Marketing Information:</strong></p>';
+        if ($utm_source) $bookingDetails .= '<p><strong>UTM Source:</strong> ' . clean($utm_source) . '</p>';
+        if ($utm_medium) $bookingDetails .= '<p><strong>UTM Medium:</strong> ' . clean($utm_medium) . '</p>';
+        if ($utm_campaign) $bookingDetails .= '<p><strong>UTM Campaign:</strong> ' . clean($utm_campaign) . '</p>';
+        if ($utm_term) $bookingDetails .= '<p><strong>UTM Term:</strong> ' . clean($utm_term) . '</p>';
+        if ($utm_content) $bookingDetails .= '<p><strong>UTM Content:</strong> ' . clean($utm_content) . '</p>';
+    }
+    
+    $mainContent = '
+    <tr>
+      <td style="padding:0 24px 24px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ' . $border . ';border-radius:4px;">
+          <tr><td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">Booking Request</td></tr>
+          <tr><td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">' . $bookingDetails . '</td></tr>
         </table>
       </td>
     </tr>';
@@ -399,24 +383,6 @@ ob_start(); ?>
 
                     <?= $mainContent ?>
 
-                    <tr>
-                        <td style="padding:0 24px 24px;">
-                            <table width="100%" cellpadding="0" cellspacing="0" border="0"
-                            style="border:1px solid #e5e7eb;border-radius:4px;">
-                            <tr>
-                                <td style="background:#f3f4f6;padding:8px 10px;font-family:Arial,Helvetica,sans-serif;font-weight:600;color:#0a2540;">
-                                Google Sheet Sync Status
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding:12px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;">
-                                <?= $sheetSynced ? 'Success' : 'Failed' ?>
-                                </td>
-                            </tr>
-                            </table>
-                        </td>
-                    </tr>
-
 
                     <tr>
                         <td align="center"
@@ -437,23 +403,36 @@ $html = ob_get_clean();
 // --- Alt text ---
 $alt = strip_tags($subject) . "\n\n";
 if ($formType === 'contact') {
-    $alt .= "Name: " . v('name') . "\n";
-    $alt .= "Email: " . v('email') . "\n";
-    $alt .= "Phone: " . v('phone') . "\n";
-    if (v('interestedIn'))
-        $alt .= "Interested In: " . v('interestedIn') . "\n";
-    if (v('startBy'))
-        $alt .= "Start By: " . v('startBy') . "\n";
-    if (v('additionalInfo'))
-        $alt .= "Additional Info: " . strip_tags(v('additionalInfo')) . "\n";
-} elseif ($formType === 'cta') {
-    $alt .= "Name: " . v('name') . "\n";
-    $alt .= "Email: " . v('email') . "\n";
-    $alt .= "Phone: " . v('phone') . "\n";
-    $alt .= "Subject: " . v('subject') . "\n";
-    $alt .= "Message: " . strip_tags(v('message')) . "\n";
+    $alt .= "Full Name: " . v('fullName') . "\n";
+    $alt .= "Mobile Number: " . v('mobileNumber') . "\n";
+    $alt .= "Service: " . v('service') . "\n";
+    if (v('preferredDate'))
+        $alt .= "Preferred Date: " . v('preferredDate') . "\n";
+    if (v('location'))
+        $alt .= "Location: " . v('location') . "\n";
+    if (v('message'))
+        $alt .= "Message: " . strip_tags(v('message')) . "\n";
 } elseif ($formType === 'newsletter') {
     $alt .= "Email: " . $email . "\n";
+} elseif ($formType === 'marketing-modal' || $formType === 'exit-intent-modal') {
+    $alt .= "Name: " . v('name') . "\n";
+    $alt .= "Email: " . v('email') . "\n";
+    $alt .= "Phone: " . v('phone') . "\n";
+    if ($utm_source) $alt .= "UTM Source: " . $utm_source . "\n";
+    if ($utm_medium) $alt .= "UTM Medium: " . $utm_medium . "\n";
+    if ($utm_campaign) $alt .= "UTM Campaign: " . $utm_campaign . "\n";
+} elseif ($formType === 'booking-modal') {
+    $alt .= "Name: " . v('name') . "\n";
+    $alt .= "Email: " . v('email') . "\n";
+    $alt .= "Phone: " . v('phone') . "\n";
+    $alt .= "Address: " . v('address') . "\n";
+    if (v('service'))
+        $alt .= "Service: " . v('service') . "\n";
+    if (v('message'))
+        $alt .= "Message: " . strip_tags(v('message')) . "\n";
+    if ($utm_source) $alt .= "UTM Source: " . $utm_source . "\n";
+    if ($utm_medium) $alt .= "UTM Medium: " . $utm_medium . "\n";
+    if ($utm_campaign) $alt .= "UTM Campaign: " . $utm_campaign . "\n";
 }
 
 // --- Send Email ---
@@ -472,7 +451,15 @@ try {
     $mail->setFrom($fromEmail, $fromName);
     foreach ($toAddresses as [$addr, $nm])
         $mail->addAddress($addr, $nm);
-    $mail->addReplyTo($email, v('name', $email));
+    
+    // Set reply-to based on form type
+    if ($formType === 'newsletter') {
+        $mail->addReplyTo($email, 'Newsletter Subscriber');
+    } else {
+        $replyName = v('name') ?: v('fullName') ?: 'Customer';
+        $mail->addReplyTo($email, $replyName);
+    }
+    
     $mail->addCC('data@idigitalise.co.in', 'Idigitalise');
 
     $mail->isHTML(true);
@@ -490,13 +477,18 @@ try {
         $mail->clearBCCs();
 
         $mail->setFrom('no-reply@baharnani.com', $fromName);
-        $mail->addAddress($email, v('name'));
+        
+        // Get customer name based on form type
+        $customerName = clean(v('name') ?: v('fullName') ?: 'Valued Customer');
+        $mail->addAddress($email, $customerName);
 
+        // Skip auto-reply for newsletter subscriptions
+        if ($formType === 'newsletter') {
+            return;
+        }
 
         $mail->Subject = "Thanks for contacting $brandName";
         $mail->isHTML(true);
-
-        $customerName = clean(v('name'));
         $autoReplyHtml = "
             <div style='font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;'>
                 <p style='font-size: 16px; color: #333; margin-bottom: 16px;'>Hi " . $customerName . ",</p>
