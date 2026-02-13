@@ -4,7 +4,7 @@ interface LogoProps {
   className?: string;
 }
 
-export const Logo = ({ className = "w-[140px]" }: LogoProps) => {
+export const Logo = ({ className = "w-[100px]" }: LogoProps) => {
   return (
     <img
       loading="lazy"

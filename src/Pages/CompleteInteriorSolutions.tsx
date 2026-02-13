@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutCompleteInteriorSolutions from "@/assets/images/SeperateAboutPageImages/AboutCompleteInterior.webp";
 
 const CompleteInteriorSolutions = () => {
   return (
@@ -64,6 +65,7 @@ const CompleteInteriorSolutions = () => {
           description="Comprehensive interior solutions that handle every aspect of your project. From design to installation, we provide complete interior services including design, furniture, woodwork, painting, and project management for seamless execution."
         />
         <AboutService
+        image={AboutCompleteInteriorSolutions}
         badge="About Our Complete Interior Solutions "
           title="Complete Interior Solutions For Your Home & Office"
           description={[

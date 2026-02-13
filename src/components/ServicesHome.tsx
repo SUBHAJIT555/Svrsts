@@ -3,6 +3,14 @@ import { motion, useInView } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import CTAButton from "./ui/CTAButton";
+import ExhibitionStandBuilding from "@/assets/images/HomePageImages/ExhibitionStandBuilding.webp";
+import WoodWork from "@/assets/images/HomePageImages/WoodWork.webp";
+import EventDecoration from "@/assets/images/HomePageImages/EventDecoration.webp";
+import OfficeInterior from "@/assets/images/HomePageImages/OfficeInterior.webp";
+import Furniture from "@/assets/images/HomePageImages/Furniture.webp";
+import InteriorDesign from "@/assets/images/HomePageImages/InteriorDesign.webp";
+import PaintingServices from "@/assets/images/HomePageImages/PaintingServices.webp";
+import CompleteInteriorSolutions from "@/assets/images/HomePageImages/CompleteInterior.webp";
 
 // Services data with images
 const services = [
@@ -11,7 +19,7 @@ const services = [
     name: "Exhibition Stand Building",
     description: "Custom-designed exhibition stands that showcase your brand and captivate your audience at trade shows and events. From concept to completion, we build stands that make an impact.",
     shortDescription: "Custom exhibition stands for trade shows and events.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
+    image: ExhibitionStandBuilding,
 
   },
   {
@@ -19,49 +27,49 @@ const services = [
     name: "Wood Work",
     description: "Expert woodwork and carpentry services. Custom furniture, cabinetry, and woodworking solutions crafted with precision and premium materials for lasting quality.",
     shortDescription: "Custom woodwork and carpentry solutions.",
-    image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?w=800&h=600&fit=crop",
+    image: WoodWork,
   },
   {
     id: "event-decoration",
     name: "Event Decoration",
     description: "Professional event decoration and stand lighting services that create memorable experiences. Transform your events with stunning decor and strategic lighting design.",
     shortDescription: "Professional event decoration and lighting services.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=800&h=600&fit=crop",
+    image: EventDecoration,
   },
   {
     id: "office-interior",
     name: "Office Interior",
     description: "Complete office interior design and fit-out services. Transform your workspace into inspiring environments that boost productivity and reflect your brand identity.",
     shortDescription: "Complete office interior design and fit-out services.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
+    image: OfficeInterior,
   },
   {
     id: "furniture",
     name: "Furniture",
     description: "Custom furniture solutions for offices, events, and interiors. From design to fabrication, we create furniture pieces that combine functionality with aesthetic appeal.",
     shortDescription: "Custom furniture design and fabrication.",
-    image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop",
+    image: Furniture,
   },
   {
     id: "interior-design",
     name: "Interior Design",
     description: "Comprehensive interior design services for all spaces. From residential to commercial, we handle all aspects of interior design including space planning, color schemes, and material selection.",
     shortDescription: "Complete interior design solutions for all spaces.",
-    image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+    image: InteriorDesign,
   },
   {
     id: "painting",
     name: "Painting Services",
     description: "Professional painting services for all interior and exterior surfaces. Premium paints, expert application, and attention to detail for flawless finishes.",
     shortDescription: "Professional painting for all surfaces.",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800&h=600&fit=crop",
+    image: PaintingServices,
   },
   {
     id: "complete-interior-solutions",
     name: "Complete Interior",
     description: "End-to-end interior solutions covering all aspects from design to execution. We handle everything from concept development to final installation for seamless project delivery.",
     shortDescription: "End-to-end interior solutions from concept to completion.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
+    image: CompleteInteriorSolutions,
   },
 ];
 

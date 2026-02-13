@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutPaintingServices from "@/assets/images/SeperateAboutPageImages/AboutPaintingServices.webp";
 
 const PaintingServices = () => {
   return (
@@ -64,6 +65,7 @@ const PaintingServices = () => {
           description="Professional painting services that enhance your space with quality finishes and expert application. From interior walls to exterior surfaces, we deliver flawless results using premium paints and professional techniques."
         />
         <AboutService
+        image={AboutPaintingServices}
         badge="About Our Painting Services"
           title="Professional Painting Services For Your Home & Office"
           description={[

@@ -83,7 +83,7 @@ const Header: React.FC = () => {
       >
         <div className="flex justify-center">
           <div className="w-full sm:w-11/12 mx-auto xl:w-full">
-            <div className="w-full mx-auto flex justify-between items-center sm:px-5 px-3 py-2 md:py-3 rounded-lg mt-2 md:mt-4">
+            <div className="w-full mx-auto flex justify-between items-center sm:px-5 px-3 py-2 md:py-3 rounded-lg mt-2 md:mt-2">
               {/* Logo Section */}
               <motion.div
                 className="flex items-center space-x-2 sm:space-x-3"
@@ -91,7 +91,7 @@ const Header: React.FC = () => {
                 transition={{ duration: 0.2 }}
               >
                 <Link to="/">
-                  <Logo className="w-32 md:w-40 lg:w-50" />
+                  <Logo className="w-20 md:w-30 lg:w-30" />
                 </Link>
               </motion.div>
 

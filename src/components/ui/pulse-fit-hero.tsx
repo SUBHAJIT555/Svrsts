@@ -188,7 +188,7 @@ export function PulseFitHero({
                       key={index}
                       src={avatar}
                       alt=""
-                      className="rounded-full border-2 border-white w-10 h-10 object-cover ring-1 ring-offset-white ring-neutral-300 shadow-md"
+                      className="rounded-full border border-zinc-500 w-10 h-10 object-cover ring-1 ring-offset-white ring-neutral-300 ring-offset-2 md:ring-offset-3 shadow-md"
                     />
                   ))}
                 </div>

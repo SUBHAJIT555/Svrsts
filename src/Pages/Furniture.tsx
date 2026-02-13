@@ -4,6 +4,7 @@ import WhyWe from "@/components/service-details/WhyWe";
 import ServiceFAQ from "@/components/service-details/ServiceFAQ";
 import ServiceWorkflow from "@/components/service-details/ServiceWorkflow";
 import CallToAction from "@/components/CallToAction";
+import AboutFurniture from "@/assets/images/SeperateAboutPageImages/AboutFurniture.webp";
 
 const Furniture = () => {
   return (
@@ -64,6 +65,7 @@ const Furniture = () => {
           description="Create custom furniture pieces that are uniquely yours. Our expert craftsmen design and fabricate furniture that perfectly fits your space, style, and functional requirements, combining quality craftsmanship with personalized design."
         />
         <AboutService
+        image={AboutFurniture}
         badge="About Our Furniture Services"
           title="Custom Furniture Design & Fabrication"
           description={[
