@@ -33,21 +33,15 @@ const Footer = () => {
 
   const onSubmit = async (data: FieldValues) => {
     try {
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/v1/contact/create`,
+      const formData = new FormData();
+      formData.append("email", data.email);
+      formData.append("formType", "newsletter");
 
+      const response = await fetch(
+        `/mail.php`,
         {
           method: "POST",
-
-          body: JSON.stringify({
-            email: data.email,
-
-            formType: "NEWSLETTER",
-          }),
-
-          headers: {
-            "Content-Type": "application/json",
-          },
+          body: formData,
         }
       );
 
@@ -74,7 +68,7 @@ const Footer = () => {
   return (
     <>
       <footer className="w-full relative overflow-hidden bg-white"
-        >
+      >
         {/* Two Dashed Border Lines */}
         <div className="w-full border-t border-neutral-200 "></div>
         <div className="w-full border-t border-neutral-200  mt-2"></div>
@@ -94,10 +88,10 @@ const Footer = () => {
                 <div className="text-text-primary md:text-4xl text-2xl font-clashdisplay flex items-center gap-2 tracking-tighter">
                   <Link to="/">
                     <img
-                    src={footerlogo}
-                    alt="Cyberlabs India Logo"
-                    className="w-50 h-25"
-                  />
+                      src={footerlogo}
+                      alt="Cyberlabs India Logo"
+                      className="w-50 h-25"
+                    />
                   </Link>
                 </div>
 
@@ -207,7 +201,7 @@ const Footer = () => {
                       className="relative inline-block pl-1 pr-5 text-text-primary text-xs md:text-lg font-generalsans group overflow-hidden"
                     >
                       <span className="relative z-10 transition-colors duration-500 ease-out px-2 flex items-center">
-                        Complete Interior 
+                        Complete Interior
                       </span>
                       <span className="absolute left-0 top-0 bottom-0 right-0 bg-linear-to-r from-neutral-200 to-white rounded-xl  scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out origin-left"></span>
                     </Link>
@@ -388,14 +382,14 @@ const Footer = () => {
                   <div className="flex justify-end mt-5">
                     <CTAButton
                       label={isSubmitting ? "Submitting..." : "Subscribe Us"}
-                      onClick={() => {
-                        const form = document.getElementById('newsletter-form') as HTMLFormElement;
-                        if (form) {
-                          form.requestSubmit();
-                        } else {
-                          handleSubmit(onSubmit)();
-                        }
-                      }}
+                      // onClick={() => {
+                      //   const form = document.getElementById('newsletter-form') as HTMLFormElement;
+                      //   if (form) {
+                      //     form.requestSubmit();
+                      //   } else {
+                      //     handleSubmit(onSubmit)();
+                      //   }
+                      // }}
                       variant="light"
                       className={cn(
                         "font-generalsans",

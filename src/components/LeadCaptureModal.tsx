@@ -334,18 +334,18 @@ export default function LeadCaptureModal({
 
               {submitStatus === "success" ? (
                 <div className="text-center py-8">
-                  <FiCheckCircle className="w-16 h-16 text-white mx-auto mb-4" />
-                  <p className="text-xl text-white font-semibold font-clashdisplay">
+                  <FiCheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                  <p className="text-xl text-text-primary font-semibold font-clashdisplay">
                     {message}
                   </p>
                 </div>
               ) : submitStatus === "error" ? (
                 <div className="text-center py-8">
                   <div className="text-6xl mb-4">⚠️</div>
-                  <p className="text-lg text-red-300 font-semibold mb-2 font-clashdisplay">
+                  <p className="text-lg text-red-500 font-semibold mb-2 font-clashdisplay">
                     Sorry, something went wrong.
                   </p>
-                  <p className="text-sm text-white/70 font-generalsans">
+                  <p className="text-sm text-text-secondary font-generalsans">
                     {message}
                   </p>
                 </div>
