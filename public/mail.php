@@ -170,13 +170,13 @@ $utm_term = v('utm_term');
 $utm_content = v('utm_content');
 
 // --- SMTP CONFIG ---
-$smtpHost = 'mail.cobblehosting.com';
-$smtpUser = 'admin@cobblehosting.com';
-$smtpPass = '14920251@dity@';
+$smtpHost = 'mail.svrsts.com';
+$smtpUser = 'admin@svrsts.com';
+$smtpPass = 'Admin@svrsts@9474';
 $smtpPort = 465;
 $smtpSecure = 'smtps';
 
-$toAddresses = [['aditya@baharnani.com', 'Aditya']];
+$toAddresses = [['info@svrsts.com', 'SVRS Technical Service']];
 $fromEmail = $smtpUser;
 $fromName = 'SVRS Technical Services';
 
@@ -525,7 +525,7 @@ try {
         $mail->clearCCs();
         $mail->clearBCCs();
 
-        $mail->setFrom('no-reply@baharnani.com', $fromName);
+        $mail->setFrom('admin@svrsts.com', $fromName);
         
         // Skip auto-reply for newsletter subscriptions or if no email is provided
         if ($formType !== 'newsletter' && $email || $formType === 'contact') {
